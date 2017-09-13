@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<div ng-controller="PeripheralController as model" ng-init="model.List()">
+
+
+    <form method="post" action="~/Peripheral/Edit">
+        <br />
+        <label for="EmployeeId">Company Id:</label><br />
+        <input list="EmployeeId" class="form-control" name="Peripheral.EmployeeId" value="@Model.EmployeeId">
+        <input type="hidden" name="Peripheral.PeripheralId" value="@Model.PeripheralId" hidden/>
+        <datalist id="EmployeeId">
+            <option value="1">
+            <option value="2">
+        </datalist>
+     
+        <label for="PeripheralName">Asset name:</label>
+        <input type="text" class="form-control" name="Peripheral.PeripheralName" value="@Model.PeripheralName" />
+        <label for="Description">Make:</label>
+        <input type="text" class="form-control" name="Peripheral.Description" value="@Model.Description" />
+        <label for="SerialNumber">Serial Number:</label>
+        <input type="text" class="form-control" name="Peripheral.SerialNumber" value="@Model.SerialNumber" />
+        <br />
+        <input type="Submit" value="Save" class="btn btn-primary" style="margin-right:5px;" /> &nbsp;&nbsp;
+
+        <a href="/Peripheral/Index" class="btn btn-danger"><i class="glyphicon glyphicon-close "></i>Close</a>
+
+    </form>
+
+    @*<a href="/Company/Index" ng-click="model.Update(Company)" class="btn btn-primary" placeholder="{{Company.Companyname}}"> <i class="glyphicon glyphicon-edit"></i> Save Changes</a>*@
+
+    @*<a href="/Position/Index" class="btn btn-info" type="button" ng-click="model.Update()" value="{{ Position.PositionName }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>*@
+
+
+</div>

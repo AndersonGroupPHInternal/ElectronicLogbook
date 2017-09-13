@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "add";
+}
+
+<head>
+    <meta charset="utf-8">
+    </head>
+<h2>Add Asset</h2>
+<div ng-controller="PeripheralController as model" ng-init="model.List()">
+    <div class="form-group">
+        <br />
+        <label for="EmployeeId">Employee Id:</label>
+        <input list="EmployeeId" name="EmployeeId" ng-model="model.Peripheral.EmployeeId" type="text" class="form-control" placeholder="Employee ID">
+        <datalist id="EmployeeId">
+            <option value="1">
+            <option value="11">
+            <option value="13">
+            <option value="15">
+        </datalist>
+
+      
+        
+        <label for="PeripheralName">Asset Name:</label>
+        <input type="text" class="form-control" id="PeripheralName" ng-model="model.Peripheral.PeripheralName" placeholder="Asset name" />
+        <label for="Description">Make :</label>
+        <input type="text" class="form-control" id="Description" ng-model="model.Peripheral.Description" placeholder="Description" />
+        <label for="SerialNumber">Serial Number:</label>
+        <input type="text" class="form-control" id="SerialNumber" ng-model="model.Peripheral.SerialNumber"  placeholder="Serial Number" />
+    </div>
+
+     <a href="/Peripheral/Index" class="btn btn-info" role="button" ng-click="model.Create() " style="margin-left: 10px;float: left"><i class="glyphicon glyphicon-plus-sign"></i> ADD</a>
+    <a href="/Peripheral/Index" class="btn btn-danger" style=" float: left"><i class="glyphicon glyphicon-remove"></i> Close</a>
+
+</div>
+
+
+

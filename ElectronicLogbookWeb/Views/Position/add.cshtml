@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>Add Position</h2>
+
+<div ng-controller="PositionController as model" ng-init="model.List()">
+    <div class="form-group">
+        <br />
+        <label for="PositionName">Position Name:</label>
+        <input type="text" class="form-control" id="PositionName" ng-model="model.Position.PositionName"  placeholder="Position Name"/>
+
+    </div>
+   
+   <a href="/Position/Index" class="btn btn-info" role="button" ng-click="model.Create() " style="margin-left: 10px;float: left"><i class="glyphicon glyphicon-plus-sign"></i> ADD</a>
+    <a href="/Position/Index" class="btn btn-danger" role="button" style="float: left"><i class="glyphicon glyphicon-remove"></i> Close</a>
+
+</div>
+
+

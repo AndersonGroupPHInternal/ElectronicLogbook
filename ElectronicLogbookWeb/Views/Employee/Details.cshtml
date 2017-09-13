@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+
+<h2>Details</h2>
+<div >
+
+
+    <form method="post" action="~/Employee/Edit">
+        <br />
+        <label for="CompanyId" hidden >Company Id:</label><br />
+        <input list="CompanyId" type="hidden" class="form-control" name="Employee.CompanyId" value="@Model.CompanyId" disabled>
+        <input type="hidden" name="Employee.EmployeeId" value="@Model.EmployeeId" hidden/>
+      
+       
+        <label for="PositionId" hidden>Position Id:</label>
+        <input type="hidden" class="form-control" name="Employee.PositionId" value="@Model.PositionId"/>
+        <label for="EmployeeNumber">Employee Number:</label>
+        <input type="text" class="form-control" name="Employee.EmployeeNumber" value="@Model.EmployeeNumber" disabled/>
+        <label for="FirstName">Firstname:</label>
+        <input type="text" class="form-control" name="Employee.FirstName" value="@Model.FirstName" disabled />
+        <label for="LastName">Lastname:</label>
+        <input type="text" class="form-control" name="Employee.Lastname" value="@Model.LastName" disabled/>
+        <label for="MiddleName">Middle Name:</label>
+        <input type="text" class="form-control" name="Employee.MiddleName" value="@Model.MiddleName" disabled/>
+        <br />
+      
+
+        <a href="/Employee/Edit/@Model.EmployeeId" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+
+        <a href="/Employee/Index" class="btn btn-danger"><i class="glyphicon glyphicon-close "></i>Close</a>
+
+    </form>
+
+ 
+
+</div>
+
+

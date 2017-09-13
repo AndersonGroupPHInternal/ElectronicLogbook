@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h3>Edit</h3>
+<div ng-controller="InternController as model" ng-init="model.List()">
+
+    <div style="width: 100%">
+        <div style="width: 25%; float: left; display: inline-block;">
+
+            <form method="post" action="~/Intern/Edit">
+                <br />
+                <label for="Date">Date:</label>
+                <input type="date" class="form-control" name="Intern.Date" value="@Model.Date" />
+                <label for="Name">Name:</label>
+                <input type="text" class="form-control" name="Intern.Name" value="@Model.Name" />
+                <label for="School">School:</label>
+                <input type="text" class="form-control" name="Intern.School" value="@Model.School" />
+                <label for="Department">Department:</label>
+                <input type="text" class="form-control" name="Intern.Department" value="@Model.Department" />
+                <label for="Supervisor">Supervisor:</label>
+                <input type="text" class="form-control" name="Intern.Supervisor" value="@Model.Supervisor" />
+                <label for="IdNumber">ID Number:</label>
+                <input type="text" class="form-control" name="Intern.IdNumber" value="@Model.IdNumber" />
+                <label for="TimeIn">Time In:</label>
+                <input type="time" class="form-control" name="Intern.TimeIn" value="@Model.TimeIn" />
+                <label for="TimeOut">Time Out:</label>
+                <input type="time" class="form-control" name="Intern.TimeOut" value="@Model.TimeOut" />
+                <input type="hidden" name="Intern.InternID" value="@Model.InternID" /><br />
+                <input type="Submit" value="Save" class="btn btn-primary" style="" /> &nbsp;&nbsp;
+                <a href="/Intern/Index" class="btn btn-danger"><i class="glyphicon glyphicon-close "></i>Close</a>
+            </form>
+        </div>
+
+        <div style="width: 75%; display: inline-block;">
+            <center>
+                <div ng-app="myapp" ng-controller="mainController">
+                    <div class="alert alert-error ng-scope" ng-show="webcamError" style="">
+                        <span>Webcam could not be started. Did you give access to it?</span>
+                    </div>
+                    <webcam channel="channel" on-streaming="onSuccess()" on-error="onError(err)" on-stream="onStream(stream)"></webcam>
+                    <canvas id="snapshot" width="325" height="325" style="border:3px solid #000000;"></canvas>
+                    <center>
+                        <button class="btn btn-primary" ng-click="makeSnapshot()"><i class="glyphicon glyphicon-camera"></i> Capture </button>
+                        <button class="btn btn-success" ng-click="Save()"><i class="glyphicon glyphicon-save"></i> Save Picture </button>
+                    </center>
+                </div>
+            </center>
+        </div>
+    </div>
+
+</div>
+
+
+
+

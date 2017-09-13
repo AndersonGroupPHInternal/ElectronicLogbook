@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<div ng-controller="PositionController as model" ng-init="model.List()">
+ 
+
+    <form method="post" action="~/Position/Edit">
+        <br />
+        <label for="PositionName">Position Name:</label>
+        <input type="text" class="form-control" name="Position.PositionName" value="@Model.PositionName" />
+        <input type="hidden" name="Position.PositionId" value="@Model.PositionId" />
+        <br />
+        <input type="Submit" value="Save" class="btn btn-primary" style="margin-right:5px;"/> &nbsp;&nbsp;
+        
+        <a href="/Position/Index" class="btn btn-danger" ><i class="glyphicon glyphicon-close "></i>Close</a>
+
+    </form>
+
+      @*<a href="/Company/Index" ng-click="model.Update(Company)" class="btn btn-primary" placeholder="{{Company.Companyname}}"> <i class="glyphicon glyphicon-edit"></i> Save Changes</a>*@
+
+    @*<a href="/Position/Index" class="btn btn-info" type="button" ng-click="model.Update()" value="{{ Position.PositionName }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>*@
+
+
+</div>
+

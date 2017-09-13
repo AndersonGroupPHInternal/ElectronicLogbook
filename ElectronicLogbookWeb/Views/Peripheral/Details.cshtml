@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div >
+
+
+    <form method="post" action="~/Peripheral/Edit">
+        <br />
+        <label for="EmployeeId">Company Id:</label><br />
+        <input list="EmployeeId" class="form-control" name="Peripheral.EmployeeId" value="@Model.EmployeeId" disabled >
+        <input type="hidden" name="Peripheral.PeripheralId" value="@Model.PeripheralId" hidden/>
+     
+
+        <label for="PeripheralName">Asset name:</label>
+        <input type="text" class="form-control" name="Peripheral.PeripheralName" value="@Model.PeripheralName" disabled />
+        <label for="Description">Make:</label>
+        <input type="text" class="form-control" name="Peripheral.Description" value="@Model.Description" disabled />
+        <label for="SerialNumber">Serial Number:</label>
+        <input type="text" class="form-control" name="Peripheral.SerialNumber" value="@Model.SerialNumber" disabled />
+        <br />
+       <a href="/Peripheral/Edit/@Model.PeripheralId" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+
+        <a href="/Peripheral/Index" class="btn btn-danger"><i class="glyphicon glyphicon-close "></i>Close</a>
+
+    </form>
+
+
+</div>

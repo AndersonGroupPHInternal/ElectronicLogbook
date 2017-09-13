@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>&nbsp; Position</h1>
+<div ng-controller="PositionController as model" ng-init="model.List()">
+    <a href="/Position/Add" type="button" ng-click="model.Create()" class="btn btn-success" style="float: right; margin-right: 10px"><i class="glyphicon glyphicon-plus-sign"></i> Add</a><br /><br />
+    <div class="wrap">
+        <div class="search">
+            <input type="text" class="searchTerm" id="myInput" onkeyup="myFunction()" placeholder="Search here.." />
+            @*<button type="submit" class="searchButton"> <i class="glyphicon glyphicon-search"></i> </button>*@
+        </div>
+    </div>
+    
+    
+    
+    <div class="row">
+        @*<button type="button" class="btn btn-success" data-toggle="modal" data-target="#PositionModal" ng-click="model.CreateModal(Position)" style="float: right; margin-right: 35px"><i class="glyphicon glyphicon-plus-sign"></i> Add</button>*@
+    </div><br />
+    <table class="table table-hover table-sm table-bordered "id="tableid">
+        <thead>
+            <tr class="active">
+                <th>Position Id</th>
+                <th>Position Name</th>
+            
+                <th style="width: 100px">Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="Position in model.Positions" ng-click="model.Details(Position)"  style="cursor:pointer">
+                <td><span ng-bind="Position.PositionId"></span></td>
+                <td><span ng-bind="Position.PositionName"></span></td>
+                 <td>
+
+                     @*<a ng-href="/Position/Edit/{{Position.PositionId}}" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>*@
+
+                    @*<a ng-href="{{'/Company/Update/' + Company.CompanyId}}" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>*@
+                    @*<button type="button" class="btn btn-primary" data-toggle="modal" ng-click="model.UpdateModal(Company)" data-target="#CompanyModal">
+                            Edit
+                        </button>*@
+                    @*<button type="button" class="btn btn-info " data-toggle="modal" ng-click="model.UpdateModal(Position)" data-target="#PositionModal"><i class="glyphicon glyphicon-edit"></i> Edit</button>*@
+                    <a href="/Position/Index" ng-click="model.Delete(Position)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash"></i> Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Modal -->
+    @*<div class="modal fade" id="PositionModal" role="dialog">
+        <div class="modal-dialog">*@
+
+            <!-- Modal content-->
+            @*<div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="PositionName">Position Name:</label>
+                        <input type="text" class="form-control" id="PositionName" ng-model="model.Position.PositionName" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="model.Update()" ng-show="model.Position.PositionId > 0">Save changes</button>
+                    <button type="button" class="btn btn-primary" ng-click="model.Create()" ng-show="model.Position.PositionId == 0">Add</button>
+                </div>
+            </div>
+
+        </div>
+    </div>*@
+
+    </div>
+<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("tableid");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+    @*<button class="btn btn-primary btn-sm" style="float: right; width: 100px; margin-right: 10px;">ADD</button>
+    <br /><br />
+    <div ng-controller="PositionController as model" ng-init="model.List()">
+        <table class="table table-hover table-sm table-bordered ">
+            <thead>
+                <tr class="active">
+                    <th>Position Id</th>
+                    <th>Name</th>
+                    <th>Color</th>
+                    <th style="width: 100px">Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="Position in model.Positions">
+                    <td><span ng-bind="Position.PositionId"></span></td>
+                    <td><span ng-bind="Position.Name"></span></td>
+                    <td style="{{'background-color:#' + Company.Color}}"><span ng-bind="Position.Color"></span></td>
+                    <td>
+                        <button class="btn btn-group-justified btn-success" style="width: 100px">EDIT</button>
+                        <button class="btn btn-danger btn-group-justified" style="width: 100px">DELETE</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>*@

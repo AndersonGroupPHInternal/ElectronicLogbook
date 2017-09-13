@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<h3>Visitor's Details</h3>
+
+<div style="width: 100%">
+    <div style="width: 25%; float: left; display: inline-block;">
+
+        <form method="post" action="~/Visitor/Details">
+            <br />
+            <label for="Date">Date:</label>
+            <input type="text" class="form-control" name="Visitor.Date" value="@Model.Date" disabled />
+            <label for="Name">Name:</label>
+            <input type="text" class="form-control" name="Visitor.Name" value="@Model.Name" disabled />
+            <label for="CompanyName">Company Name:</label>
+            <input type="text" class="form-control" name="Visitor.CompanyName" value="@Model.CompanyName" disabled />
+            <label for="Purpose">Purpose:</label>
+            <input type="text" class="form-control" name="Visitor.Purpose" value="@Model.Purpose" disabled />
+            <label for="PersonToVisit">Person to Visit:</label>
+            <input type="text" class="form-control" name="Visitor.PersonToVisit" value="@Model.PersonToVisit" disabled />
+            <label for="IdNumber">ID Number:</label>
+            <input type="text" class="form-control" name="Visitor.IdNumber" value="@Model.IdNumber" disabled />
+            <label for="TimeIn">Time In:</label>
+            <input type="time" class="form-control" name="Visitor.TimeIn" value="@Model.TimeIn" disabled />
+            <label for="TimeOut">Time Out:</label>
+            <input type="time" class="form-control" name="Visitor.TimeOut" value="@Model.TimeOut" disabled />
+            <input type="hidden" name="Visitor.VisitorID" value="@Model.VisitorID" disabled />
+            <br />
+            <a href="/Visitor/Edit/@Model.VisitorID" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+            @*<a href="/Visitor/Index" ng-click="model.Delete()" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash"></i> Delete</a>*@
+            <a href="/Visitor/Index" class="btn btn-warning"><i class="glyphicon glyphicon-close "></i>Close</a>
+        </form>
+    </div>
+
+    <div style="width: 75%; display: inline-block;">
+        <br /><br /><br />
+        <center>
+            <div ng-app="myapp" ng-controller="mainController">
+                <webcam channel="channel" on-streaming="onSuccess()" on-error="onError(err)" on-stream="onStream(stream)"></webcam>
+                <canvas id="snapshot" width="325" height="325" style="border:3px solid #000000;"></canvas>
+            </div>
+        </center>
+    </div>
+
+</div>

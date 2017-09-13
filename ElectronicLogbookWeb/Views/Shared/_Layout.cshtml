@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/cosmo.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+
+    <style>
+        .navbar {
+            border-bottom-color: #2b358a;
+            border-width: 0 1px 4px 1px;
+        }
+
+        .logo {
+            right: 1px;
+        }
+
+        li a:hover, .navbar-brand:hover {
+            color: #2b358a !important;
+            font-weight: bold;
+        }
+
+        .navDiv {
+            height: 90px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr /></br></br>
+        <footer>
+            <p> &nbsp; &nbsp; &nbsp; &nbsp; Private and Confidential. Anderson Group BPO Inc. &copy; 2017</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>&nbsp; Assets</h1>
+<div ng-controller="PeripheralController as model" ng-init="model.List()">
+    <a href="/Peripheral/add" class="btn btn-success" role="button" ng-click="model.Create()" style="margin-right: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> ADD</a>
+    <div class="wrap">
+        <div class="search">
+            <input type="text" class="searchTerm" id="myInput" onkeyup="myFunction()" placeholder="Search here.." />
+            @*<button type="submit" class="searchButton"> <i class="glyphicon glyphicon-search"></i> </button>*@
+        </div>
+        </div>
+
+        <div class="row">
+            @*<button type="button" class="btn btn-success " data-toggle="modal" data-target="#PeripheralModal" ng-click="model.CreateModal(Peripheral)" style="float: right; margin-right: 35px"><i class="glyphicon glyphicon-plus-sign"></i> Add</button>*@
+        </div><br />
+        <table class="table table-hover table-sm table-bordered "  id="tableid">
+            <thead>
+                <tr class="active">
+                    <th>Asset Id</th>
+                    <th>Employee Id</th>
+
+                    <th>Asset Name</th>
+                    <th>Make</th>
+                    <th>Serial Number</th>
+                     @*<th>Assigned To</th>*@
+                    <th style="width: 100px">Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="Peripheral in model.Peripherals" ng-click="model.Details(Peripheral)" style="cursor:pointer">
+                    <td><span ng-bind="Peripheral.PeripheralId"></span></td>
+                    <td><span ng-bind="Peripheral.EmployeeId"></span></td>
+
+                    <td><span ng-bind="Peripheral.PeripheralName"></span></td>
+                    <td><span ng-bind="Peripheral.Description"></span></td>
+                    <td><span ng-bind="Peripheral.SerialNumber"></span></td>
+                    <td>
+                        @*<a ng-href="{{'/Company/Update/' + Company.CompanyId}}" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>*@
+                        @*<button type="button" class="btn btn-primary" data-toggle="modal" ng-click="model.UpdateModal(Company)" data-target="#CompanyModal">
+                                Edit
+                            </button>*@
+                        @*<button type="button" class="btn btn-info " data-toggle="modal" ng-click="model.UpdateModal(Peripheral)" data-target="#PeripheralModal"><i class="glyphicon glyphicon-edit"></i> Edit</button>*@
+
+                        <a href="/Peripheral/Index" ng-click="model.Delete(Peripheral)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash"></i> Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Modal -->
+        @*<div class="modal fade" id="PeripheralModal" role="dialog">
+            <div class="modal-dialog">*@
+
+        <!-- Modal content-->
+        @*<div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="EmployeeId">Employee Id:</label>
+                    <input list="EmployeeId" name="EmployeeId" ng-model="model.Peripheral.EmployeeId" type="text" class="form-control">
+                    <datalist id="EmployeeId">*@
+        @*<option ng-value="Employee.EmployeeId">*@
+        @*<option value="1">
+            <option value="11">
+            <option value="13">
+            <option value="15">
+            </datalist>*@
+
+
+
+        @*<input type="text" class="form-control" id="EmployeeId" ng-model="model.Peripheral.EmployeeId" />*@
+        @*<label for="PeripheralName">Peripheral Name:</label>
+            <input type="text" class="form-control" id="PeripheralName" ng-model="model.Peripheral.PeripheralName" />
+            <label for="Description">Description :</label>
+            <input type="text" class="form-control" id="Description" ng-model="model.Peripheral.Description" />
+            <label for="SerialNumber">Serial Number:</label>
+            <input type="text" class="form-control" id="SerialNumber" ng-model="model.Peripheral.SerialNumber" />*@
+        @*</div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" ng-click="model.Update()" ng-show="model.Peripheral.PeripheralId > 0">Save changes</button>
+                            <button type="button" class="btn btn-primary" ng-click="model.Create()" ng-show="model.Peripheral.PeripheralId == 0">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+
+
+    </div>
+<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("tableid");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @*<button class="btn btn-primary btn-sm" style="float: right; width: 100px; margin-right: 10px;">ADD</button>
+    <br /><br />
+    <div ng-controller="PeripheralController as model" ng-init="model.List()">
+        <table class="table table-hover table-sm table-bordered ">
+            <thead>
+                <tr class="active">
+                    <th>Peripheral Id</th>
+                    <th>Employee ID</th>
+                    <th>Color</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Serial Number</th>
+                    <th style="width: 100px">Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="Peripheral in model.Peripherals">
+                    <td><span ng-bind="Peripheral.PeripheralID"></span></td>
+                    <td><span ng-bind="Peripheral.EmployeeId"></span></td>
+                    <td style="{{'background-color:#' + Company.Color}}"><span ng-bind="Peripheral.Color"></span></td>
+                    <td><span ng-bind="Peripheral.Name"></span></td>
+                    <td><span ng-bind="Peripheral.Description"></span></td>
+                    <td><span ng-bind="Peripheral.SerialNumber"></span></td>
+                    <td>
+                        <button class="btn btn-group-justified btn-success" style="width: 100px">EDIT</button>
+                        <button class="btn btn-danger btn-group-justified" style="width: 100px">DELETE</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>*@

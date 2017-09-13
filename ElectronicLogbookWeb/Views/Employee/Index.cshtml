@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Employee</h1>
+<div ng-controller="EmployeeController as model" ng-init="model.List()">
+    @*<a href="/Employee/Create" type="button" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> Add</a><br /><br />*@
+    <a href="/Employee/add" class="btn btn-success" role="button" ng-click="model.Create()" style="margin-right: 10px; float: right"><i class="glyphicon glyphicon-plus-sign"></i> ADD</a>
+    <div class="wrap">
+        <div class="search">
+            <input type="text" class="searchTerm" id="myInput" onkeyup="myFunction()" placeholder="Search here.." />
+            @*<button type="submit" class="searchButton"> <i class="glyphicon glyphicon-search"></i> </button>*@
+        </div>
+    </div>
+    
+    <div class="row">
+        @*<button type="button" class="btn btn-success" data-toggle="modal" data-target="#EmployeeModal" ng-click="model.CreateModal(Employee)" style="float: right; margin-right: 35px"><i class="glyphicon glyphicon-plus-sign"></i> Add</button>*@
+    </div><br />
+    <table class="table table-hover table-sm table-bordered "  id="tableid">
+        <thead>
+            <tr class="active">
+                <th>Employee Id</th>
+                <th>Company Id</th>
+                <th>Company</th>
+                <th>Position Id</th>
+                <th>Position</th>
+              
+                <th>Employee Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Middle Name</th>
+                <th style="width: 100px">Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="Employee in model.Employees"  ng-click="model.Details(Employee)" style="cursor:pointer">
+                <td><span ng-bind="Employee.EmployeeId"></span></td>
+                <td><span ng-bind="Employee.CompanyId"></span></td>
+                <td><span ng-bind="Employee.Company.CompanyName"></span></td>
+                <td><span ng-bind="Employee.PositionId"></span></td>
+                <td><span ng-bind="Employee.Position.PositionName"></span></td>
+              
+                <td><span ng-bind="Employee.EmployeeNumber"></span></td>
+                <td><span ng-bind="Employee.FirstName"></span></td>
+                <td><span ng-bind="Employee.LastName"></span></td>
+                <td><span ng-bind="Employee.MiddleName"></span></td>
+                <td>
+                    @*<button type="button" class="btn btn-info " data-toggle="modal" ng-click="model.UpdateModal(Employee)" data-target="#EmployeeModal"><i class="glyphicon glyphicon-edit"></i> Edit</button>*@
+                    @*<a ng-href="{{'/Employee/Update/' + Employee.EmployeeId}}" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>*@
+                    
+
+                    @*<a ng-href="/Employee/Edit/{{Employee.EmployeeId}}" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>*@
+
+                    <a href="Employee/Index" ng-click="model.Delete(Employee)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash"></i> Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Modal -->
+    @*<div class="modal fade" id="EmployeeModal" role="dialog">
+        <div class="modal-dialog">*@
+
+            <!-- Modal content-->
+            @*<div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="CompanyId">Company Id:</label><br />    
+                        <input list="CompanyId" name="CompanyId" ng-model="model.Employee.CompanyId" type="text" class="form-control">
+                        <datalist id="CompanyId">
+                            <option value="1">
+                            <option value="2">
+                            </datalist>*@
+
+                        <!--ui-select ng-model="companyId.selected" ng-change="selectedCompanyId()" reset-search-input="false">
+                            <ui-select-match placeholder="Search or select a Company Id...">
+                                {{$select.selected.CompanyId}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="ci in (Employee.CompanyId| filter: $select.search)" position="down">
+                                <div class="text-center">
+                                    <span ng-bind="ci.CompanyId"></span>
+                                </div>
+                            </ui-select-choices>
+                        </!--ui-select-->
+
+
+                        @*<input type="text" class="form-control" id="CompanyName" ng-model="model.Employee.CompanyId" />*@
+                        @*<label for="PositionId">Position Id:</label>
+                        <input type="text" class="form-control" id="PositionId" ng-model="model.Employee.PositionId" />
+                        <label for="EmployeeNumber">Employee Number:</label>
+                        <input type="text" class="form-control" id="EmployeeNumber" ng-model="model.Employee.EmployeeNumber" />
+                        <label for="FirstName">Firstname:</label>
+                        <input type="text" class="form-control" id="FirstName" ng-model="model.Employee.FirstName" />
+                        <label for="LastName">Lastname:</label>
+                        <input type="text" class="form-control" id="LastName" ng-model="model.Employee.LastName" />
+                        <label for="MiddleName">Middle Name:</label>
+                        <input type="text" class="form-control" id="MiddleName" ng-model="model.Employee.MiddleName" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="model.Update()" ng-show="model.Employee.EmployeeId > 0">Save changes</button>
+                    <button type="button" class="btn btn-primary" ng-click="model.Create()" ng-show="model.Employee.EmployeeId == 0">Add</button>
+                </div>
+            </div>
+
+        </div>
+    </div>*@
+
+    @*<ui-select ng-model="company.selected" ng-change="selectedCompany()" reset-search-input="false">
+        <ui-select-match placeholder="Search or select a company...">
+            {{$select.selected.CompanyId}}
+        </ui-select-match>
+        <ui-select-choices repeat="ci in (CompanyId| filter: $select.search)" position="down">
+            <div class="text-center">
+                <span ng-bind="ci.CompanyId"></span>
+            </div>
+        </ui-select-choices>
+    </ui-select>*@
+
+    @*<ui-select ng-model="ctrl.address.selected"
+               theme="bootstrap"
+               ng-disabled="ctrl.disabled"
+               reset-search-input="false"
+               style="width: 600px;"
+               title="Choose an address">
+        <ui-select-match placeholder="Enter an address...">{{$select.selected.formatted_address}}</ui-select-match>
+        <ui-select-choices repeat="address in ctrl.addresses track by $index"
+                           refresh="ctrl.refreshAddresses($select.search)"
+                           refresh-delay="0">
+            <div ng-bind-html="address.formatted_address | highlight: $select.search"></div>
+        </ui-select-choices>
+    </ui-select>*@
+
+
+</div>
+
+<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("tableid");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>

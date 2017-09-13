@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "add";
+}
+
+<h2>Add Employee</h2>
+
+
+<div ng-controller="EmployeeController as model" ng-init="model.List()">
+    <div class="form-group">
+        <br />
+        <label for="CompanyId">Company Id:</label><br />
+        <input list="CompanyId" name="CompanyId" ng-model="model.Employee.CompanyId" type="text" class="form-control" placeholder="Company ID"  >
+       <datalist id="CompanyId">
+       <option value="1">
+           <option value="5">
+           <option value="15">
+           <option value="23">
+</datalist>
+        <label for="PositionId">Position Id:</label>
+        <input type="text" class="form-control" id="PositionId" ng-model="model.Employee.PositionId"  placeholder="Position ID" />
+        <label for="EmployeeNumber">Employee Number:</label>
+        <input type="text" class="form-control" id="EmployeeNumber" ng-model="model.Employee.EmployeeNumber"  placeholder="Employee Number"/>
+        <label for="FirstName">Firstname:</label>
+        <input type="text" class="form-control" id="FirstName" ng-model="model.Employee.FirstName" placeholder="First Name" />
+        <label for="LastName">Lastname:</label>
+        <input type="text" class="form-control" id="LastName" ng-model="model.Employee.LastName"  placeholder="Last Name"/>
+        <label for="MiddleName">Middle Name:</label>
+        <input type="text" class="form-control" id="MiddleName" ng-model="model.Employee.MiddleName" placeholder="Middle Name" />
+
+    </div>
+   
+    <a href="/Employee/Index" class="btn btn-info" role="button" ng-click="model.Create() " style="margin-left: 10px;float: left"><i class="glyphicon glyphicon-plus-sign"></i> ADD</a>
+    <a href="/Employee/Index" class="btn btn-danger" role="button" style=" float: left"><i class="glyphicon glyphicon-remove"></i> Close</a>
+
+</div>
+
+

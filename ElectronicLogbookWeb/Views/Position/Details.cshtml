@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div >
+    <form method="post" action="~/Position/Details">
+        <br />
+        <label for="PositionId">Position ID:</label>
+        <input type="text" class="form-control" name="Position.PositionId" value="@Model.PositionId " disabled />
+        <label for="PositionName">Position Name:</label>
+        <input type="text" class="form-control" name="Position.PositionName" value="@Model.PositionName " disabled />
+        <input type="hidden" name="Position.PositionId" value="@Model.PositionId" disabled />
+        <br />
+
+        <a href="/Position/Edit/@Model.PositionId" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+
+
+        <a href="/Position/Index" class="btn btn-danger"><i class="glyphicon glyphicon-close "></i>Close</a>
+</form>
+</div>

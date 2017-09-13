@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicLogbookContext", "ElectronicLogbookContext\ElectronicLogbookContext.csproj", "{4B444147-C2CF-4558-AC7E-4BA970647A73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicLogbookData", "ElectronicLogbookData\ElectronicLogbookData.csproj", "{B37467D4-36DA-4060-B77C-3427FB41A64A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicLogbookEntity", "ElectronicLogbookEntity\ElectronicLogbookEntity.csproj", "{F88F9DAD-FA80-4F31-9E47-47E22BD1BA53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicLogbookFunction", "ElectronicLogbookFunction\ElectronicLogbookFunction.csproj", "{24CB7B8E-4DA6-4848-9EC1-A440BB333251}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicLogbookModel", "ElectronicLogbookModel\ElectronicLogbookModel.csproj", "{01974EAD-08C1-4B12-BB7B-62A9C47399C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicLogbookWeb", "ElectronicLogbookWeb\ElectronicLogbookWeb.csproj", "{793F875A-6AED-4CDC-BEF0-EA9C69A143D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B444147-C2CF-4558-AC7E-4BA970647A73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B444147-C2CF-4558-AC7E-4BA970647A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B444147-C2CF-4558-AC7E-4BA970647A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B444147-C2CF-4558-AC7E-4BA970647A73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B37467D4-36DA-4060-B77C-3427FB41A64A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B37467D4-36DA-4060-B77C-3427FB41A64A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B37467D4-36DA-4060-B77C-3427FB41A64A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B37467D4-36DA-4060-B77C-3427FB41A64A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F88F9DAD-FA80-4F31-9E47-47E22BD1BA53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F88F9DAD-FA80-4F31-9E47-47E22BD1BA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F88F9DAD-FA80-4F31-9E47-47E22BD1BA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F88F9DAD-FA80-4F31-9E47-47E22BD1BA53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24CB7B8E-4DA6-4848-9EC1-A440BB333251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24CB7B8E-4DA6-4848-9EC1-A440BB333251}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24CB7B8E-4DA6-4848-9EC1-A440BB333251}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24CB7B8E-4DA6-4848-9EC1-A440BB333251}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01974EAD-08C1-4B12-BB7B-62A9C47399C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01974EAD-08C1-4B12-BB7B-62A9C47399C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01974EAD-08C1-4B12-BB7B-62A9C47399C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01974EAD-08C1-4B12-BB7B-62A9C47399C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{793F875A-6AED-4CDC-BEF0-EA9C69A143D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{793F875A-6AED-4CDC-BEF0-EA9C69A143D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{793F875A-6AED-4CDC-BEF0-EA9C69A143D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{793F875A-6AED-4CDC-BEF0-EA9C69A143D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

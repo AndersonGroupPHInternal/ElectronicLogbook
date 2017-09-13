@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h3>&nbsp;Interns' Information</h3>
+<div ng-controller="InternController as model" ng-init="model.List()">
+    <br />
+    <div class="navbar-collapse collapse" id="navbar-filter">
+        <p class="navbar-text">Filter:</p>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-sort-time-asc position-left"></i> Show All<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortDate })">Date</a></li>
+                    <li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortName })">Name</a></li>
+                    <li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortSchool })">School</a></li>
+                    <li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortDepartment })">Department</a></li>
+                    <li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortSupervisor })">Supervisor</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <script src="~/Scripts/search.js"></script>
+        <div class="row">
+            <div class="wrap">
+                <div class="search">
+                    <a href="/Intern/Add" class="btn btn-primary" role="button" @*ng-click="model.Create()"*@ style="margin-left: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
+                    <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here..." style="float: right;" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-hover table-sm table-bordered " id="tableid">
+        <thead>
+            <tr class="active">
+                @*<th>Visitor ID</th>*@
+                <th>Date</th>
+                <th>Name</th>
+                <th>School</th>
+                <th>Department</th>
+                <th>Supervisor</th>
+                <th>ID Number</th>
+                <th>Time In</th>
+                <th>Time Out</th>
+                <th style="width:100px"></th>
+
+                @*<th style="width: 100px">Update</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="alert" ng-repeat="Intern in model.Interns" ng-click="model.Details(Intern)" style="cursor:pointer" filter="">
+                <td><span ng-bind="Intern.Date"></span></td>
+                <td><span ng-bind="Intern.Name"></span></td>
+                <td><span ng-bind="Intern.School"></span></td>
+                <td><span ng-bind="Intern.Department"></span></td>
+                <td><span ng-bind="Intern.Supervisor"></span></td>
+                <td><span ng-bind="Intern.IdNumber"></span></td>
+                <td><span ng-bind="Intern.TimeIn"></span></td>
+                <td><span ng-bind="Intern.TimeOut"></span></td>
+                <td>
+                    <a href="/Intern/Index" ng-click="model.Delete(Intern)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash"></i> Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
