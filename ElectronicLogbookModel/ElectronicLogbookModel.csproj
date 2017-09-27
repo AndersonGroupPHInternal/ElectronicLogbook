@@ -7,8 +7,8 @@
     <ProjectGuid>{01974EAD-08C1-4B12-BB7B-62A9C47399C8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AndersonCRMModel</RootNamespace>
-    <AssemblyName>AndersonCRMModel</AssemblyName>
+    <RootNamespace>ElectronicLogbookModel</RootNamespace>
+    <AssemblyName>ElectronicLogbookModel</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -51,8 +51,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Intern.cs" />
+    <Compile Include="InternHistory.cs" />
     <Compile Include="Visitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VisitorHistory.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

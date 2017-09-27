@@ -1,10 +1,12 @@
-﻿using ElectronicLogbookModel;
+﻿using AccountsWebAuthentication.Helper;
+using ElectronicLogbookModel;
 using ElectronicLogbookFunction;
 using System;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Net;
 using System.Data.Entity;
+using Rotativa;
 
 namespace ElectronicLogbookWeb.Controllers
 {
@@ -18,6 +20,7 @@ namespace ElectronicLogbookWeb.Controllers
             _iFVisitor = new FVisitor();
 
         }
+        
 
         [Route("")]
         [HttpGet]
@@ -26,30 +29,29 @@ namespace ElectronicLogbookWeb.Controllers
             return View();
         }
 
+
         [HttpGet]
+        //[CustomAuthorize(AllowedRoles = new string[] { "Receptionist" })]
         public ActionResult Edit(int id)
         {
             var visitor = _iFVisitor.Read(id);
+            visitor.TimeOut = DateTime.Now.ToShortTimeString();
             return View(visitor);
         }
 
         [HttpGet]
+        //[CustomAuthorize(AllowedRoles = new string[] { "Receptionist" })]
         public ActionResult Add()
         {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult Create()
-        {
-
-            return View(new Visitor());
+            Visitor visitor = new Visitor();
+            visitor.Date = DateTime.Now.ToString("MMMM dd, yyyy");
+            visitor.TimeIn = DateTime.Now.ToShortTimeString();
+            return View(visitor);
         }
 
         [HttpPost]
         public JsonResult Create(Visitor visitor)
         {
-
             try
             {
                 visitor = _iFVisitor.Create(visitor);
@@ -81,6 +83,29 @@ namespace ElectronicLogbookWeb.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public ActionResult PrintVisitor(int id)
+        {
+            var visitor = _iFVisitor.Read(id);
+            return View(visitor);
+        }
+
+        public ActionResult Print(int id)
+        {
+            var visitor = _iFVisitor.Read(id);
+            return new ActionAsPdf("PrintVisitor", new { id = id })
+            {
+                FileName = visitor.Name + " | " + visitor.Date + ".pdf"
+            };
+        }
+
+        //[HttpGet]
+        //public ActionResult PrintPdf(int id)
+        //{
+        //    var visitor = _iFVisitor.Read(id);
+        //    return new ActionAsPdf("Details", new { id = id });
+        //}
 
         public static void RegisterRoutes(RouteCollection routes)
         {
@@ -127,6 +152,7 @@ namespace ElectronicLogbookWeb.Controllers
             }
         }
 
+        
         [HttpGet]
         public ActionResult Update(int id)
         {

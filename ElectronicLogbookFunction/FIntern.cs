@@ -20,6 +20,19 @@ namespace ElectronicLogbookFunction
         {
             EIntern eIntern = EIntern(intern);
             eIntern = _iDIntern.Create(eIntern);
+
+            //EInternHistory eInternHistory = new EInternHistory
+            //{
+            //    InternID = eIntern.InternID,
+            //    Date = eIntern.Date,
+            //    Name = eIntern.Name,
+            //    School = eIntern.School,
+            //    Department = eIntern.Department,
+            //    IdNumber = eIntern.IdNumber,
+            //    TimeIn = eIntern.TimeIn,
+            //    TimeOut = eIntern.TimeOut
+            //};
+            //_iDIntern.Create(eInternHistory);
             return (Intern(eIntern));
         }
         #endregion
@@ -41,7 +54,23 @@ namespace ElectronicLogbookFunction
         #region UPDATE
         public Intern Update(Intern intern)
         {
+            EIntern currentIntern = _iDIntern.Read<EIntern>(a => a.InternID == intern.InternID);
             var eIntern = _iDIntern.Update(EIntern(intern));
+            if (intern.InternID == currentIntern.InternID)
+            {
+                EInternHistory eInternHistory = new EInternHistory
+                {
+                    InternID = eIntern.InternID,
+                    Date = eIntern.Date,
+                    Name = eIntern.Name,
+                    School = eIntern.School,
+                    Department = eIntern.Department,
+                    IdNumber = eIntern.IdNumber,
+                    TimeIn = eIntern.TimeIn,
+                    TimeOut = eIntern.TimeOut
+                };
+                _iDIntern.Create(eInternHistory);
+            }
             return (Intern(eIntern));
         }
         #endregion
