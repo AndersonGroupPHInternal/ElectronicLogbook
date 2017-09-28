@@ -1,4 +1,5 @@
-﻿using ElectronicLogbookModel;
+﻿using AccountsWebAuthentication.Helper;
+using ElectronicLogbookModel;
 using ElectronicLogbookFunction;
 using System;
 using System.Web.Mvc;
@@ -27,24 +28,31 @@ namespace ElectronicLogbookWeb.Controllers
         }
 
         [HttpGet]
+        //[CustomAuthorize(AllowedRoles = new string[] { "Receptionist" })]
         public ActionResult Edit(int id)
         {
             var intern = _iFIntern.Read(id);
+            intern.TimeOut = DateTime.Now.ToShortTimeString();
             return View(intern);
         }
 
         [HttpGet]
+       // [CustomAuthorize(AllowedRoles = new string[] { "Receptionist" })]
         public ActionResult Add()
         {
-            return View();
+            Intern intern = new Intern();
+            intern.Date = DateTime.Now.ToString("MMMM dd, yyyy");
+            intern.TimeIn = DateTime.Now.ToShortTimeString();
+            intern.TimeOut = DateTime.Now.ToShortTimeString();
+            return View(intern);
         }
 
-        [HttpGet]
-        public ActionResult Create()
-        {
+        //[HttpGet]
+        //public ActionResult Create()
+        //{
 
-            return View(new Intern());
-        }
+        //    return View(new Intern());
+        //}
 
         [HttpPost]
         public JsonResult Create(Intern intern)

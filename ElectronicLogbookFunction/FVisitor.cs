@@ -3,6 +3,7 @@ using ElectronicLogbookData;
 using ElectronicLogbookEntity;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace ElectronicLogbookFunction
 {
@@ -20,6 +21,17 @@ namespace ElectronicLogbookFunction
         {
             EVisitor eVisitor = EVisitor(visitor);
             eVisitor = _iDVisitor.Create(eVisitor);
+
+            //EVisitorHistory eVisitorHistory = new EVisitorHistory
+            //{
+            //    VisitorID = eVisitor.VisitorID,
+            //    Date = eVisitor.Date,
+            //    Name = eVisitor.Name,
+            //    Purpose = eVisitor.Purpose,
+            //    TimeIn = eVisitor.TimeIn,
+            //    TimeOut = eVisitor.TimeOut
+            //};
+            //_iDVisitor.Create(eVisitorHistory);
             return (Visitor(eVisitor));
         }
         #endregion
@@ -41,7 +53,21 @@ namespace ElectronicLogbookFunction
         #region UPDATE
         public Visitor Update(Visitor visitor)
         {
+            EVisitor currentVisitor = _iDVisitor.Read<EVisitor>(a => a.VisitorID == visitor.VisitorID);
             var eVisitor = _iDVisitor.Update(EVisitor(visitor));
+            if (visitor.VisitorID == currentVisitor.VisitorID)
+            {
+                EVisitorHistory eVisitorHistory = new EVisitorHistory
+                {
+                    VisitorID = eVisitor.VisitorID,
+                    Date = eVisitor.Date,
+                    Name = eVisitor.Name,
+                    Purpose = eVisitor.Purpose,
+                    TimeIn = eVisitor.TimeIn,
+                    TimeOut = eVisitor.TimeOut
+                };
+                _iDVisitor.Create(eVisitorHistory);
+            }
             return (Visitor(eVisitor));
         }
         #endregion
@@ -64,9 +90,12 @@ namespace ElectronicLogbookFunction
                 CompanyName = a.CompanyName,
                 Purpose = a.Purpose,
                 PersonToVisit = a.PersonToVisit,
+                Designation = a.Designation,
+                KindOfId = a.KindOfId,
                 IdNumber = a.IdNumber,
                 TimeIn = a.TimeIn,
                 TimeOut = a.TimeOut,
+                Comment = a.Comment,
                 CreatedBy = a.CreatedBy,
                 UpdatedBy = a.UpdatedBy
             });
@@ -84,9 +113,12 @@ namespace ElectronicLogbookFunction
                 CompanyName = visitor.CompanyName,
                 Purpose = visitor.Purpose,
                 PersonToVisit = visitor.PersonToVisit,
+                Designation = visitor.Designation,
+                KindOfId = visitor.KindOfId,
                 IdNumber = visitor.IdNumber,
                 TimeIn = visitor.TimeIn,
                 TimeOut = visitor.TimeOut,
+                Comment = visitor.Comment,
                 CreatedBy = visitor.CreatedBy,
                 UpdatedBy = visitor.UpdatedBy
             };
@@ -103,9 +135,12 @@ namespace ElectronicLogbookFunction
                 CompanyName = eVisitor.CompanyName,
                 Purpose = eVisitor.Purpose,
                 PersonToVisit = eVisitor.PersonToVisit,
+                Designation = eVisitor.Designation,
+                KindOfId = eVisitor.KindOfId,
                 IdNumber = eVisitor.IdNumber,
                 TimeIn = eVisitor.TimeIn,
                 TimeOut = eVisitor.TimeOut,
+                Comment = eVisitor.Comment,
                 CreatedBy = eVisitor.CreatedBy,
                 UpdatedBy = eVisitor.UpdatedBy
             };

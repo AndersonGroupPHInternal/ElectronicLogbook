@@ -7,8 +7,8 @@
     <ProjectGuid>{4B444147-C2CF-4558-AC7E-4BA970647A73}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AndersonCRMContext</RootNamespace>
-    <AssemblyName>AndersonCRMContext</AssemblyName>
+    <RootNamespace>ElectronicLogbookContext</RootNamespace>
+    <AssemblyName>ElectronicLogbookContext</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -62,13 +62,9 @@
   <ItemGroup>
     <Compile Include="Context.cs" />
     <Compile Include="DbInitializer.cs" />
-    <Compile Include="Migrations\201707210957094_initial.cs" />
-    <Compile Include="Migrations\201707210957094_initial.Designer.cs">
-      <DependentUpon>201707210957094_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707250233095_initials.cs" />
-    <Compile Include="Migrations\201707250233095_initials.Designer.cs">
-      <DependentUpon>201707250233095_initials.cs</DependentUpon>
+    <Compile Include="Migrations\201709220450305_initial.cs" />
+    <Compile Include="Migrations\201709220450305_initial.Designer.cs">
+      <DependentUpon>201709220450305_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,11 +82,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707210957094_initial.resx">
-      <DependentUpon>201707210957094_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707250233095_initials.resx">
-      <DependentUpon>201707250233095_initials.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709220450305_initial.resx">
+      <DependentUpon>201709220450305_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -17,16 +17,21 @@
 
         li {
             margin-left: 50px;
+            margin-right: 50px;
         }
 
             li a:hover, .navbar-brand:hover {
                 color: #2b358a !important;
                 font-weight: bold;
             }
+            #logo {
+                margin-right: 10px;
+            }
 
         .navDiv {
-            height: 90px;
+            height: 95px;
         }
+
     </style>
 </head>
 <body>
@@ -34,7 +39,7 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
+                    <i class="icon-bar"></i>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
@@ -42,9 +47,10 @@
 
             <div class="navbar-collapse collapse navbar-fixed-top">
                 <ul class="nav navbar-nav" style="display: inline">
-                    <li><a class="navbar-brand" href="~/Home"><img src="~/Content/Images/logo.png" height="50" /></a></li>
+                    <li id="logo"><a class="navbar-brand" href="~/Home"><img src="~/Content/Images/logo.png" height="60" /></a></li>
                     <li><a href="~/Visitor/Index"><br />Visitor</a></li>
                     <li><a href="~/Intern/Index"><br />Intern</a></li>
+                    <li onclick="return alert('Applicant logbook not yet done')"><a href="~/Home/Index"><br />Applicant</a></li>
                     <li><a href="~/About/Index"><br />About</a></li>
 
                 </ul>
