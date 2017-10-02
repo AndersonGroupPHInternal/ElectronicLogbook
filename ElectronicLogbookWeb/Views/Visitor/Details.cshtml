@@ -3,10 +3,10 @@
     ViewBag.Title = "Details";
 }
 
-<h3>Visitor's Details</h3>
+<h3>Visitor Details</h3>
 
 <div style="width: 100%">
-    <div style="width: 25%; float: left; display: inline-block;">
+    <div style="width: 100%; float: left; display: inline-block;">
 
         <form method="post" action="~/Visitor/Details">
             <br />
@@ -34,10 +34,14 @@
             <textarea rows="4" cols="50" class="form-control" name="Visitor.Comment" disabled>@Model.Comment</textarea>
             <input type="hidden" name="Visitor.VisitorID" value="@Model.VisitorID" disabled />
             <br />
-            <a href="/Visitor/Edit/@Model.VisitorID" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-            <a href="/Visitor/Index" class="btn btn-warning"><i class="glyphicon glyphicon-close "></i>Close</a>
-            <a href="@Url.Action("Print", new { id = Model.VisitorID})" class="btn btn-info"><i class="glyphicon glyphicon-download"></i> Download PDF</a>
-            @*<a href="/Visitor/PrintVisitor/@Model.VisitorID">pdf</a>*@
+            
+            @*<a href="@Url.Action("PrintId", new { id = Model.VisitorID})" class="btn btn-info"><i class="glyphicon glyphicon-download"></i> Print ID</a>*@
         </form>
+    </div>
+    <div style="display: inline-block; float: left;">
+        <a href="/Visitor/Edit/@Model.VisitorID" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+        <a href="@Url.Action("Preview", new { id = Model.VisitorID})" class="btn btn-info"><i class="glyphicon glyphicon-download"></i> Preview PDF</a>
+        <a href="@Url.Action("PrintId", new { id = Model.VisitorID})" class="btn btn-info"><i class="glyphicon glyphicon-download"></i> Print ID</a>
+        <a href="/Visitor/Index" class="btn btn-warning"><i class="glyphicon glyphicon-remove"></i>Close</a>
     </div>
 </div>

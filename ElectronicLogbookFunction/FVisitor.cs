@@ -4,6 +4,7 @@ using ElectronicLogbookEntity;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using System.IO;
 
 namespace ElectronicLogbookFunction
 {
@@ -146,6 +147,27 @@ namespace ElectronicLogbookFunction
             };
             return returnVisitor;
         }
+        public void CreateFolder()
+        {
+            var date = DateTime.Now.ToString("MMMM dd, yyyy");
+            if (!Directory.Exists(@"C:\AndersonLogbookFiles\Visitor\" + DateTime.Now.ToString("MMMM dd, yyyy")))
+            {
+                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Visitor\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\VisitorIDCard");
+                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Visitor\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\VisitorPictures");
+                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Visitor\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\VisitorDetails");
+            }
+            else if (date != DateTime.Now.ToString("MMMM dd, yyyy"))
+            {
+                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Visitor\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\VisitorIDCard");
+                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Visitor\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\VisitorPictures");
+                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Visitor\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\VisitorDetails");
+            }
+            else
+            {
+            }
+        }
+        
         #endregion
+
     }
 }

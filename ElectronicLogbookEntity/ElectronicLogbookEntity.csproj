@@ -44,8 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EApplicant.cs" />
     <Compile Include="EIntern.cs" />
-    <Compile Include="EinternHistory.cs" />
+    <Compile Include="EInternHistory.cs" />
     <Compile Include="EVisitor.cs" />
     <Compile Include="EVisitorHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

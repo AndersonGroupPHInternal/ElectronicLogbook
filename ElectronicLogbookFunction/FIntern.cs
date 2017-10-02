@@ -3,6 +3,8 @@ using ElectronicLogbookData;
 using ElectronicLogbookEntity;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
+using System;
 
 namespace ElectronicLogbookFunction
 {
@@ -139,6 +141,24 @@ namespace ElectronicLogbookFunction
                 UpdatedBy = eIntern.UpdatedBy
             };
             return returnIntern;
+        }
+
+        public void CreateFolder()
+        {
+            var date = DateTime.Now.ToString("MMMM dd, yyyy");
+            if (!Directory.Exists(@"C:\AndersonLogbookFiles\Intern\" + DateTime.Now.ToString("MMMM dd, yyyy")))
+            {
+                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Intern\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\InternPictures");
+                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Intern\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\InternDetails");
+            }
+            else if (date != DateTime.Now.ToString("MMMM dd, yyyy"))
+            {
+                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Intern\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\InternPictures");
+                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Intern\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\InternDetails");
+            }
+            else
+            {
+            }
         }
         #endregion
     }

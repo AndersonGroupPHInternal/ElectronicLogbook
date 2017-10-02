@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Net;
 using System.Data.Entity;
+using Rotativa;
 
 namespace ElectronicLogbookWeb.Controllers
 {
@@ -17,13 +18,14 @@ namespace ElectronicLogbookWeb.Controllers
         public InternController()
         {
             _iFIntern = new FIntern();
-
+            _iFIntern.CreateFolder();
         }
 
         [Route("")]
         [HttpGet]
         public ActionResult Index()
         {
+            _iFIntern.CreateFolder();
             return View();
         }
 
@@ -89,6 +91,27 @@ namespace ElectronicLogbookWeb.Controllers
                 return View();
             }
         }
+
+        #region Preview PDF
+        [HttpGet]
+        public ActionResult PreviewIntern(int id)
+        {
+            var intern = _iFIntern.Read(id);
+            return View(intern);
+        }
+
+        public ActionResult Preview(int id)
+        {
+            var intern = _iFIntern.Read(id);
+            return new ActionAsPdf("PreviewIntern", new { id = id })
+            {
+                PageHeight = 279.4,
+                PageWidth = 215.9
+                /*FOR PDF DOWNLOAD WITH DESIRED FILENAME*/
+                //FileName = intern.Name + " | " + intern.Date + ".pdf"
+            };
+        }
+        #endregion
 
         public static void RegisterRoutes(RouteCollection routes)
         {

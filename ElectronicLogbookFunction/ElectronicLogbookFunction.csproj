@@ -50,9 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FApplicant.cs" />
     <Compile Include="FIntern.cs" />
     <Compile Include="FInternHistory.cs" />
     <Compile Include="FVisitorHistory.cs" />
+    <Compile Include="IFApplicant.cs" />
     <Compile Include="IFIntern.cs" />
     <Compile Include="IFInternHistory.cs" />
     <Compile Include="IFVisitor.cs" />

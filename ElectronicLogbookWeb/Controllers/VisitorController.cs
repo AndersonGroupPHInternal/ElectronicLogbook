@@ -7,6 +7,7 @@ using System.Web.Routing;
 using System.Net;
 using System.Data.Entity;
 using Rotativa;
+using System.Web;
 
 namespace ElectronicLogbookWeb.Controllers
 {
@@ -18,20 +19,21 @@ namespace ElectronicLogbookWeb.Controllers
         public VisitorController()
         {
             _iFVisitor = new FVisitor();
+            _iFVisitor.CreateFolder();
 
         }
-        
 
         [Route("")]
         [HttpGet]
         public ActionResult Index()
         {
+            _iFVisitor.CreateFolder();
             return View();
         }
 
 
         [HttpGet]
-        //[CustomAuthorize(AllowedRoles = new string[] { "Receptionist" })]
+        //[CustomAuthorize(AllowedRoles = new string[] { "Receptionist" })] /*FOR AUTHENTICATION*/
         public ActionResult Edit(int id)
         {
             var visitor = _iFVisitor.Read(id);
@@ -85,27 +87,44 @@ namespace ElectronicLogbookWeb.Controllers
         }
 
         [HttpGet]
-        public ActionResult PrintVisitor(int id)
+        public ActionResult PreviewId(int id)
         {
             var visitor = _iFVisitor.Read(id);
             return View(visitor);
         }
 
-        public ActionResult Print(int id)
+        public ActionResult PrintId(int id)
         {
             var visitor = _iFVisitor.Read(id);
-            return new ActionAsPdf("PrintVisitor", new { id = id })
+            return new ActionAsPdf("PreviewId", new { id = id })
             {
-                FileName = visitor.Name + " | " + visitor.Date + ".pdf"
+                PageMargins = new Rotativa.Options.Margins(0, 0, 0, 0),
+                PageHeight = 50.8,
+                PageWidth = 76.2
             };
         }
 
-        //[HttpGet]
-        //public ActionResult PrintPdf(int id)
-        //{
-        //    var visitor = _iFVisitor.Read(id);
-        //    return new ActionAsPdf("Details", new { id = id });
-        //}
+        #region Preview PDF
+        [HttpGet]
+        public ActionResult PreviewVisitor(int id)
+        {
+            var visitor = _iFVisitor.Read(id);
+            return View(visitor);
+        }
+
+        public ActionResult Preview(int id)
+        {
+            var visitor = _iFVisitor.Read(id);
+            return new ActionAsPdf("PreviewVisitor", new { id = id })
+            {
+                PageWidth = 215.9,
+                PageHeight = 279.4
+                /*FOR PDF DOWNLOAD WITH DESIRED FILENAME*/
+                //FileName = visitor.Name + " | " + visitor.Date + ".pdf"
+            };
+        }
+        #endregion
+
 
         public static void RegisterRoutes(RouteCollection routes)
         {
