@@ -3,10 +3,10 @@
     ViewBag.Title = "Details";
 }
 
-<h3>Intern's Details</h3>
+<h3>Intern Details</h3>
 
 <div style="width: 100%">
-    <div style="width: 25%; float: left; display: inline-block;">
+    <div style="width: 100%; float: left; display: inline-block;">
 
         <form method="post" action="~/Intern/Details">
             <br />
@@ -28,19 +28,11 @@
             <input type="text" class="form-control" name="Intern.TimeOut" value="@Model.TimeOut" disabled />
             <input type="hidden" name="Intern.InternID" value="@Model.InternID" />
             <br />
-            <a href="/Intern/Edit/@Model.InternID" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-            @*<a href="/Intern/Index" ng-click="model.Delete()" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash"></i> Delete</a>*@
-            <a href="/Intern/Index" class="btn btn-warning"><i class="glyphicon glyphicon-close "></i>Close</a>
         </form>
     </div>
-
-    @*<div style="width: 75%; display: inline-block;">
-        <br /><br /><br />
-        <center>
-            <div ng-app="myapp" ng-controller="mainController">
-                <webcam channel="channel" on-streaming="onSuccess()" on-error="onError(err)" on-stream="onStream(stream)"></webcam>
-                <canvas id="snapshot" width="325" height="325" style="border:3px solid #000000;"></canvas>
-            </div>
-        </center>
-    </div>*@
+    <div style="display: inline-block; float: left;">
+        <a href="/Intern/Edit/@Model.InternID" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+        <a href="@Url.Action("Preview", new { id = Model.InternID})" class="btn btn-info"><i class="glyphicon glyphicon-download"></i> Preview PDF</a>
+        <a href="/Intern/Index" class="btn btn-warning"><i class="glyphicon glyphicon-close "></i>Close</a>
+    </div>
 </div>

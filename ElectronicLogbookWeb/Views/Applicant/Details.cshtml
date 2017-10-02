@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<h3>Applicant Details</h3>
+
+<div style="width: 100%">
+    <div style="width: 100%; float: left; display: inline-block;">
+
+        <form method="post" action="~/Applicant/Details">
+            <br />
+            <label for="Date">Date:</label>
+            <input type="text" class="form-control" name="Applicant.Date" value="@Model.Date" disabled />
+            <label for="Name">Name:</label>
+            <input type="text" class="form-control" name="Applicant.Name" value="@Model.Name" disabled />
+            <label for="ApplyingFor">Applying For:</label>
+            <input type="text" class="form-control" name="Applicant.ApplyingFor" value="@Model.ApplyingFor" disabled />
+            @*<label for="PersonToVisit">Person to Visit:</label>
+            <input type="text" class="form-control" name="Applicant.PersonToVisit" value="@Model.PersonToVisit" disabled />*@
+            <label for="Designation">Designation:</label>
+            <input type="text" class="form-control" name="Applicant.Designation" value="@Model.Designation" disabled />
+            <label for="TypeOfId">Type of ID:</label>
+            <input type="text" class="form-control" name="Applicant.TypeOfId" value="@Model.TypeOfId" disabled />
+            <label for="IdNumber">ID Number:</label>
+            <input type="text" class="form-control" name="Applicant.IdNumber" value="@Model.IdNumber" disabled />
+            <label for="TimeIn">Time In:</label>
+            <input type="text" class="form-control" name="Applicant.TimeIn" value="@Model.TimeIn" disabled />
+            <label for="TimeOut">Time Out:</label>
+            <input type="text" class="form-control" name="Applicant.TimeOut" value="@Model.TimeOut" disabled />
+            <label for="Comment">Comment:</label>
+            <textarea rows="4" cols="50" class="form-control" name="Applicant.Comment" disabled>@Model.Comment</textarea>
+            <input type="hidden" name="Applicant.ApplicantID" value="@Model.ApplicantID" disabled />
+            <br />
+        </form>
+    </div>
+    <div style="display: inline-block; float: left;">
+        <a href="/Applicant/Edit/@Model.ApplicantID" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+        <a href="@Url.Action("Preview", new { id = Model.ApplicantID})" class="btn btn-info"><i class="glyphicon glyphicon-download"></i> Preview PDF</a>
+        <a href="@Url.Action("PrintId", new { id = Model.ApplicantID})" class="btn btn-info"><i class="glyphicon glyphicon-download"></i> Print ID</a>
+        <a href="/Applicant/Index" class="btn btn-warning"><i class="glyphicon glyphicon-remove"></i>Close</a>
+    </div>
+</div>
