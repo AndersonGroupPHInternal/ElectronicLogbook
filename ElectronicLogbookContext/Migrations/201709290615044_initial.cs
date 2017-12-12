@@ -112,7 +112,27 @@ namespace ElectronicLogbookContext.Migrations
                         UpdatedBy = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.VisitorID);
-            
+
+            CreateTable(
+                "dbo.EmployeeLog",
+                c => new
+                {
+                    EmployeeLogId = c.Int(nullable: false, identity: true),
+                    EmployeeId = c.Int(nullable: false),
+                    EmployeNumber = c.Int(nullable: false),
+                    LogTypeId = c.Int(nullable: false),
+                    LogDate = c.String(maxLength: 50)
+                })
+                .PrimaryKey(t => t.EmployeeId);
+
+            CreateTable(
+                "dbo.LogType",
+                c => new
+                {
+                    LogTypeId = c.Int(nullable: false, identity: true)
+                })
+                .PrimaryKey(t => t.LogTypeId);
+
         }
         
         public override void Down()
@@ -126,6 +146,8 @@ namespace ElectronicLogbookContext.Migrations
             DropTable("dbo.Intern");
             DropTable("dbo.InternHistory");
             DropTable("dbo.Applicant");
+            DropTable("dbo.EmployeeLog");
+            DropTable("dbo.LogType");
         }
     }
 }

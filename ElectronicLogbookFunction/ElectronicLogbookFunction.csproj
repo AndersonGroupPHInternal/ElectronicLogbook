@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ElectronicLogbookFunction</RootNamespace>
     <AssemblyName>ElectronicLogbookFunction</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -51,10 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FApplicant.cs" />
+    <Compile Include="FEmployeeLog.cs" />
     <Compile Include="FIntern.cs" />
     <Compile Include="FInternHistory.cs" />
     <Compile Include="FVisitorHistory.cs" />
     <Compile Include="IFApplicant.cs" />
+    <Compile Include="IFEmployeeLog.cs" />
     <Compile Include="IFIntern.cs" />
     <Compile Include="IFInternHistory.cs" />
     <Compile Include="IFVisitor.cs" />
