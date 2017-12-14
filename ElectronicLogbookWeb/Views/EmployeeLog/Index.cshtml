@@ -3,24 +3,54 @@
     ViewBag.Title = "Index";
 }
 
-<style>
-    #myInput {
-        float: right;
-        border-bottom-left-radius: 5px;
-        border-top-left-radius: 5px;
-        border-right: none;
-        box-shadow: none;
-        border-color: #cccccc;
-    }
 
-    #searchLogo {
-        border-left: none;
-        pointer-events: none;
-    }
-
-    #historyButton {
-        float: left;
-    }
-</style>
-
-<center><h3>&nbsp;Employee Log</h3></center>
+<center><h3>&nbsp;Employee Log Sheet</h3></center>
+<div ng-controller="EmployeeLogController as model" ng-init="model.List()">
+    <div class="row">
+        <div class="col-sm-4">
+            <a href="/EmployeeLog/Create" class="btn btn-default">Log</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-hover table-sm table-bordered ">
+                <thead>
+                    <tr class="thead-inverse">
+                        <th>EmployeeLogID</th>
+                        <th>LogDate</th>
+                        <th>EmployeeId</th>
+                        <th>LogTypeId</th>
+                        <th>EmployeeNumber</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickableRow" ng-repeat="EmployeeLog in model.EmployeeLogs | orderBy: '-EmployeeLog' " ng-click="$event.originalEvent.dropdown" ng-init="model.Read(EmployeeLog)">
+                        <td><span ng-bind="EmployeeLog.EmployeeLogId"></span></td>
+                        <td><span ng-bind="EmployeeLog.LogDate"></span></td>
+                        <td><span ng-bind="EmployeeLog.EmployeeId"></span></td>
+                        <td><span ng-bind="EmployeeLog.LogTypeId"></span></td>
+                        <td><span ng-bind="EmployeeLog.EmployeeNumber"></span></td>
+                        <td>
+                            <ul>
+                                <li ng-repeat="userRole in user.UserRoles">
+                                    <span ng-bind="userRole.Role.Name"></span>
+                                </li>
+                            </ul>
+                        </td>
+                        <td ng-click="$event.originalEvent.dropdown = true">
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" ng-click="model.GoToUpdatePage(employeelog.EmployeeLogId)">Edit</a></li>
+                                    <li><a href="#" ng-click="model.Delete(employeelog.EmployeeLogId)">Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

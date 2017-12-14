@@ -62,10 +62,6 @@
   <ItemGroup>
     <Compile Include="Context.cs" />
     <Compile Include="DbInitializer.cs" />
-    <Compile Include="Migrations\201709290615044_initial.cs" />
-    <Compile Include="Migrations\201709290615044_initial.Designer.cs">
-      <DependentUpon>201709290615044_initial.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -80,11 +76,6 @@
       <Project>{f88f9dad-fa80-4f31-9e47-47e22bd1ba53}</Project>
       <Name>ElectronicLogbookEntity</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709290615044_initial.resx">
-      <DependentUpon>201709290615044_initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

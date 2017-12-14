@@ -6,24 +6,20 @@ namespace ElectronicLogbookFunction
     public interface IFEmployeeLog
     {
         #region CREATE
-        EmployeeLog Create(EmployeeLog employeelog);
+        EmployeeLog Create(int userId, EmployeeLog employeelog);
         #endregion
 
         #region RETRIEVE
         EmployeeLog Read(int EmployeeLogId);
-        List<EmployeeLog> List();
+        List<EmployeeLog> Read();
         #endregion
 
         #region UPDATE
-        EmployeeLog Update(EmployeeLog employeelog);
+        EmployeeLog Update(int userId, EmployeeLog employeelog);
         #endregion
 
         #region DELETE
-        void Delete(EmployeeLog employeelog);
-        #endregion
-
-        #region CREATEFOLDER
-        void CreateFolder();
+        void Delete(int employeeLogId);
         #endregion
     }
 }

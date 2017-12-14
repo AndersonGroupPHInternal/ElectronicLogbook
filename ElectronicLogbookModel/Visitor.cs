@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System;
+using BaseModel;
 
 namespace ElectronicLogbookModel
 {
-    public class Visitor : Base.Base
+    public class Visitor : Base
     {
         public int VisitorID { get; set; }
 

@@ -18,21 +18,14 @@ namespace ElectronicLogbookFunction
         }
 
         #region CREATE
-        public EmployeeLog Create(EmployeeLog employeelog)
+        public EmployeeLog Create(int userId, EmployeeLog employeelog)
         {
             EEmployeeLog eEmployeeLog = EEmployeeLog(employeelog);
-            eEmployeeLog = _iDEmployeeLog.Create(eEmployeeLog);
+            eEmployeeLog.CreatedDate = DateTime.Now;
+            eEmployeeLog.LogDate = DateTime.Now;
+            eEmployeeLog.CreatedBy = userId;
 
-            //EApplicantHistory eApplicantHistory = new EApplicantHistory
-            //{
-            //    ApplicantID = eApplicant.ApplicantID,
-            //    Date = eApplicant.Date,
-            //    Name = eApplicant.Name,
-            //    Purpose = eApplicant.Purpose,
-            //    TimeIn = eApplicant.TimeIn,
-            //    TimeOut = eApplicant.TimeOut
-            //};
-            //_iDApplicant.Create(eApplicantHistory);
+            eEmployeeLog = _iDEmployeeLog.Create(eEmployeeLog);
             return (EmployeeLog(eEmployeeLog));
         }
         #endregion
@@ -44,7 +37,7 @@ namespace ElectronicLogbookFunction
             return EmployeeLog(eEmployeeLog);
         }
 
-        public List<EmployeeLog> List()
+        public List<EmployeeLog> Read()
         {
             List<EEmployeeLog> eEmployeeLogs = _iDEmployeeLog.List<EEmployeeLog>(a => true);
             return EmployeeLogs(eEmployeeLogs);
@@ -52,35 +45,21 @@ namespace ElectronicLogbookFunction
         #endregion
 
         #region UPDATE
-        public EmployeeLog Update(EmployeeLog employeeLog)
+        public EmployeeLog Update(int userId, EmployeeLog employeeLog)
         {
-            EEmployeeLog currentEmployeeLog = _iDEmployeeLog.Read<EEmployeeLog>(a => a.EmployeeLogId == employeeLog.EmployeeLogId);
-            var eEmployee = _iDEmployeeLog.Update(EEmployeeLog(employeeLog));
-            //if (applicant.ApplicantID == currentApplicant.ApplicantID)
-            //{
-            //    EApplicantHistory eApplicantHistory = new EApplicantHistory
-            //    {
-            //        ApplicantID = eApplicant.ApplicantID,
-            //        Date = eApplicant.Date,
-            //        Name = eApplicant.Name,
-            //        ApplyingFor = eApplicant.ApplyingFor,
-            //        Designation = eApplicant.Designation,
-            //        TypeOfId = eApplicant.TypeOfId,
-            //        IdNumber = eApplicant.IdNumber,
-            //        TimeIn = eApplicant.TimeIn,
-            //        TimeOut = eApplicant.TimeOut,
-            //        Comment = eApplicant.Comment
-            //    };
-            //    _iDApplicant.Create(eApplicantHistory);
-            //}
-            return (EmployeeLog(eEmployee));
+            var eEmployeeLog = EEmployeeLog(employeeLog);
+            eEmployeeLog.UpdatedDate = DateTime.Now;
+            eEmployeeLog.UpdatedBy = userId;
+            eEmployeeLog = _iDEmployeeLog.Update(EEmployeeLog(employeeLog));
+
+            return (EmployeeLog(eEmployeeLog));
         }
         #endregion
 
         #region DELETE
-        public void Delete(EmployeeLog employeeLog)
+        public void Delete(int employeeLogId)
         {
-            _iDEmployeeLog.Delete(EEmployeeLog(employeeLog));
+            _iDEmployeeLog.Delete<EEmployeeLog>(a => a.EmployeeLogId == employeeLogId);
         }
         #endregion
 
@@ -89,13 +68,17 @@ namespace ElectronicLogbookFunction
         {
             var returnEmployeeLog = eEmployeeLogs.Select(a => new EmployeeLog
             {
-                EmployeeLogId = a.EmployeeLogId,
-                EmployeeId = a.EmployeeId,
-                EmployeeNumber = a.EmployeeNumber,
-                LogTypeId = a.LogTypeId,
+                CreatedDate = a.CreatedDate,
                 LogDate = a.LogDate,
+                UpdatedDate = a.UpdatedDate,
+
                 CreatedBy = a.CreatedBy,
-                UpdatedBy = a.UpdatedBy
+                EmployeeId = a.EmployeeId,
+                EmployeeLogId = a.EmployeeLogId,
+                LogTypeId = a.LogTypeId,
+                UpdatedBy = a.UpdatedBy,
+
+                EmployeeNumber = a.EmployeeNumber
             });
 
             return returnEmployeeLog.ToList();
@@ -105,13 +88,17 @@ namespace ElectronicLogbookFunction
         {
             EEmployeeLog returnEEmployeeLog = new EEmployeeLog
             {
-                EmployeeLogId = employeelog.EmployeeLogId,
-                EmployeeId = employeelog.EmployeeId,
-                EmployeeNumber = employeelog.EmployeeNumber,
-                LogTypeId = employeelog.LogTypeId,
+                CreatedDate = employeelog.CreatedDate,
                 LogDate = employeelog.LogDate,
+                UpdatedDate = employeelog.UpdatedDate,
+
                 CreatedBy = employeelog.CreatedBy,
-                UpdatedBy = employeelog.UpdatedBy
+                EmployeeId = employeelog.EmployeeId,
+                EmployeeLogId = employeelog.EmployeeLogId,
+                LogTypeId = employeelog.LogTypeId,
+                UpdatedBy = employeelog.UpdatedBy,
+
+                EmployeeNumber = employeelog.EmployeeNumber
             };
             return returnEEmployeeLog;
         }
@@ -120,35 +107,19 @@ namespace ElectronicLogbookFunction
         {
             EmployeeLog returnEmployeeLog = new EmployeeLog
             {
-                EmployeeLogId = eEmployeeLog.EmployeeLogId,
-                EmployeeId = eEmployeeLog.EmployeeId,
-                EmployeeNumber = eEmployeeLog.EmployeeNumber,
-                LogTypeId = eEmployeeLog.LogTypeId,
+                CreatedDate = eEmployeeLog.CreatedDate,
                 LogDate = eEmployeeLog.LogDate,
+                UpdatedDate = eEmployeeLog.UpdatedDate,
+
                 CreatedBy = eEmployeeLog.CreatedBy,
-                UpdatedBy = eEmployeeLog.UpdatedBy
+                EmployeeId = eEmployeeLog.EmployeeId,
+                EmployeeLogId = eEmployeeLog.EmployeeLogId,
+                LogTypeId = eEmployeeLog.LogTypeId,
+                UpdatedBy = eEmployeeLog.UpdatedBy,
+
+                EmployeeNumber = eEmployeeLog.EmployeeNumber
             };
             return returnEmployeeLog;
-        }
-
-        public void CreateFolder()
-        {
-            var date = DateTime.Now.ToString("MMMM dd, yyyy");
-            if (!Directory.Exists(@"C:\AndersonLogbookFiles\Applicant\" + DateTime.Now.ToString("MMMM dd, yyyy")))
-            {
-                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Applicant\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\ApplicantIDCard");
-                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Applicant\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\ApplicantPictures");
-                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Applicant\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\ApplicantDetails");
-            }
-            else if (date != DateTime.Now.ToString("MMMM dd, yyyy"))
-            {
-                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Applicant\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\ApplicantIDCard");
-                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Applicant\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\ApplicantPictures");
-                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Applicant\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\ApplicantDetails");
-            }
-            else
-            {
-            }
         }
         #endregion
     }

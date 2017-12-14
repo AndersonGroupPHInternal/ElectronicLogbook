@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ElectronicLogbookModel
 {
-    public class InternHistory : Base.Base
+    public class InternHistory : Base
     {
         public int InternHistoryID { get; set; }
 

@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using BaseModel;
+using System.Collections.Generic;
 
 namespace ElectronicLogbookModel
 {
-    public class Intern : Base.Base
+    public class Intern : Base
     {
         public int InternID { get; set; }
 

@@ -31,9 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Base">
-      <HintPath>..\..\..\..\Desktop\sourceCode\DLL\Base.dll</HintPath>
-    </Reference>
+    <Reference Include="BaseModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework">
       <HintPath>..\..\..\sourceCode\DLL\EntityFramework.dll</HintPath>
     </Reference>

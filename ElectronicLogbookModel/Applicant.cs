@@ -1,9 +1,10 @@
-﻿using System;
+﻿using BaseModel;
+using System;
 using System.Collections.Generic;
 
 namespace ElectronicLogbookModel
 {
-    public class Applicant : Base.Base
+    public class Applicant : Base
     {
         public int ApplicantID { get; set; }
 

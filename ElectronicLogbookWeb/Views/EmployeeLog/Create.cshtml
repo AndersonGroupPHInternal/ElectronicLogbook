@@ -1,0 +1,21 @@
+﻿@using ElectronicLogbookModel;
+@Model
+
+@{ 
+    ViewBag.Title = "Create";
+}
+
+<h1>
+    Create
+</h1>
+
+<div class="row">
+    <div class="col-sm-12">
+        <form action="~/EmployeeLog/Create" method="post">
+            @{ 
+                <button name="LogTypeId" type="submit" value="1">Time In</button>
+                <button name="LogTypeId" type="submit" value="2">Time Out</button>
+            }
+        </form>
+    </div>
+</div>

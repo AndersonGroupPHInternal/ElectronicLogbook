@@ -31,15 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Base">
-      <HintPath>..\..\..\..\Desktop\sourceCode\DLL\Base.dll</HintPath>
-    </Reference>
     <Reference Include="BaseData">
       <HintPath>..\..\..\..\Desktop\sourceCode\DLL\BaseData.dll</HintPath>
     </Reference>
     <Reference Include="BaseEntity">
       <HintPath>..\..\..\sourceCode\DLL\BaseEntity.dll</HintPath>
     </Reference>
+    <Reference Include="BaseModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
