@@ -1,5 +1,4 @@
-﻿(function ()
-{
+﻿(function () {
     'use strict';
 
     angular
@@ -8,37 +7,24 @@
 
     EmployeeLogService.$inject = ['$http'];
 
-    function EmployeeLogService($http)
-    {
+    function EmployeeLogService($http) {
         return {
             Read: Read,
             Delete: Delete
         }
 
-        /*function Create()
-        {
-            return $http({
-                method: 'POST',
-                url: '/EmployeeLog/Create',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-
-            });
-        }*/
-
-        function Read()
-        {
+        function Read() {
             return $http({
                 method: 'POST',
                 url: '/EmployeeLog/Read',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }
 
-        function Delete(EmployeeLogId) {
+        function Delete(employeelogId) {
             return $http({
                 method: 'DELETE',
-                url: '/EmployeeLog/Delete/' + EmployeeLogId,
+                url: '/EmployeeLog/Delete/' + employeelogId,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }

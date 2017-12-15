@@ -5,30 +5,24 @@
         .module('App')
         .controller('EmployeeLogController', EmployeeLogController);
 
-    EmployeeLogController.$inject = ['$filter','$window', 'EmployeeLogService'];
+    EmployeeLogController.$inject = ['$window', 'EmployeeLogService'];
 
-    function EmployeeLogController($filter,$window, EmployeeLogService) {
+    function EmployeeLogController($window, EmployeeLogService) {
         var vm = this;
-
-        //vm.Employees = [];
         vm.EmployeeLogs = [];
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
 
-        vm.UpdateEmployee = UpdateEmployee;
-
         vm.Delete = Delete;
 
-        function GoToUpdatePage(employeelogid) {
-            $window.location.href = '../EmployeeLog/Update/' + employeelogid;
+        function GoToUpdatePage(employeelogId) {
+            $window.location.href = '../EmployeeLog/Update/' + employeelogId;
         }
 
         function Initialise() {
             Read();
-            //ReadEmployees();
         }
-
 
         function Read() {
             EmployeeLogService.Read()
@@ -47,8 +41,8 @@
                 });
         }
 
-        function Delete(employeelogid) {
-            EmployeeLogService.Delete(employeelogid)
+        function Delete(employeelogId) {
+            EmployeeLogService.Delete(employeelogId)
                 .then(function (response) {
                     Read();
                 })
