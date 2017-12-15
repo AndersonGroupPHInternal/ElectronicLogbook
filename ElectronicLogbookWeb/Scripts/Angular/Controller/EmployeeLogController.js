@@ -5,9 +5,9 @@
         .module('App')
         .controller('EmployeeLogController', EmployeeLogController);
 
-    EmployeeLogController.$inject = ['$window', 'EmployeeLogService'];
+    EmployeeLogController.$inject = ['$filter', '$window', 'EmployeeLogService'];
 
-    function EmployeeLogController($window, EmployeeLogService) {
+    function EmployeeLogController($filter, $window, EmployeeLogService) {
         var vm = this;
         vm.EmployeeLogs = [];
 
@@ -29,33 +29,23 @@
                 .then(function (response) {
                     vm.EmployeeLogs = response.data;
                 })
-                .catch(function (data, status) {
-                    new PNotify({
-                        title: status,
-                        text: data,
-                        type: 'error',
-                        hide: true,
-                        addclass: "stack-bottomright"
-                    });
-
+                .catch(function (data, status)
+                {
+               
                 });
         }
 
-        function Delete(employeelogId) {
-            EmployeeLogService.Delete(employeelogId)
+        function Delete(employeeLogId) {
+            EmployeeLogService.Delete(employeeLogId)
                 .then(function (response) {
                     Read();
                 })
-                .catch(function (data, status) {
-                    new PNotify({
-                        title: status,
-                        text: data,
-                        type: 'error',
-                        hide: true,
-                        addclass: "stack-bottomright"
-                    });
+                .catch(function (data, status)
+                {
+                    
                 });
         }
+
 
     }
 })();

@@ -21,9 +21,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickableRow" ng-repeat="employeelog in model.EmployeeLogs" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(employeelog.EmployeeLogId)">
+                    <tr class="clickableRow" ng-repeat="employeelog in model.EmployeeLogs">
                         <td><span ng-bind="employeelog.EmployeeLogId"></span></td>
-                        <td><span ng-bind="employeelog.LogDate"></span></td>
+                        <td><span ng-model="date" ng-bind="employeelog.LogDate | date:'yyyy-MM-dd'"></span></td>
                         <td><span ng-bind="employeelog.EmployeeId"></span></td>
                         <td><span ng-bind="employeelog.LogTypeId"></span></td>
                         <td><span ng-bind="employeelog.EmployeeNumber"></span></td>
@@ -33,8 +33,7 @@
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    @*<li><a href="#" ng-click="model.GoToUpdatePage(department.DepartmentId)">Edit</a></li>
-                                    <li><a href="#" ng-click="model.Delete(department.DepartmentId)">Delete</a></li>*@
+                                    <li><a href="#" ng-click="model.Delete(employeelog.EmployeeLogId)">Delete</a></li>
                                 </ul>
                             </div>
                         </td>
