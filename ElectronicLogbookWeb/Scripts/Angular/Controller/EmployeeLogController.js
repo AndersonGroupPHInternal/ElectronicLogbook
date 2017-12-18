@@ -16,6 +16,7 @@
 
         vm.Delete = Delete;
 
+
         function GoToUpdatePage(employeelogId) {
             $window.location.href = '../EmployeeLog/Update/' + employeelogId;
         }
@@ -28,21 +29,28 @@
             EmployeeLogService.Read()
                 .then(function (response) {
                     vm.EmployeeLogs = response.data;
+                    if (vm.EmployeeLogId)
+                        UpdateEmployeeLog();
                 })
                 .catch(function (data, status)
                 {
-               
+ 
                 });
+        }
+        function UpdateEmployeeLog()
+        {
+            vm.EmployeeLogs = $filter('filter')(vm.EmployeeLogs, { EmployeeLogId: vm.EmployeeLogId })[0];
         }
 
         function Delete(employeeLogId) {
             EmployeeLogService.Delete(employeeLogId)
                 .then(function (response) {
+                    vm.Delete = response.data;
                     Read();
                 })
                 .catch(function (data, status)
                 {
-                    
+                       
                 });
         }
 

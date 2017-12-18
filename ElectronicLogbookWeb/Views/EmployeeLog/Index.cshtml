@@ -18,12 +18,13 @@
                         <th>EmployeeId</th>
                         <th>LogTypeId</th>
                         <th>EmployeeNumber</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="clickableRow" ng-repeat="employeelog in model.EmployeeLogs">
                         <td><span ng-bind="employeelog.EmployeeLogId"></span></td>
-                        <td><span ng-model="date" ng-bind="employeelog.LogDate | date:'yyyy-MM-dd'"></span></td>
+                        <td><span ng-model="date" ng-bind="employeelog.LogDate"></span></td>
                         <td><span ng-bind="employeelog.EmployeeId"></span></td>
                         <td><span ng-bind="employeelog.LogTypeId"></span></td>
                         <td><span ng-bind="employeelog.EmployeeNumber"></span></td>
