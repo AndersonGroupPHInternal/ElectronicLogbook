@@ -45,7 +45,6 @@
         function Delete(employeeLogId) {
             EmployeeLogService.Delete(employeeLogId)
                 .then(function (response) {
-                    vm.Delete = response.data;
                     Read();
                 })
                 .catch(function (data, status)
