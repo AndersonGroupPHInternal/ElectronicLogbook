@@ -34,13 +34,13 @@
                 })
                 .catch(function (data, status)
                 {
- 
+
                 });
         }
-        function UpdateEmployeeLog()
-        {
-            vm.EmployeeLogs = $filter('filter')(vm.EmployeeLogs, { EmployeeLogId: vm.EmployeeLogId })[0];
-        }
+        //function UpdateEmployeeLog()
+        //{
+        //    vm.EmployeeLogs = $filter('filter')(vm.EmployeeLogs, { EmployeeLogId: vm.EmployeeLogId })[0];
+        //}
 
         function Delete(employeeLogId) {
             EmployeeLogService.Delete(employeeLogId)
@@ -49,7 +49,7 @@
                 })
                 .catch(function (data, status)
                 {
-                       
+
                 });
         }
 

@@ -12,6 +12,7 @@ namespace ElectronicLogbookFunction
         #region RETRIEVE
         EmployeeLog Read(int EmployeeLogId);
         List<EmployeeLog> Read();
+        //List<EmployeeLog> Read(int employeeLogId, string sortBy);
         #endregion
 
         #region UPDATE

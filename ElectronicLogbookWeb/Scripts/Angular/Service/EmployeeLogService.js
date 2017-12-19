@@ -24,7 +24,7 @@
         function Delete(employeeLogId) {
             return $http({
                 method: 'DELETE',
-                url: '../EmployeeLog/Delete/' + employeeLogId,
+                url: '/EmployeeLog/Delete/' + employeeLogId,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }   

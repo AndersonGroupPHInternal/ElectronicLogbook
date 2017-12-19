@@ -11753,7 +11753,6 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
           }
         }
       }
-
       xhr.send(isUndefined(post) ? null : post);
     }
 
