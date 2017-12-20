@@ -5,17 +5,30 @@
     ViewBag.Title = "Create";
 }
 
-<h1>
-    LOG
-</h1>
+
+<style>
+
+    #canvas 
+    {
+        align-items:center;
+    }
+
+</style>
 
 <div class="row">
     <div class="col-sm-12">
         <form action="~/EmployeeLog/Create" method="post">
             @{
+                <center><img src="~/Content/Images/logo2.jpg" class="about-title" style="width: 35%; float: initial"></center>
+                <canvas style="border: 5px solid; object-fit: fill;" id="canvas" height="200" width="250"></canvas><br>
+                <label for="EmployeeNumber">Employee Number:</label>
+                <input type="text" class="form-control" id="employeenumber"><br>
+                <label for="Password">Password:</label>
+                <input type="password" class="form-control" id="employeenumber"><br>
 
                 <button name="LogTypeId" type="submit" value="1">Time In</button>
-                <button name="LogTypeId" type="submit" value="2">Time Out</button>
+                <button name="LogTypeId" type="submit" value="2">Time Out</button><br>
+
             }
         </form>
     </div>

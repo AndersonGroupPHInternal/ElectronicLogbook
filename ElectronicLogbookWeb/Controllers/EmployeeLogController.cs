@@ -55,9 +55,9 @@ namespace ElectronicLogbookWeb.Controllers
         #endregion
         #region Delete
         [HttpDelete]
-        public JsonResult Delete(int employeeLogId)
+        public JsonResult Delete(int id)
         {
-            _iFEmployeeLog.Delete(employeeLogId);
+            _iFEmployeeLog.Delete(id);
             return Json(string.Empty);
         }
         #endregion

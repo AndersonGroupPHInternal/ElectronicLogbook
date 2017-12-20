@@ -20,7 +20,7 @@ namespace ElectronicLogbookFunction
         #endregion
 
         #region DELETE
-        void Delete(int employeeLogId);
+        void Delete(int EmployeeLogId);
         #endregion
     }
 }

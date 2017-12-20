@@ -21,10 +21,10 @@
             });
         }
 
-        function Delete(employeeLogId) {
+        function Delete(EmployeeLogId) {
             return $http({
                 method: 'DELETE',
-                url: '/EmployeeLog/Delete/' + employeeLogId,
+                url: '/EmployeeLog/Delete/' + EmployeeLogId,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }   
