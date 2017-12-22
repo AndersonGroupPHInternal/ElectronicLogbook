@@ -34,6 +34,13 @@
                 })
                 .catch(function (data, status)
                 {
+                    new PNotify({
+                        title: status,
+                        text: data,
+                        type: 'error',
+                        hide: true,
+                        addclass: "stack-bottomright"
+                    });
 
                 });
         }
@@ -46,10 +53,17 @@
             EmployeeLogService.Delete(employeeLogId)
                 .then(function (response) {
                     Read();
+                    window.alert("Data Removed");
                 })
                 .catch(function (data, status)
                 {
-
+                    new PNotify({
+                        title: status,
+                        text: data,
+                        type: 'error',
+                        hide: true,
+                        addclass: "stack-bottomright"
+                    });
                 });
         }
 
