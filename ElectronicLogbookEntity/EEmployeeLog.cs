@@ -9,7 +9,7 @@ namespace ElectronicLogbookEntity
     public class EEmployeeLog : EBase
     {
         public DateTime LogDate { get; set; }
-
+        
         public int EmployeeId { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]

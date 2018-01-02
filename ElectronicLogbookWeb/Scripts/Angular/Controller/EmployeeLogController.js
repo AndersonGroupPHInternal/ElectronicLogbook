@@ -10,6 +10,7 @@
     function EmployeeLogController($filter, $window, EmployeeLogService) {
         var vm = this;
         vm.EmployeeLogs = [];
+        vm.Employees;
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
@@ -31,6 +32,7 @@
                     vm.EmployeeLogs = response.data;
                     if (vm.EmployeeLogId)
                         UpdateEmployeeLog();
+                        //UpdateEmployee();
                 })
                 .catch(function (data, status)
                 {
@@ -44,16 +46,24 @@
 
                 });
         }
-        //function UpdateEmployeeLog()
+
+        function UpdateEmployeeLog()
+        {
+            vm.EmployeeLogs = $filter('filter')(vm.EmployeeLogs, { EmployeeLogId: vm.EmployeeLogId })[0];
+        }
+
+        //function UpdateEmployee(employeelog)
         //{
-        //    vm.EmployeeLogs = $filter('filter')(vm.EmployeeLogs, { EmployeeLogId: vm.EmployeeLogId })[0];
+        //    angular.forEach(vm.EmployeeLogs, function (employeelog) {
+        //        employeelog.EmployeeId = $filter('filter')(vm.EmployeeLogs, { EmployeeLogId: employeelog.EmployeeId })[0];
+        //    });
         //}
 
         function Delete(employeeLogId) {
             EmployeeLogService.Delete(employeeLogId)
                 .then(function (response) {
                     Read();
-                    window.alert("Data Removed");
+                    alert("Data Removed");
                 })
                 .catch(function (data, status)
                 {

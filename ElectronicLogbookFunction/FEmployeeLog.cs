@@ -27,6 +27,8 @@ namespace ElectronicLogbookFunction
 
             eEmployeeLog = _iDEmployeeLog.Create(eEmployeeLog);
             return (EmployeeLog(eEmployeeLog));
+
+         
         }
         #endregion
 

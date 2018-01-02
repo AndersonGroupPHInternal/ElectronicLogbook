@@ -25,18 +25,17 @@
 
 </style>
 
-
-<div class="row">
-    <div class="col-sm-12">
+<div class="row" ng-controller="EmployeeLogController as model" ng-init="model.List()">
+    <div class="col-sm-12" >
         <form action="~/EmployeeLog/Create" method="post">
             @{ 
 
                 <center><img src="~/Content/Images/logo2.jpg" class="about-title" style="width: 35%; float: initial"></center>
                 <canvas style="border: 5px solid; object-fit: fill;" id="canvas" height="200" width="250"></canvas><br>
                 <label for="EmployeeNumber">Employee Number:</label>
-                <input type="text" class="form-control" id="employeenumber"><br>
+                <input type="text" class="form-control" id="employeenumber" ><br>
                 <label for="Password">Password:</label>
-                <input type="password" class="form-control" id="employeenumber"><br>
+                <input type="password" class="form-control" id="password"><br>
                 <span id="CurrentTime"></span>
                 @*<span id="CurrentDate"></span>*@
 

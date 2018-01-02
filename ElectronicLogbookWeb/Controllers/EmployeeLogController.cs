@@ -22,6 +22,7 @@ namespace ElectronicLogbookWeb.Controllers
         [HttpPost]
         public ActionResult Create(EmployeeLog employeeLog)
         {
+
             _iFEmployeeLog.Create(UserId, employeeLog);
             return RedirectToAction("Index");
         }
