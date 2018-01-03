@@ -7,10 +7,14 @@ namespace ElectronicLogbookWeb.Controllers
     public class EmployeeLogController : BaseController
     {
         private IFEmployeeLog _iFEmployeeLog;
+        private AndersonCRMFunction.IFEmployee _iFEmployee;
+        //private AndersonCRMModel.Employee _employee;
 
         public EmployeeLogController()
         {
             _iFEmployeeLog = new FEmployeeLog();
+            _iFEmployee = new AndersonCRMFunction.FEmployee();
+            
         }
         #region Create
         [HttpGet]
@@ -22,8 +26,16 @@ namespace ElectronicLogbookWeb.Controllers
         [HttpPost]
         public ActionResult Create(EmployeeLog employeeLog)
         {
-
-            _iFEmployeeLog.Create(UserId, employeeLog);
+            var employee = _iFEmployee.Read(employeeLog.EmployeeNumber, employeeLog.Pin);
+            if (employee == null)
+            {
+                //return View(employeeLog); //return error
+                ModelState.AddModelError("", "EmployeeNumber or Pin does not exist");
+            }
+            else
+            {
+                _iFEmployeeLog.Create(UserId, employeeLog);
+            }
             return RedirectToAction("Index");
         }
         #endregion

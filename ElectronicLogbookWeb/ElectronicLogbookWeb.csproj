@@ -48,6 +48,14 @@
     <Reference Include="AccountsWebAuthentication">
       <HintPath>..\..\DLL\AccountsWebAuthentication.dll</HintPath>
     </Reference>
+    <Reference Include="AndersonCRMFunction, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL\Release\AndersonCRM\AndersonCRMFunction.dll</HintPath>
+    </Reference>
+    <Reference Include="AndersonCRMModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL\Release\AndersonCRM\AndersonCRMModel.dll</HintPath>
+    </Reference>
     <Reference Include="Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="BaseModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="BaseWeb, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />

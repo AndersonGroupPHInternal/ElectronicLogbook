@@ -1,5 +1,5 @@
-﻿@using ElectronicLogbookModel;
-@Model
+﻿@using ElectronicLogbookModel
+@model EmployeeLog
 
 @{ 
     ViewBag.Title = "Create";
@@ -8,11 +8,11 @@
 <style>
 
     #CurrentDate {
-
         float: right;
         font-size: 20px;
         color: black;
         font: bold;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
     #CurrentTime {
         float: right;
@@ -28,23 +28,44 @@
 <div class="row" ng-controller="EmployeeLogController as model" ng-init="model.List()">
     <div class="col-sm-12" >
         <form action="~/EmployeeLog/Create" method="post">
-            @{ 
+            @{
+                <div class="form-group">
+                        <center><img src="~/Content/Images/logo2.jpg" class="about-title" style="width: 35%; float: initial"></center>
+                        <canvas style="border: 5px solid; object-fit: fill;" id="canvas" height="200" width="250"></canvas><br>
+                </div>
+               
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EmployeeNumber, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.EmployeeNumber, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.EmployeeNumber, "", new { @class = "text-danger" })<br>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Pin, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.Pin, new { @class = "form-control", @maxlength = "4" })
+                            @Html.ValidationMessageFor(m => m.Pin, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span id="CurrentTime"></span>
+                        @*<span id="CurrentDate"></span>*@
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <span id="CurrentDate"></span>
+                            </div>
+                        </div>
 
-                <center><img src="~/Content/Images/logo2.jpg" class="about-title" style="width: 35%; float: initial"></center>
-                <canvas style="border: 5px solid; object-fit: fill;" id="canvas" height="200" width="250"></canvas><br>
-                <label for="EmployeeNumber">Employee Number:</label>
-                <input type="text" class="form-control" id="employeenumber" ><br>
-                <label for="Password">Password:</label>
-                <input type="password" class="form-control" id="password"><br>
-                <span id="CurrentTime"></span>
-                @*<span id="CurrentDate"></span>*@
-
-                <button name="LogTypeId" type="submit" value="1" class="btn btn-success">Time In</button>
-                <button name="LogTypeId" type="submit" value="2" class="btn btn-danger">Time Out</button>
+                        <div class="form-group">
+                            <button name="LogTypeId" type="submit" value="1" class="btn btn-success">Time In</button>
+                            <button name="LogTypeId" type="submit" value="2" class="btn btn-danger">Time Out</button>
+                        </div>
 
 
-            }
-        </form>
+                        }
+</form>
     </div>
 </div>
 
@@ -56,7 +77,7 @@
         function Time()
         {
             var date = new Date();
-            var currentdate = date.toLocaleDateString();
+            var currentdate = date.toDateString();
             var time = date.toLocaleTimeString();
             document.getElementById("CurrentTime").innerHTML = time;
             document.getElementById("CurrentDate").innerHTML = currentdate;
