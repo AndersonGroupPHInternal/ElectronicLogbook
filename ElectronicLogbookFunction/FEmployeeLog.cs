@@ -44,6 +44,12 @@ namespace ElectronicLogbookFunction
             List<EEmployeeLog> eEmployeeLogs = _iDEmployeeLog.List<EEmployeeLog>(a => true);
             return EmployeeLogs(eEmployeeLogs);
         }
+
+        public List<EmployeeLog> Read(int employeeid, string sortBy)
+        {
+            List<EEmployeeLog> eEmployeeid = _iDEmployeeLog.Read<EEmployeeLog>(a => a.EmployeeId == employeeid, sortBy);
+            return EmployeeLogs(eEmployeeid);
+        }
         #endregion
 
         #region UPDATE
