@@ -85,6 +85,7 @@ namespace ElectronicLogbookFunction
                 EmployeeLogId = a.EmployeeLogId,
                 LogTypeId = a.LogTypeId,
                 UpdatedBy = a.UpdatedBy,
+                //LogName = a.LogType.Name,
 
                 EmployeeNumber = a.EmployeeNumber
             });
@@ -105,6 +106,7 @@ namespace ElectronicLogbookFunction
                 EmployeeLogId = employeelog.EmployeeLogId,
                 LogTypeId = employeelog.LogTypeId,
                 UpdatedBy = employeelog.UpdatedBy,
+                //LogName = employeelog.LogName,
 
                 EmployeeNumber = employeelog.EmployeeNumber
             };
@@ -124,6 +126,7 @@ namespace ElectronicLogbookFunction
                 EmployeeLogId = eEmployeeLog.EmployeeLogId,
                 LogTypeId = eEmployeeLog.LogTypeId,
                 UpdatedBy = eEmployeeLog.UpdatedBy,
+                LogName = eEmployeeLog.LogType.Name,
 
                 EmployeeNumber = eEmployeeLog.EmployeeNumber
             };

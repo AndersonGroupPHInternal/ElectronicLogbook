@@ -17,6 +17,8 @@ namespace ElectronicLogbookEntity
         [ForeignKey("LogType")]
         public int LogTypeId { get; set; }
 
+        public String LogName { get; set; }
+
         public string EmployeeNumber { get; set; }
         public ELogType LogType { get; set; }
     }

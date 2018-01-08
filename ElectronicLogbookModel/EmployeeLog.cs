@@ -12,6 +12,7 @@ namespace ElectronicLogbookModel
         public int EmployeeLogId { get; set; }
         public int EmployeeId { get; set; }
         public int LogTypeId { get; set; }
+        public string LogName { get; set; }
         [Required]
         [StringLength(100)]
         [Display(Name = "Employee Number")]
