@@ -7,5 +7,6 @@ namespace ElectronicLogbookModel
     public class LogType : Base
     {
         public int LogTypeId { get; set; }
+        public string LogName { get; set; }
     }
 }
