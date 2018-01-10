@@ -36,9 +36,9 @@
                
                     <div class="form-group">
                         @Html.LabelFor(m => m.EmployeeNumber, new { @class = "col-md-2 control-label" })
+                        @Html.ValidationMessageFor(m => m.EmployeeNumber, "", new { @class = "text-danger" })
                         <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.EmployeeNumber, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.EmployeeNumber, "", new { @class = "text-danger" })<br>
+                            @Html.TextBoxFor(m => m.EmployeeNumber, new { @class = "form-control" })<br>
                         </div>
                     </div>
                     <div class="form-group">

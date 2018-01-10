@@ -50,6 +50,11 @@ namespace ElectronicLogbookFunction
             List<EEmployeeLog> eEmployeeid = _iDEmployeeLog.Read<EEmployeeLog>(a => a.EmployeeId == employeeid, sortBy);
             return EmployeeLogs(eEmployeeid);
         }
+        public List<LogType> ReadLogtype(int logtypeid, string sortBy)
+        {
+            List<ELogType> eEmployeelogtype = _iDEmployeeLog.Read<ELogType>(a => a.LogTypeId == logtypeid, sortBy);
+            return Logypes(eEmployeelogtype);
+        }
         #endregion
 
         #region UPDATE
@@ -85,7 +90,7 @@ namespace ElectronicLogbookFunction
                 EmployeeLogId = a.EmployeeLogId,
                 LogTypeId = a.LogTypeId,
                 UpdatedBy = a.UpdatedBy,
-               // LogName = a.LogType.Name,
+                //LogName = a.LogType.Name,
 
                 EmployeeNumber = a.EmployeeNumber
             });

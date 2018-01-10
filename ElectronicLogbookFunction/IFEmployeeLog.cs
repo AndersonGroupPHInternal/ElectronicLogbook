@@ -14,6 +14,7 @@ namespace ElectronicLogbookFunction
         List<EmployeeLog> Read();
         //List<EmployeeLog> Read(int employeeLogId, string sortBy);
         List<EmployeeLog> Read(int employeeid, string sortBy);
+        List<LogType> ReadLogtype(int logtypeid, string sortBy);
         #endregion
 
         #region UPDATE
