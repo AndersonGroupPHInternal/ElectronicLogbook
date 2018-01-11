@@ -36,7 +36,7 @@ namespace ElectronicLogbookWeb.Controllers
 
             _iFEmployeeLog.Create(UserId, employeeLog);
 
-            //employeeLog.EmployeeImage = employee. Employee Image
+            employeeLog.EmployeeImage = employee.EmployeeImage;
 
             if (!IsSuccess)
             {
@@ -45,7 +45,7 @@ namespace ElectronicLogbookWeb.Controllers
             }
             else
             {
-                return RedirectToAction("Create"); // this should go back to view
+                return RedirectToAction("Create");
             }
         }
         #endregion

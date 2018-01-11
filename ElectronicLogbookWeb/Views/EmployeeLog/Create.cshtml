@@ -25,7 +25,6 @@
 
 </style>
 
-<div class="row" ng-controller="EmployeeLogController as model" ng-init="model.List()">
     <div class="col-sm-12" >
         <form action="~/EmployeeLog/Create" method="post">
             @{
@@ -33,19 +32,19 @@
                         <center><img src="~/Content/Images/logo2.jpg" class="about-title" style="width: 35%; float: initial"></center>
                         <canvas style="border: 5px solid; object-fit: fill;" id="canvas" height="200" width="250"></canvas><br>
                 </div>
-               
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
                         @Html.LabelFor(m => m.EmployeeNumber, new { @class = "col-md-2 control-label" })
-                        @Html.ValidationMessageFor(m => m.EmployeeNumber, "", new { @class = "text-danger" })
                         <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.EmployeeNumber, new { @class = "form-control" })<br>
+                            @Html.TextBoxFor(m => m.EmployeeNumber, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.EmployeeNumber, "", new { @class = "text-danger" })<br>
                         </div>
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Pin, new { @class = "col-md-2 control-label" })
                         <div class="col-md-10">
-                            @Html.ValidationMessageFor(m => m.Pin, "", new { @class = "text-danger" })
                             @Html.PasswordFor(m => m.Pin, new { @class = "form-control", @maxlength = "4" })
+                            @Html.ValidationMessageFor(m => m.Pin, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
@@ -67,7 +66,6 @@
                         }
 </form>
     </div>
-</div>
 
 <body>
     <script>
@@ -81,6 +79,12 @@
             var time = date.toLocaleTimeString();
             document.getElementById("CurrentTime").innerHTML = time;
             document.getElementById("CurrentDate").innerHTML = currentdate;
+        }
+
+        function Confirm()
+        {
+            if ()
+            alert("You have successfully logged in");
         }
     </script>
 
