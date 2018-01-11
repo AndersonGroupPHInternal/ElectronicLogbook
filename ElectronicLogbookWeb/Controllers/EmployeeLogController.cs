@@ -27,17 +27,25 @@ namespace ElectronicLogbookWeb.Controllers
         public ActionResult Create(EmployeeLog employeeLog)
         {
             var employee = _iFEmployee.Read(employeeLog.EmployeeNumber, employeeLog.Pin);
-            if (employee.EmployeeId == 0)
+            var logname = _iFEmployeeLog.Readlogtype(employeeLog.LogTypeId);
+            bool IsSuccess = employee.EmployeeId != 0 && employee.Pin == employeeLog.Pin;
+
+            employeeLog.LogName = logname.Name;
+            employeeLog.EmployeeId = employee.EmployeeId;
+            employeeLog.SuccesLogin = IsSuccess;
+
+            _iFEmployeeLog.Create(UserId, employeeLog);
+
+            //employeeLog.EmployeeImage = employee. Employee Image
+
+            if (!IsSuccess)
             {
-                //return View(employeeLog); //return error
                 ModelState.AddModelError("EmployeeNumber", "Employee Number or Pin does not exist");
                 return View(new EmployeeLog());
             }
             else
             {
-                employeeLog.EmployeeId = employee.EmployeeId;
-                _iFEmployeeLog.Create(UserId, employeeLog);
-                return RedirectToAction("Index");
+                return RedirectToAction("Create"); // this should go back to view
             }
         }
         #endregion

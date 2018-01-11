@@ -46,12 +46,10 @@
 
                 });
         }
-
         function UpdateEmployeeLog()
         {
             vm.EmployeeLogs = $filter('filter')(vm.EmployeeLogs, { EmployeeLogId: vm.EmployeeLogId })[0];
         }
-
         //function UpdateEmployee(employeelog)
         //{
         //    angular.forEach(vm.EmployeeLogs, function (employeelog) {
@@ -63,7 +61,6 @@
             EmployeeLogService.Delete(employeeLogId)
                 .then(function (response) {
                     Read();
-                    alert("Data Removed");
                 })
                 .catch(function (data, status)
                 {

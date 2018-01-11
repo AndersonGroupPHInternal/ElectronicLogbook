@@ -74,8 +74,8 @@
                     <div class="form-group" id="employee" align="left" >
                         @Html.LabelFor(m => m.Pin, new { @class = "col-md-2 control-label" })
                         <div class="col-md-10">
-                            @Html.PasswordFor(m => m.Pin, new { @class = "form-control", @maxlength = "4" })
                             @Html.ValidationMessageFor(m => m.Pin, "", new { @class = "text-danger" })
+                            @Html.PasswordFor(m => m.Pin, new { @class = "form-control", @maxlength = "4" })
                         </div>
                     </div>
 
@@ -103,7 +103,6 @@
             document.getElementById("CurrentTime").innerHTML = time;
             document.getElementById("CurrentDate").innerHTML = currentdate;
         }
-
     </script>
 
 </body>
