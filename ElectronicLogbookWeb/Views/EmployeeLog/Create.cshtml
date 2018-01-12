@@ -1,90 +1,108 @@
 ﻿@using ElectronicLogbookModel
 @model EmployeeLog
 
-@{ 
+@{
     ViewBag.Title = "Create";
 }
 
 <style>
-
     #CurrentDate {
-        float: right;
+        /*float: left;*/
         font-size: 20px;
         color: black;
         font: bold;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
+
     #CurrentTime {
-        float: right;
+        /*float: left;*/
         font-size: 40px;
         color: black;
         font: bold;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
 
+    #employee {
+        position: relative;
+        bottom: 200px;
+    }
 
+    #time {
+        position: relative;
+        bottom: 180px;
+        left: 250px;
+    }
+
+    #ccanvas {
+        position: relative;
+        right: 180px;
+    }
+
+    #ctime {
+        position: relative;
+        right: 195px;
+        bottom: 25px;
+    }
+
+    #cdate {
+        position: relative;
+        right: 215px;
+        bottom: 25px;
+    }
 </style>
 
-    <div class="col-sm-12" >
-        <form action="~/EmployeeLog/Create" method="post">
-            @{
-                <div class="form-group">
-                        <center><img src="~/Content/Images/logo2.jpg" class="about-title" style="width: 35%; float: initial"></center>
-                        <canvas style="border: 5px solid; object-fit: fill;" id="canvas" height="200" width="250"></canvas><br>
+<div class="col-sm-12">
+    <form action="~/EmployeeLog/Create" method="post">
+        @{
+            <div class="form-group" align="right">
+                <center><img src="~/Content/Images/logo2.jpg" class="about-title" style="width: 35%; float: initial"></center>
+
+                <div class="form-group" id="ctime">
+                    <span id="CurrentTime"></span>
+                    @*<span id="CurrentDate"></span>*@
                 </div>
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" }) 
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.EmployeeNumber, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.EmployeeNumber, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.EmployeeNumber, "", new { @class = "text-danger" })<br>
-                        </div>
+                <div class="form-group" id="cdate">
+                    <div class="col-md-12">
+                        <span id="CurrentDate"></span>
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Pin, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.PasswordFor(m => m.Pin, new { @class = "form-control", @maxlength = "4" })
-                            @Html.ValidationMessageFor(m => m.Pin, "", new { @class = "text-danger" })
-                        </div>
+                </div>
+                <canvas style="border: 5px solid; object-fit: fill;" id="ccanvas" height="200" width="250"></canvas><br>
+                <div class="form-group" id="employee" align="left">
+                    @Html.LabelFor(m => m.EmployeeNumber, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.EmployeeNumber, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.EmployeeNumber, "", new { @class = "text-danger" })<br>
                     </div>
-                    <div class="form-group">
-                        <span id="CurrentTime"></span>
-                        @*<span id="CurrentDate"></span>*@
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <span id="CurrentDate"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <button name="LogTypeId" type="submit" value="1" class="btn btn-success">Time In</button>
-                            <button name="LogTypeId" type="submit" value="2" class="btn btn-danger">Time Out</button>
-                        </div>
+                </div>
+                <div class="form-group" id="employee" align="left">
+                    @Html.LabelFor(m => m.Pin, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Pin, new { @class = "form-control", @maxlength = "4" })
+                        @Html.ValidationMessageFor(m => m.Pin, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
 
-                        }
-</form>
-    </div>
+                <div class="form-group" id="time" align="left">
+                    <button name="LogTypeId" type="submit" value="1" class="btn btn-success">Time In</button>
+                    <button name="LogTypeId" type="submit" value="2" class="btn btn-danger">Time Out</button>
+                </div>
+            </div>
+        }
+    </form>
+</div>
 
 <body>
     <script>
         var displaytime = setInterval(function () { Time() }, 0);
         var displaydate = setInterval(function () { Date() }, 0);
 
-        function Time()
-        {
+        function Time() {
             var date = new Date();
             var currentdate = date.toDateString();
             var time = date.toLocaleTimeString();
             document.getElementById("CurrentTime").innerHTML = time;
             document.getElementById("CurrentDate").innerHTML = currentdate;
-        }
-
-        function Confirm()
-        {
-            if ()
-            alert("You have successfully logged in");
         }
     </script>
 

@@ -45,7 +45,7 @@ namespace ElectronicLogbookWeb.Controllers
             }
             else
             {
-                return RedirectToAction("Create");
+                return RedirectToAction(employeeLog.EmployeeImage);  
             }
         }
         #endregion

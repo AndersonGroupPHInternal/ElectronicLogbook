@@ -19,7 +19,6 @@ namespace ElectronicLogbookEntity
         public int LogTypeId { get; set; }
 
         public string EmployeeNumber { get; set; }
-        public string LogName { get; set; }
 
         public ELogType LogType { get; set; }
     }
