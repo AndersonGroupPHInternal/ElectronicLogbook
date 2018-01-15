@@ -20,7 +20,7 @@ namespace ElectronicLogbookWeb.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            return View(new EmployeeLog());
         }
 
         [HttpPost]
@@ -45,7 +45,8 @@ namespace ElectronicLogbookWeb.Controllers
             }
             else
             {
-                return RedirectToAction(employeeLog.EmployeeImage);  
+                return View(employeeLog);
+                
             }
         }
         #endregion

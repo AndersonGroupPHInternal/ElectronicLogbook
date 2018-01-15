@@ -86,6 +86,7 @@ namespace ElectronicLogbookFunction
                 CreatedDate = a.CreatedDate,
                 LogDate = a.LogDate,
                 UpdatedDate = a.UpdatedDate,
+                LogName = a.LogName,
 
                 CreatedBy = a.CreatedBy,
                 EmployeeId = a.EmployeeId,
@@ -93,6 +94,7 @@ namespace ElectronicLogbookFunction
                 LogTypeId = a.LogTypeId,
                 UpdatedBy = a.UpdatedBy,
                 EmployeeNumber = a.EmployeeNumber
+                
             });
 
             return returnEmployeeLog.ToList();
@@ -107,6 +109,7 @@ namespace ElectronicLogbookFunction
                 CreatedDate = employeelog.CreatedDate,
                 LogDate = employeelog.LogDate,
                 UpdatedDate = employeelog.UpdatedDate,
+                LogName = employeelog.LogName,
 
                 CreatedBy = employeelog.CreatedBy,
                 EmployeeId = employeelog.EmployeeId,
@@ -128,6 +131,7 @@ namespace ElectronicLogbookFunction
                 CreatedDate = eEmployeeLog.CreatedDate,
                 LogDate = eEmployeeLog.LogDate,
                 UpdatedDate = eEmployeeLog.UpdatedDate,
+                LogName = eEmployeeLog.LogName,
 
                 CreatedBy = eEmployeeLog.CreatedBy,
                 EmployeeId = eEmployeeLog.EmployeeId,
