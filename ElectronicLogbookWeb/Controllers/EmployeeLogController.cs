@@ -45,7 +45,8 @@ namespace ElectronicLogbookWeb.Controllers
             }
             else
             {
-                return View(employeeLog);
+                //return View(employeeLog);
+                return RedirectToAction("Index");
                 
             }
         }

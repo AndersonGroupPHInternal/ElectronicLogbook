@@ -9,22 +9,24 @@
     <form action="~/EmployeeLog/Create" method="post">
         @{
             <div class="form-group">
-                <align-left><img id="logo-full" src="~/Content/Images/logo2.jpg" class="about-title"></align-left>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" align="center">
+                        <img id="logo-full" src="~/Content/Images/logo2.jpg" class="about-title">
                         <div class="form-group">
                             <br /><br /><br /><br />
                             @Html.LabelFor(m => m.EmployeeNumber, new { @class = "col-md-4 control-label align-right" })
                             <div class="col-md-5">
-                                @Html.TextBoxFor(m => m.EmployeeNumber, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.EmployeeNumber, "", new { @class = "text-danger" })<br>
+                                @Html.ValidationMessageFor(m => m.EmployeeNumber, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(m => m.EmployeeNumber, new { @class = "form-control" })<br>
+                                
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(m => m.Pin, new { @class = "col-md-4 control-label align-right" })
                             <div class="col-md-5">
-                                @Html.PasswordFor(m => m.Pin, new { @class = "form-control", @maxlength = "4" })
                                 @Html.ValidationMessageFor(m => m.Pin, "", new { @class = "text-danger" })
+                                @Html.PasswordFor(m => m.Pin, new { @class = "form-control", @maxlength = "4" })
+                                
                             </div>
                         </div>
                         <div class="col-md-11" id="time">
@@ -37,8 +39,8 @@
                             <br />
                             <span id="CurrentTime"></span>
                         </div>
-                        @*<canvas id ="canvas" style="border: 5px solid; object-fit: fill;" height="225" width="275"></canvas>*@
-                        <img style="border:2px solid;" height="275" width="375" src="data:image/png;base64, @Model.EmployeeImageBase64" alt="" />
+                        <canvas id ="canvas" style="border: 5px solid; object-fit: fill;" height="225" width="275"></canvas>
+                        @*<img id ="images" style="border:2px solid;" height="275" width="375" src="data:image/png;base64, @Model.EmployeeImageBase64" alt="" />*@
                         <div class="form-group">
                             <div class="col-md-12">
                                 <span id="CurrentDate"></span>
@@ -62,19 +64,19 @@
             document.getElementById("CurrentTime").innerHTML = time;
             document.getElementById("CurrentDate").innerHTML = currentdate;
         }
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var x = 0;
+        var y = 0;
+        var width = 275;
+        var height = 225;
+        var imageObj = new Image();
 
-        function myConfirm()
+        imageObj.onload = function ()
         {
-            if (@Model.SuccesLogin == true)
-            {
-                alert("Successfully logged in");
-            }
-            else
-            {
-                alert("Failed");
-            }
-
-        }
+           context.drawImage(imageObj, x, y, width, height);
+        };
+        imageObj.src = "data:image/png;base64, @Model.EmployeeImageBase64";
     </script>
 
 </body>
