@@ -30,17 +30,13 @@ namespace ElectronicLogbookWeb.Controllers
             var employee = _iFEmployee.Read(employeeLog.EmployeeNumber, employeeLog.Pin);
             var logname = _iFEmployeeLog.Readlogtype(employeeLog.LogTypeId);
             bool IsSuccess = employee.EmployeeId != 0 && employee.Pin == employeeLog.Pin;
-            //if (IsSuccess == true)
-            //{
-            //    ModelState.AddModelError("EmployeeNumber", "Successful" + System.DateTime.Now);
-            //}
             if (employeeLog.LogTypeId == 1 && IsSuccess == true)
             {
-                ModelState.AddModelError("EmployeeNumber", "Successful logged in at" + System.DateTime.Now);
+                ModelState.AddModelError("EmployeeNumber", "Successfully logged in at " + System.DateTime.Now.ToString("h:mm:ss tt"));
             }
             else if (employeeLog.LogTypeId == 2 && IsSuccess == true)
             {
-                ModelState.AddModelError("EmployeeNumber", "Successfully logged out at " + System.DateTime.Now);
+                ModelState.AddModelError("EmployeeNumber", "Successfully logged out at " + System.DateTime.Now.ToString("h:mm:ss tt"));
             }
 
             employeeLog.LogName = logname.Name;
@@ -58,7 +54,6 @@ namespace ElectronicLogbookWeb.Controllers
             }
             else
             {
-                //ModelState.AddModelError("EmployeeNumber", "Successfully logged in at" + System.DateTime.Now);
                 return View(employeeLog);
                 //return RedirectToAction("Index");
             }
