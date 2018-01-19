@@ -13,10 +13,12 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" align="center">
                         <img id="logo-full" src="~/Content/Images/logo2.jpg" class="about-title">
                         <div class="form-group">
-                            <br /><br /><br /><br />
+                            @Html.ValidationMessageFor(m => m.EmployeeNumber, "", new { @class = "text-danger" })
+                            </div>
+                        <div class="form-group">
+                            
                             @Html.LabelFor(m => m.EmployeeNumber, new { @class = "col-md-4 control-label align-right" })
                             <div class="col-md-5">
-                                @Html.ValidationMessageFor(m => m.EmployeeNumber, "", new { @class = "text-danger" })
                                 @Html.TextBoxFor(m => m.EmployeeNumber, new { @class = "form-control" })<br>
                                 
                             </div>
@@ -30,7 +32,7 @@
                             </div>
                         </div>
                         <div class="col-md-11" id="time">
-                            &nbsp &nbsp &nbsp   <button name="LogTypeId" type="submit" value="1" class="btn btn-success" onclick="myConfirm()">Time In</button>
+                            &nbsp &nbsp &nbsp   <button name="LogTypeId" type="submit" value="1" onclick="alertmessage()" class="btn btn-success">Time In</button>
                             <button name="LogTypeId" type="submit" value="2" class="btn btn-danger">Time Out</button>
                         </div>
                     </div>
@@ -78,5 +80,4 @@
         };
         imageObj.src = "data:image/png;base64, @Model.EmployeeImageBase64";
     </script>
-
 </body>

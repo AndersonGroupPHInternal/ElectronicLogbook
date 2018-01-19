@@ -1,6 +1,7 @@
 ﻿using ElectronicLogbookModel;
 using ElectronicLogbookFunction;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace ElectronicLogbookWeb.Controllers
 {
@@ -45,9 +46,9 @@ namespace ElectronicLogbookWeb.Controllers
             }
             else
             {
-                //return View(employeeLog);
-                return RedirectToAction("Index");
-                
+                //ModelState.AddModelError("EmployeeNumber", "Successfully logged in at" + System.DateTime.Now);
+                return View(employeeLog);
+                //return RedirectToAction("Index");
             }
         }
         #endregion
