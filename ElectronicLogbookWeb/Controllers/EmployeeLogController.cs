@@ -9,7 +9,6 @@ namespace ElectronicLogbookWeb.Controllers
     {
         private IFEmployeeLog _iFEmployeeLog;
         private AndersonCRMFunction.IFEmployee _iFEmployee;
-        //private AndersonCRMModel.Employee _employee;
 
         public EmployeeLogController()
         {
@@ -30,32 +29,18 @@ namespace ElectronicLogbookWeb.Controllers
             var employee = _iFEmployee.Read(employeeLog.EmployeeNumber, employeeLog.Pin);
             var logname = _iFEmployeeLog.Readlogtype(employeeLog.LogTypeId);
             bool IsSuccess = employee.EmployeeId != 0 && employee.Pin == employeeLog.Pin;
-            if (employeeLog.LogTypeId == 1 && IsSuccess == true)
-            {
-                ModelState.AddModelError("EmployeeNumber", "Successfully logged in at " + System.DateTime.Now.ToString("h:mm:ss tt"));
-            }
-            else if (employeeLog.LogTypeId == 2 && IsSuccess == true)
-            {
-                ModelState.AddModelError("EmployeeNumber", "Successfully logged out at " + System.DateTime.Now.ToString("h:mm:ss tt"));
-            }
-
             employeeLog.LogName = logname.Name;
             employeeLog.EmployeeId = employee.EmployeeId;
             employeeLog.SuccesLogin = IsSuccess;
-
-            _iFEmployeeLog.Create(UserId, employeeLog);
-
+            employeeLog = _iFEmployeeLog.Create(UserId, employeeLog);
             employeeLog.EmployeeImage = employee.EmployeeImage;
-
             if (!IsSuccess)
             {
-                ModelState.AddModelError("EmployeeNumber", "Employee Number or Pin does not exist");
                 return View(new EmployeeLog());
             }
             else
             {
                 return View(employeeLog);
-                //return RedirectToAction("Index");
             }
         }
         #endregion
@@ -65,7 +50,6 @@ namespace ElectronicLogbookWeb.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public JsonResult Read()
         {
@@ -78,7 +62,6 @@ namespace ElectronicLogbookWeb.Controllers
         {
             return View(_iFEmployeeLog.Read(employeeLogId));
         }
-
         [HttpPost]
         public ActionResult Update(EmployeeLog employeeLog)
         {

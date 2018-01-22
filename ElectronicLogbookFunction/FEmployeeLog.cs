@@ -24,7 +24,6 @@ namespace ElectronicLogbookFunction
             eEmployeeLog.CreatedDate = DateTime.Now;
             eEmployeeLog.LogDate = DateTime.Now;
             eEmployeeLog.CreatedBy = userId;
-
             eEmployeeLog = _iDEmployeeLog.Create(eEmployeeLog);
             return (EmployeeLog(eEmployeeLog));
 
@@ -64,7 +63,6 @@ namespace ElectronicLogbookFunction
             eEmployeeLog.UpdatedDate = DateTime.Now;
             eEmployeeLog.UpdatedBy = userId;
             eEmployeeLog = _iDEmployeeLog.Update(EEmployeeLog(employeeLog));
-
             return (EmployeeLog(eEmployeeLog));
         }
         #endregion
@@ -82,19 +80,16 @@ namespace ElectronicLogbookFunction
             var returnEmployeeLog = eEmployeeLogs.Select(a => new EmployeeLog
             {
                 SuccesLogin = a.SuccesLogin,
-
                 CreatedDate = a.CreatedDate,
                 LogDate = a.LogDate,
                 UpdatedDate = a.UpdatedDate,
                 LogName = a.LogName,
-
                 CreatedBy = a.CreatedBy,
                 EmployeeId = a.EmployeeId,
                 EmployeeLogId = a.EmployeeLogId,
                 LogTypeId = a.LogTypeId,
                 UpdatedBy = a.UpdatedBy,
                 EmployeeNumber = a.EmployeeNumber
-                
             });
 
             return returnEmployeeLog.ToList();
@@ -105,18 +100,15 @@ namespace ElectronicLogbookFunction
             EEmployeeLog returnEEmployeeLog = new EEmployeeLog
             {
                 SuccesLogin = employeelog.SuccesLogin,
-
                 CreatedDate = employeelog.CreatedDate,
                 LogDate = employeelog.LogDate,
                 UpdatedDate = employeelog.UpdatedDate,
                 LogName = employeelog.LogName,
-
                 CreatedBy = employeelog.CreatedBy,
                 EmployeeId = employeelog.EmployeeId,
                 EmployeeLogId = employeelog.EmployeeLogId,
                 LogTypeId = employeelog.LogTypeId,
                 UpdatedBy = employeelog.UpdatedBy,
-     
                 EmployeeNumber = employeelog.EmployeeNumber
             };
             return returnEEmployeeLog;
@@ -127,18 +119,15 @@ namespace ElectronicLogbookFunction
             EmployeeLog returnEmployeeLog = new EmployeeLog
             {
                 SuccesLogin = eEmployeeLog.SuccesLogin,
-
                 CreatedDate = eEmployeeLog.CreatedDate,
                 LogDate = eEmployeeLog.LogDate,
                 UpdatedDate = eEmployeeLog.UpdatedDate,
                 LogName = eEmployeeLog.LogName,
-
                 CreatedBy = eEmployeeLog.CreatedBy,
                 EmployeeId = eEmployeeLog.EmployeeId,
                 EmployeeLogId = eEmployeeLog.EmployeeLogId,
                 LogTypeId = eEmployeeLog.LogTypeId,
                 UpdatedBy = eEmployeeLog.UpdatedBy,
-
                 EmployeeNumber = eEmployeeLog.EmployeeNumber
             };
             return returnEmployeeLog;
@@ -147,12 +136,9 @@ namespace ElectronicLogbookFunction
         {
             LogType returnEmployeeLogtype = new LogType
             {
-
                 CreatedDate = eLogtype.CreatedDate,
                 UpdatedDate = eLogtype.UpdatedDate,
-
                 CreatedBy = eLogtype.CreatedBy,
-                
                 LogTypeId = eLogtype.LogTypeId,
                 UpdatedBy = eLogtype.UpdatedBy,
                 Name = eLogtype.Name

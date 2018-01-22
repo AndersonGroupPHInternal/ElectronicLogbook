@@ -46,3 +46,13 @@ textarea {
     top: 15px;
     /*left: 25px;*/
 }
+
+#logIn{
+    margin-top: 210px;
+    margin-bottom:-15px;
+}
+
+#logOut {
+    margin-top: 210px;
+    margin-bottom: -15px;
+}

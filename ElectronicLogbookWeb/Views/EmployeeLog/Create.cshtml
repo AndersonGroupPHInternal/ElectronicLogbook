@@ -13,7 +13,6 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" align="center">
                         <img id="logo-full" src="~/Content/Images/logo2.jpg" class="about-title">
                         <div class="form-group">
-                            @Html.ValidationMessageFor(m => m.EmployeeNumber, "", new { @class = "text-danger" })
                             </div>
                         <div class="form-group">
                             
@@ -26,7 +25,6 @@
                         <div class="form-group">
                             @Html.LabelFor(m => m.Pin, new { @class = "col-md-4 control-label align-right" })
                             <div class="col-md-5">
-                                @Html.ValidationMessageFor(m => m.Pin, "", new { @class = "text-danger" })
                                 @Html.PasswordFor(m => m.Pin, new { @class = "form-control", @maxlength = "4" })
                                 
                             </div>
@@ -35,6 +33,24 @@
                             &nbsp &nbsp &nbsp   <button name="LogTypeId" type="submit" value="1" onclick="alertmessage()" class="btn btn-success">Time In</button>
                             <button name="LogTypeId" type="submit" value="2" class="btn btn-danger">Time Out</button>
                         </div>
+                            <div id="logIn">
+                                @if (Model.SuccesLogin && Model.LogTypeId == 1)
+                                {
+                                    <h2 id="logIn" style="color:green;">Successfully logged in at <br /></h2><h2> @System.DateTime.Now.ToString("h:mm:ss tt") </h2>
+                                    <h2 id="logIn2" style="font-style:italic"> Have a nice day!</h2>
+                                }
+                                else if (Model.SuccesLogin && Model.LogTypeId == 2)
+                                {
+                                    <h2 id="logOut" style="color:green;">Successfully logged out at</h2><h2 style="color:black;">@System.DateTime.Now.ToString("h:mm:ss tt")</h2>
+                                    <h2 style="font-style:italic"> Thank you for your hardwork!</h2>
+                                }
+                                else if (Model.EmployeeLogId == 0)
+                                {
+                                    <h2 id="logFail" style="color: firebrick;">Unsuccessful log in</h2>
+                                    <h2 id="logFail" style="color: firebrick;">Please try again :(</h2>
+                                }
+                            </div>
+                        
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" align="center">
                         <div class="form-group" id="ctime">
@@ -42,7 +58,6 @@
                             <span id="CurrentTime"></span>
                         </div>
                         <canvas id ="canvas" style="border: 5px solid; object-fit: fill;" height="225" width="275"></canvas>
-                        @*<img id ="images" style="border:2px solid;" height="275" width="375" src="data:image/png;base64, @Model.EmployeeImageBase64" alt="" />*@
                         <div class="form-group">
                             <div class="col-md-12">
                                 <span id="CurrentDate"></span>
