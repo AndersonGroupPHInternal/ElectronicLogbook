@@ -9,7 +9,6 @@
 <div id="Add" ng-controller="VisitorController as model" ng-init="model.List()">
     <div style="width: 100%">
         <div style="width: 25%; float: left; display: inline-block;" ng-init="model.CreateVisitor('@Model.Date','@Model.TimeIn', '@Model.TimeOut')">
-
             <br />
             <label for="Date">Date:</label>
             <input type="text" class="form-control" id="Date" ng-model="model.Visitor.Date" />
@@ -50,16 +49,10 @@
             <input type="text" class="form-control" id="TimeIn" ng-model="model.Visitor.TimeIn" />
             <label for="Comment">Comment:</label>
             <textarea rows="4" cols="50" class="form-control" id="Comment" ng-model="model.Visitor.Comment" placeholder="Enter comment..."></textarea>
-            @*<script src="~/Scripts/pickers/currenttime.js"></script>*@
-            @*<input type="time" value="now" class="form-control" id="TimeIn" ng-model="model.Visitor.TimeIn" />*@
-            
-            @*<label for="TimeOut">Time Out:</label>*@
-            @*<input type="hidden" class="form-control" id="TimeOut" ng-model="model.Visitor.TimeOut" />*@
             <br />
             <a href="/Visitor/Index" class="btn btn-success" role="button" ng-click="model.Create(visitor) " style="margin-right:5px;float: left"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
             <a href="/Visitor/Index" class="btn btn-warning" role="button" style="margin-right: 10px; float:left"><i class="glyphicon glyphicon-remove"></i> Cancel</a>
         </div>
-
         <div id="webcam">
             <div>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;

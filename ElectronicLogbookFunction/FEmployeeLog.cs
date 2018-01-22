@@ -16,7 +16,6 @@ namespace ElectronicLogbookFunction
         {
             _iDEmployeeLog = new DEmployeeLog();
         }
-
         #region CREATE
         public EmployeeLog Create(int userId, EmployeeLog employeelog)
         {
@@ -26,11 +25,8 @@ namespace ElectronicLogbookFunction
             eEmployeeLog.CreatedBy = userId;
             eEmployeeLog = _iDEmployeeLog.Create(eEmployeeLog);
             return (EmployeeLog(eEmployeeLog));
-
-         
         }
         #endregion
-
         #region READ
         public EmployeeLog Read(int employeeLogId)
         {
@@ -55,7 +51,6 @@ namespace ElectronicLogbookFunction
             return Logtype(eEmployeeLog);
         }
         #endregion
-
         #region UPDATE
         public EmployeeLog Update(int userId, EmployeeLog employeeLog)
         {
@@ -66,14 +61,12 @@ namespace ElectronicLogbookFunction
             return (EmployeeLog(eEmployeeLog));
         }
         #endregion
-
         #region DELETE
         public void Delete(int employeeLogId)
         {
             _iDEmployeeLog.Delete<EEmployeeLog>(a => a.EmployeeLogId == employeeLogId);
         }
         #endregion
-
         #region OTHER FUNCTION
         private List<EmployeeLog> EmployeeLogs(List<EEmployeeLog> eEmployeeLogs)
         {
@@ -91,10 +84,8 @@ namespace ElectronicLogbookFunction
                 UpdatedBy = a.UpdatedBy,
                 EmployeeNumber = a.EmployeeNumber
             });
-
             return returnEmployeeLog.ToList();
         }
-
         private EEmployeeLog EEmployeeLog(EmployeeLog employeelog)
         {
             EEmployeeLog returnEEmployeeLog = new EEmployeeLog
@@ -113,7 +104,6 @@ namespace ElectronicLogbookFunction
             };
             return returnEEmployeeLog;
         }
-
         private EmployeeLog EmployeeLog(EEmployeeLog eEmployeeLog)
         {
             EmployeeLog returnEmployeeLog = new EmployeeLog

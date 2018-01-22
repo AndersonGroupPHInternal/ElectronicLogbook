@@ -15,18 +15,14 @@ namespace ElectronicLogbookContext
                 new ELogType
                 {
                     CreatedDate = DateTime.Now,
-
                     CreatedBy = 0,
-
                     Name = "Time In"
                 });
             context.LogType.Add(
                 new ELogType
                 {
                     CreatedDate = DateTime.Now,
-
                     CreatedBy = 0,
-
                     Name = "Time Out"
                 });
             base.Seed(context);

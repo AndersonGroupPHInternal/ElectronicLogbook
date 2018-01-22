@@ -20,9 +20,7 @@ namespace ElectronicLogbookWeb.Controllers
         {
             _iFVisitor = new FVisitor();
             _iFVisitor.CreateFolder();
-
         }
-
         [Route("")]
         [HttpGet]
         public ActionResult Index()
@@ -30,19 +28,14 @@ namespace ElectronicLogbookWeb.Controllers
             _iFVisitor.CreateFolder();
             return View();
         }
-
-
         [HttpGet]
-        //[CustomAuthorize(AllowedRoles = new string[] { "Receptionist" })] /*FOR AUTHENTICATION*/
         public ActionResult Edit(int id)
         {
             var visitor = _iFVisitor.Read(id);
             visitor.TimeOut = DateTime.Now.ToShortTimeString();
             return View(visitor);
         }
-
         [HttpGet]
-        //[CustomAuthorize(AllowedRoles = new string[] { "Receptionist" })]
         public ActionResult Add()
         {
             Visitor visitor = new Visitor();
@@ -50,7 +43,6 @@ namespace ElectronicLogbookWeb.Controllers
             visitor.TimeIn = DateTime.Now.ToShortTimeString();
             return View(visitor);
         }
-
         [HttpPost]
         public JsonResult Create(Visitor visitor)
         {
@@ -64,14 +56,12 @@ namespace ElectronicLogbookWeb.Controllers
                 return Json(ex);
             }
         }
-
         [HttpGet]
         public ActionResult Details(int id)
         {
             var visitor = _iFVisitor.Read(id);
             return View(visitor);
         }
-
         [HttpPost]
         public ActionResult Details(Visitor visitor)
         {
@@ -85,14 +75,12 @@ namespace ElectronicLogbookWeb.Controllers
                 return View();
             }
         }
-
         [HttpGet]
         public ActionResult PreviewId(int id)
         {
             var visitor = _iFVisitor.Read(id);
             return View(visitor);
         }
-
         public ActionResult PrintId(int id)
         {
             var visitor = _iFVisitor.Read(id);
@@ -103,7 +91,6 @@ namespace ElectronicLogbookWeb.Controllers
                 PageWidth = 76.2
             };
         }
-
         #region Preview PDF
         [HttpGet]
         public ActionResult PreviewVisitor(int id)
@@ -124,8 +111,6 @@ namespace ElectronicLogbookWeb.Controllers
             };
         }
         #endregion
-
-
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -141,7 +126,6 @@ namespace ElectronicLogbookWeb.Controllers
                 }
             );
         }
-
         [HttpPost]
         public ActionResult Edit(Visitor visitor)
         {
@@ -155,7 +139,6 @@ namespace ElectronicLogbookWeb.Controllers
                 return View();
             }
         }
-
         [Route("List")]
         [HttpPost]
         public ActionResult List()
@@ -170,8 +153,6 @@ namespace ElectronicLogbookWeb.Controllers
                 return Json(exception);
             }
         }
-
-        
         [HttpGet]
         public ActionResult Update(int id)
         {
@@ -185,7 +166,6 @@ namespace ElectronicLogbookWeb.Controllers
                 return View(new Visitor());
             }
         }
-
         [HttpPost]
         public ActionResult Update(Visitor visitor)
         {
@@ -199,7 +179,6 @@ namespace ElectronicLogbookWeb.Controllers
                 return View(ex);
             }
         }
-
         [HttpPost]
         public ActionResult Delete(Visitor visitor)
         {

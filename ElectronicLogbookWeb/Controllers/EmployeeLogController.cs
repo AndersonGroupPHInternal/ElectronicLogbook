@@ -9,7 +9,6 @@ namespace ElectronicLogbookWeb.Controllers
     {
         private IFEmployeeLog _iFEmployeeLog;
         private AndersonCRMFunction.IFEmployee _iFEmployee;
-
         public EmployeeLogController()
         {
             _iFEmployeeLog = new FEmployeeLog();
@@ -22,7 +21,6 @@ namespace ElectronicLogbookWeb.Controllers
         {
             return View(new EmployeeLog());
         }
-
         [HttpPost]
         public ActionResult Create(EmployeeLog employeeLog)
         {

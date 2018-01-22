@@ -11,7 +11,6 @@ namespace ElectronicLogbookWeb.Controllers
     {
         public ActionResult Index()
         {
-            /*THIS IS TO CREATE FOLDER TO DESIRED DIRECTORY*/
             var date = DateTime.Now.ToString("MMMM dd, yyyy");
             if (!Directory.Exists(@"C:\AndersonLogbookFiles\Visitor\" + DateTime.Now.ToString("MMMM dd, yyyy")) &&
                 !Directory.Exists(@"C:\AndersonLogbookFiles\Intern\" + DateTime.Now.ToString("MMMM dd, yyyy")) && 
@@ -40,8 +39,6 @@ namespace ElectronicLogbookWeb.Controllers
             else
             {
             }
-
-
             return View();
         }
     }

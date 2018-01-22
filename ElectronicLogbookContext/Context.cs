@@ -19,7 +19,6 @@ namespace ElectronicLogbookContext
                 Database.SetInitializer(new DbInitializer());
             }
         }
-
         public DbSet<EVisitor> Visitors { get; set; }
         public DbSet<EIntern> Interns { get; set; }
         public DbSet<EVisitorHistory> VisitorHistory { get; set; }

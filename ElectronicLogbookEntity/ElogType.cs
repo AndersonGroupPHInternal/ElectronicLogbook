@@ -11,7 +11,6 @@ namespace ElectronicLogbookEntity
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int LogTypeId { get; set; }
-
         public string Name { get; set; }
     }
 }
