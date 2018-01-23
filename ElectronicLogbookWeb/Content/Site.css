@@ -47,12 +47,18 @@ textarea {
     /*left: 25px;*/
 }
 
-#logIn{
+#logIn {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
     margin-top: 210px;
-    margin-bottom:-15px;
 }
 
 #logOut {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
     margin-top: 210px;
-    margin-bottom: -15px;
 }

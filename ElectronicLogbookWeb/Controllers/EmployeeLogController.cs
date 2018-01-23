@@ -34,7 +34,7 @@ namespace ElectronicLogbookWeb.Controllers
             employeeLog.EmployeeImage = employee.EmployeeImage;
             if (!IsSuccess)
             {
-                return View(new EmployeeLog());
+                return View(employeeLog);
             }
             else
             {
