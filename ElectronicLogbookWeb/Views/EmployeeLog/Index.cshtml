@@ -4,13 +4,19 @@
 
 <div ng-controller="EmployeeLogController as model" ng-init="model.Initialise()">
     <div class="row">
-        <div class="col-sm-4">
-            <a href="../EmployeeLog/Create" class="btn btn-default">Log</a>
+        <div class="col-sm-2">
+            <div class="input-group">
+                    <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here..." />
+                    <div class="input-group-btn" pointer-event="none">
+                        <button id="searchLogo" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            <a href="../EmployeeLog/Create" class="btn btn-info">Log</a>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <table class="table table-hover table-sm table-bordered ">
+            <table class="table table-hover table-sm table-bordered " id="tableid">
                 <thead>
                     <tr class="thead-inverse">
                         <th>Employee Log ID</th>
@@ -22,7 +28,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickableRow" ng-repeat="employeelog in model.EmployeeLogs">
+                    <tr class="alert" ng-repeat="employeelog in model.EmployeeLogs">
                         <td><span ng-bind="employeelog.EmployeeLogId"></span></td>
                         <td><span ng-model="date" ng-bind="employeelog.LogDate | date:'yyyy-mm-dd'"></span></td>
                         <td><span ng-bind="employeelog.EmployeeId"></span></td>
@@ -36,6 +42,8 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="#" ng-click="model.Delete(employeelog.EmployeeLogId)">Delete</a></li>
                                 </ul>
+
+                                <script src="~/Scripts/search.js"></script>
                             </div>
                         </td>
                     </tr>
