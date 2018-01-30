@@ -20,10 +20,11 @@
 
     document.getElementById('capture').addEventListener('click', function () {
 
-        context.drawImage(video, 0, 0, 380, 325);
+       var appImage = context.drawImage(video, 0, 0, 380, 325);
 
-
+       document.getElementById("upload").innerHTML = appImage;
     });
+
 
     function download() {
         var image = canvas.toDataURL();

@@ -62,3 +62,8 @@ textarea {
     margin-left: auto;
     margin-top: 210px;
 }
+log {
+    margin-right: auto;
+    margin-left: auto;
+    /*float: right;*/
+}

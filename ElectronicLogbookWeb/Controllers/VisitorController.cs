@@ -91,6 +91,19 @@ namespace ElectronicLogbookWeb.Controllers
                 PageWidth = 76.2
             };
         }
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase photo)
+        {
+            string directory = @"C:\Temp\";
+
+            if (photo != null && photo.ContentLength > 0)
+            {
+                var fileName = System.IO.Path.GetFileName(photo.FileName);
+                photo.SaveAs(System.IO.Path.Combine(directory, fileName));
+            }
+
+            return RedirectToAction("Index");
+        }
         #region Preview PDF
         [HttpGet]
         public ActionResult PreviewVisitor(int id)

@@ -18,5 +18,7 @@ namespace ElectronicLogbookModel
         public string TimeIn { get; set; }
         public string TimeOut { get; set; }
         public string Comment { get; set; }
+
+        public EmployeeLog _employeeLog { get; set; }
     }
 }

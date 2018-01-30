@@ -668,6 +668,7 @@
     <Content Include="Views\EmployeeLog\Create.cshtml" />
     <Content Include="Views\EmployeeLog\_EmployeeLog.cshtml" />
     <Content Include="Views\Shared\_AuditColumns.cshtml" />
+    <Content Include="Views\Visitor\test.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -17,9 +17,12 @@
             <label for="CompanyName">Company Name:</label>
             <input type="text" class="form-control" id="CompanyName" ng-model="model.Visitor.CompanyName" />
             <label for="Purpose">Purpose of Visit:</label>
-            <input type="text" class="form-control" id="Purpose" ng-model="model.Visitor.Purpose" />
+            <select class="form-control" id="Purpose" ng-model="model.Visitor.Purpose">
+                <option value="Applicant"><span>Applicant</span></option>
+                <option value="Visitor"><span>Visitor</span></option>
+            </select>
             <label for="PersonToVisit">Person To Visit:</label>
-            <input type="text" class="form-control" id="PersonToVisit" ng-model="model.Visitor.PersonToVisit" />
+            <input type="text" class="form-control" id="PersonToVisit" ng-model-options="model.Visitor.PersonToVisit" />
             <label for="Designation">Designation:</label>
             <select class="form-control" id="Designation" ng-model="model.Visitor.Designation">
                 <option disabled selected value="">-- select designation --</option>
@@ -63,13 +66,16 @@
             <div>
                 <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <a href="#" id="capture"><button class="btn btn-primary"><i class="glyphicon glyphicon-camera"> </i> Capture</button></a>
+                <a href="#" id="capture" onclick="download()"><button class="btn btn-primary"><i class="glyphicon glyphicon-camera"> </i> Capture</button></a>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp;
-                <a href="#" download="visitor_picture.png" id="save"><button class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Save Picture </button></a>
-            </div>
+                @*<form action="/Visitor/upload" method="post" enctype="multipart/form-data">*@
+                    <a href="#" download="visitor_picture.png" id="save"><button class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Save Picture </button></a>
+                    @*<input type="file" name="photo">*@
+                    @*</form>*@
+</div>
          </div>
         <script src="~/Scripts/webcam.js"></script>
 </div>
