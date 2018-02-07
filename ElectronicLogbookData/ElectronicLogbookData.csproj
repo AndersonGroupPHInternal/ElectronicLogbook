@@ -7,8 +7,8 @@
     <ProjectGuid>{B37467D4-36DA-4060-B77C-3427FB41A64A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AndersonCRMData</RootNamespace>
-    <AssemblyName>AndersonCRMData</AssemblyName>
+    <RootNamespace>ElectronicLogbookData</RootNamespace>
+    <AssemblyName>ElectronicLogbookData</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -53,10 +53,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DApplicant.cs" />
     <Compile Include="DIntern.cs" />
+    <Compile Include="DInternHistory.cs" />
+    <Compile Include="DVisitorHistory.cs" />
+    <Compile Include="IDApplicant.cs" />
     <Compile Include="IDIntern.cs" />
+    <Compile Include="IDInternHistory.cs" />
     <Compile Include="IDVisitor.cs" />
     <Compile Include="DVisitor.cs" />
+    <Compile Include="IDVisitorHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

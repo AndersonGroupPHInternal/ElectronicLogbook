@@ -3,6 +3,8 @@ using ElectronicLogbookData;
 using ElectronicLogbookEntity;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
+using System;
 
 namespace ElectronicLogbookFunction
 {
@@ -20,6 +22,19 @@ namespace ElectronicLogbookFunction
         {
             EIntern eIntern = EIntern(intern);
             eIntern = _iDIntern.Create(eIntern);
+
+            //EInternHistory eInternHistory = new EInternHistory
+            //{
+            //    InternID = eIntern.InternID,
+            //    Date = eIntern.Date,
+            //    Name = eIntern.Name,
+            //    School = eIntern.School,
+            //    Department = eIntern.Department,
+            //    IdNumber = eIntern.IdNumber,
+            //    TimeIn = eIntern.TimeIn,
+            //    TimeOut = eIntern.TimeOut
+            //};
+            //_iDIntern.Create(eInternHistory);
             return (Intern(eIntern));
         }
         #endregion
@@ -41,7 +56,23 @@ namespace ElectronicLogbookFunction
         #region UPDATE
         public Intern Update(Intern intern)
         {
+            EIntern currentIntern = _iDIntern.Read<EIntern>(a => a.InternID == intern.InternID);
             var eIntern = _iDIntern.Update(EIntern(intern));
+            if (intern.InternID == currentIntern.InternID)
+            {
+                EInternHistory eInternHistory = new EInternHistory
+                {
+                    InternID = eIntern.InternID,
+                    Date = eIntern.Date,
+                    Name = eIntern.Name,
+                    School = eIntern.School,
+                    Department = eIntern.Department,
+                    IdNumber = eIntern.IdNumber,
+                    TimeIn = eIntern.TimeIn,
+                    TimeOut = eIntern.TimeOut
+                };
+                _iDIntern.Create(eInternHistory);
+            }
             return (Intern(eIntern));
         }
         #endregion
@@ -110,6 +141,24 @@ namespace ElectronicLogbookFunction
                 UpdatedBy = eIntern.UpdatedBy
             };
             return returnIntern;
+        }
+
+        public void CreateFolder()
+        {
+            var date = DateTime.Now.ToString("MMMM dd, yyyy");
+            if (!Directory.Exists(@"C:\AndersonLogbookFiles\Intern\" + DateTime.Now.ToString("MMMM dd, yyyy")))
+            {
+                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Intern\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\InternPictures");
+                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Intern\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\InternDetails");
+            }
+            else if (date != DateTime.Now.ToString("MMMM dd, yyyy"))
+            {
+                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Intern\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\InternPictures");
+                Directory.CreateDirectory(@"C:\AndersonLogbookFiles\Intern\" + DateTime.Now.ToString("MMMM dd, yyyy") + @"\InternDetails");
+            }
+            else
+            {
+            }
         }
         #endregion
     }

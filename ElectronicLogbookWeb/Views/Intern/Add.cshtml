@@ -3,52 +3,62 @@
     ViewBag.Title = "Add";
 }
 
-<h3>Intern's Logsheet</h3>
+<h3>Intern Log sheet</h3>
 
 <div ng-controller="InternController as model" ng-init="model.List()">
 
     <div style="width: 100%">
-        <div style="width: 25%; float: left; display: inline-block;">
+        <div style="width: 25%; float: left; display: inline-block;" ng-init="model.CreateIntern('@Model.Date', '@Model.TimeIn')">
 
             <br />
             <label for="Date">Date:</label>
-            <input type="date" name="Date" id="Date" class="form-control" ng-model="model.Intern.Date">
+            <input type="text" name="Date" id="Date" class="form-control" ng-model="model.Intern.Date">
             <label for="Name">Name:</label>
             <input type="text" class="form-control" id="Name" ng-model="model.Intern.Name" />
             <label for="School">School:</label>
             <input type="text" class="form-control" id="School" ng-model="model.Intern.School" />
             <label for="Department">Department:</label>
-            <input type="text" class="form-control" id="Department" ng-model="model.Intern.Department" />
+            <select class="form-control" id="Department" ng-model="model.Intern.Department">
+                <option disabled selected value="">-- select department --</option>
+                <option value="HUMAN RESOURCES"><span>HUMAN RESOURCES</span></option>
+                <option value="IT SERVICE DESK"><span>IT SERVICE DESK</span></option>
+                <option value="SOFTWARE DEVELOPMENT"><span>SOFTWARE DEVELOPMENT</span></option>
+                <option value="WEB DESIGN"><span>WEB DESIGN</span></option>
+            </select>
+            @*<input type="text" class="form-control" id="Department" ng-model="model.Intern.Department" />*@
             <label for="Supervisor">Supervisor:</label>
             <input type="text" class="form-control" id="Supervisor" ng-model="model.Intern.Supervisor" />
             <label for="IdNumber">ID Number:</label>
             <input type="text" class="form-control" id="IdNumber" ng-model="model.Intern.IdNumber" />
+            @*<script src="~/Scripts/pickers/currenttime.js"></script>*@
             <label for="TimeIn">Time In:</label>
-            <script src="~/Scripts/pickers/currenttime.js"></script>
-            <input type="time" value="now" class="form-control" id="TimeIn" ng-model="model.Intern.TimeIn" />
-            <label for="TimeOut">Time Out:</label>
-            <input type="time" class="form-control" id="TimeOut" ng-model="model.Intern.TimeOut" />
+            <input type="text" class="form-control" id="TimeIn" ng-model="model.Intern.TimeIn" />
+            @*<label for="TimeOut">Time Out:</label>*@
+            @*<input type="time" class="form-control" id="TimeOut" ng-model="model.Intern.TimeOut" />*@
             <br />
             <a href="/Intern/Index" class="btn btn-success" role="button" ng-click="model.Create(intern) " style="margin-right:5px;float: left"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
             <a href="/Intern/Index" class="btn btn-warning" role="button" style="margin-right: 10px; float:left"><i class="glyphicon glyphicon-remove"></i> Cancel</a>
         </div>
 
-        <div style="width: 75%; display: inline-block;">
-
-            <center>
-                <div ng-app="myapp" ng-controller="mainController">
-                    <div class="alert alert-error ng-scope" ng-show="webcamError" style="">
-                        <span>Webcam could not be started. Did you give access to it?</span>
-                    </div>
-                    <webcam channel="channel" on-streaming="onSuccess()" on-error="onError(err)" on-stream="onStream(stream)"></webcam>
-                    <canvas id="snapshot" width="325" height="325" style="border:3px solid #000000;"></canvas>
-                    <center>
-                        <button class="btn btn-primary" ng-click="makeSnapshot()"><i class="glyphicon glyphicon-camera"></i> Capture </button>
-                        <button class="btn btn-success" ng-click="Save()"><i class="glyphicon glyphicon-save"></i> Save Picture </button>
-                    </center>
-                </div>
-            </center>
+        <div id="webcam">
+            <div>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <video style="border: 5px solid; object-fit: fill;" id="video" width="380" height="325" autoplay></video>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <canvas style="border: 5px solid; object-fit: fill;" id="canvas" height="317" width="380"></canvas>
+            </div>
+            <div>
+                <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <a href="#" id="capture"><button class="btn btn-primary"><i class="glyphicon glyphicon-camera"> </i> Capture </button></a>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp;
+                <a href="#" download="intern_picture.png" id="save"><button class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Save Picture </button></a>
+            </div>
         </div>
+        <script src="~/Scripts/webcam.js"></script>
     </div>
 
 </div>

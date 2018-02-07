@@ -1,10 +1,13 @@
-﻿using ElectronicLogbookModel;
+﻿using AccountsWebAuthentication.Helper;
+using ElectronicLogbookModel;
 using ElectronicLogbookFunction;
 using System;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Net;
 using System.Data.Entity;
+using Rotativa;
+using System.Web;
 
 namespace ElectronicLogbookWeb.Controllers
 {
@@ -16,6 +19,7 @@ namespace ElectronicLogbookWeb.Controllers
         public VisitorController()
         {
             _iFVisitor = new FVisitor();
+            _iFVisitor.CreateFolder();
 
         }
 
@@ -23,33 +27,33 @@ namespace ElectronicLogbookWeb.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            _iFVisitor.CreateFolder();
             return View();
         }
 
+
         [HttpGet]
+        //[CustomAuthorize(AllowedRoles = new string[] { "Receptionist" })] /*FOR AUTHENTICATION*/
         public ActionResult Edit(int id)
         {
             var visitor = _iFVisitor.Read(id);
+            visitor.TimeOut = DateTime.Now.ToShortTimeString();
             return View(visitor);
         }
 
         [HttpGet]
+        //[CustomAuthorize(AllowedRoles = new string[] { "Receptionist" })]
         public ActionResult Add()
         {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult Create()
-        {
-
-            return View(new Visitor());
+            Visitor visitor = new Visitor();
+            visitor.Date = DateTime.Now.ToString("MMMM dd, yyyy");
+            visitor.TimeIn = DateTime.Now.ToShortTimeString();
+            return View(visitor);
         }
 
         [HttpPost]
         public JsonResult Create(Visitor visitor)
         {
-
             try
             {
                 visitor = _iFVisitor.Create(visitor);
@@ -81,6 +85,46 @@ namespace ElectronicLogbookWeb.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public ActionResult PreviewId(int id)
+        {
+            var visitor = _iFVisitor.Read(id);
+            return View(visitor);
+        }
+
+        public ActionResult PrintId(int id)
+        {
+            var visitor = _iFVisitor.Read(id);
+            return new ActionAsPdf("PreviewId", new { id = id })
+            {
+                PageMargins = new Rotativa.Options.Margins(0, 0, 0, 0),
+                PageHeight = 50.8,
+                PageWidth = 76.2
+            };
+        }
+
+        #region Preview PDF
+        [HttpGet]
+        public ActionResult PreviewVisitor(int id)
+        {
+            var visitor = _iFVisitor.Read(id);
+            return View(visitor);
+        }
+
+        public ActionResult Preview(int id)
+        {
+            var visitor = _iFVisitor.Read(id);
+            return new ActionAsPdf("PreviewVisitor", new { id = id })
+            {
+                PageWidth = 215.9,
+                PageHeight = 279.4
+                /*FOR PDF DOWNLOAD WITH DESIRED FILENAME*/
+                //FileName = visitor.Name + " | " + visitor.Date + ".pdf"
+            };
+        }
+        #endregion
+
 
         public static void RegisterRoutes(RouteCollection routes)
         {
@@ -127,6 +171,7 @@ namespace ElectronicLogbookWeb.Controllers
             }
         }
 
+        
         [HttpGet]
         public ActionResult Update(int id)
         {

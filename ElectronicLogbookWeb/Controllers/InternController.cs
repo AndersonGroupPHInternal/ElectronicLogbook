@@ -1,10 +1,12 @@
-﻿using ElectronicLogbookModel;
+﻿using AccountsWebAuthentication.Helper;
+using ElectronicLogbookModel;
 using ElectronicLogbookFunction;
 using System;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Net;
 using System.Data.Entity;
+using Rotativa;
 
 namespace ElectronicLogbookWeb.Controllers
 {
@@ -16,35 +18,43 @@ namespace ElectronicLogbookWeb.Controllers
         public InternController()
         {
             _iFIntern = new FIntern();
-
+            _iFIntern.CreateFolder();
         }
 
         [Route("")]
         [HttpGet]
         public ActionResult Index()
         {
+            _iFIntern.CreateFolder();
             return View();
         }
 
         [HttpGet]
+        //[CustomAuthorize(AllowedRoles = new string[] { "Receptionist" })]
         public ActionResult Edit(int id)
         {
             var intern = _iFIntern.Read(id);
+            intern.TimeOut = DateTime.Now.ToShortTimeString();
             return View(intern);
         }
 
         [HttpGet]
+       // [CustomAuthorize(AllowedRoles = new string[] { "Receptionist" })]
         public ActionResult Add()
         {
-            return View();
+            Intern intern = new Intern();
+            intern.Date = DateTime.Now.ToString("MMMM dd, yyyy");
+            intern.TimeIn = DateTime.Now.ToShortTimeString();
+            intern.TimeOut = DateTime.Now.ToShortTimeString();
+            return View(intern);
         }
 
-        [HttpGet]
-        public ActionResult Create()
-        {
+        //[HttpGet]
+        //public ActionResult Create()
+        //{
 
-            return View(new Intern());
-        }
+        //    return View(new Intern());
+        //}
 
         [HttpPost]
         public JsonResult Create(Intern intern)
@@ -81,6 +91,27 @@ namespace ElectronicLogbookWeb.Controllers
                 return View();
             }
         }
+
+        #region Preview PDF
+        [HttpGet]
+        public ActionResult PreviewIntern(int id)
+        {
+            var intern = _iFIntern.Read(id);
+            return View(intern);
+        }
+
+        public ActionResult Preview(int id)
+        {
+            var intern = _iFIntern.Read(id);
+            return new ActionAsPdf("PreviewIntern", new { id = id })
+            {
+                PageHeight = 279.4,
+                PageWidth = 215.9
+                /*FOR PDF DOWNLOAD WITH DESIRED FILENAME*/
+                //FileName = intern.Name + " | " + intern.Date + ".pdf"
+            };
+        }
+        #endregion
 
         public static void RegisterRoutes(RouteCollection routes)
         {

@@ -3,10 +3,10 @@
     ViewBag.Title = "Details";
 }
 
-<h3>Visitor's Details</h3>
+<h3>Visitor Details</h3>
 
 <div style="width: 100%">
-    <div style="width: 25%; float: left; display: inline-block;">
+    <div style="width: 100%; float: left; display: inline-block;">
 
         <form method="post" action="~/Visitor/Details">
             <br />
@@ -20,28 +20,28 @@
             <input type="text" class="form-control" name="Visitor.Purpose" value="@Model.Purpose" disabled />
             <label for="PersonToVisit">Person to Visit:</label>
             <input type="text" class="form-control" name="Visitor.PersonToVisit" value="@Model.PersonToVisit" disabled />
+            <label for="Designation">Designation:</label>
+            <input type="text" class="form-control" name="Visitor.Designation" value="@Model.Designation" disabled />
+            <label for="KindOfId">Kind of ID:</label>
+            <input type="text" class="form-control" name="Visitor.KindOfId" value="@Model.KindOfId" disabled />
             <label for="IdNumber">ID Number:</label>
             <input type="text" class="form-control" name="Visitor.IdNumber" value="@Model.IdNumber" disabled />
             <label for="TimeIn">Time In:</label>
-            <input type="time" class="form-control" name="Visitor.TimeIn" value="@Model.TimeIn" disabled />
+            <input type="text" class="form-control" name="Visitor.TimeIn" value="@Model.TimeIn" disabled />
             <label for="TimeOut">Time Out:</label>
-            <input type="time" class="form-control" name="Visitor.TimeOut" value="@Model.TimeOut" disabled />
+            <input type="text" class="form-control" name="Visitor.TimeOut" value="@Model.TimeOut" disabled />
+            <label for="Comment">Comment:</label>
+            <textarea rows="4" cols="50" class="form-control" name="Visitor.Comment" disabled>@Model.Comment</textarea>
             <input type="hidden" name="Visitor.VisitorID" value="@Model.VisitorID" disabled />
             <br />
-            <a href="/Visitor/Edit/@Model.VisitorID" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-            @*<a href="/Visitor/Index" ng-click="model.Delete()" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash"></i> Delete</a>*@
-            <a href="/Visitor/Index" class="btn btn-warning"><i class="glyphicon glyphicon-close "></i>Close</a>
+            
+            @*<a href="@Url.Action("PrintId", new { id = Model.VisitorID})" class="btn btn-info"><i class="glyphicon glyphicon-download"></i> Print ID</a>*@
         </form>
     </div>
-
-    <div style="width: 75%; display: inline-block;">
-        <br /><br /><br />
-        <center>
-            <div ng-app="myapp" ng-controller="mainController">
-                <webcam channel="channel" on-streaming="onSuccess()" on-error="onError(err)" on-stream="onStream(stream)"></webcam>
-                <canvas id="snapshot" width="325" height="325" style="border:3px solid #000000;"></canvas>
-            </div>
-        </center>
+    <div style="display: inline-block; float: left;">
+        <a href="/Visitor/Edit/@Model.VisitorID" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+        <a href="@Url.Action("Preview", new { id = Model.VisitorID})" class="btn btn-info"><i class="glyphicon glyphicon-download"></i> Preview PDF</a>
+        <a href="@Url.Action("PrintId", new { id = Model.VisitorID})" class="btn btn-info"><i class="glyphicon glyphicon-download"></i> Print ID</a>
+        <a href="/Visitor/Index" class="btn btn-warning"><i class="glyphicon glyphicon-remove"></i>Close</a>
     </div>
-
 </div>

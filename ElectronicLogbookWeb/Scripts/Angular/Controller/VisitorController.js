@@ -16,9 +16,9 @@
 
         vm.List = List;
         vm.Create = Create;
-        vm.CreateModal = CreateModal;
+        vm.CreateVisitor = CreateVisitor;
         vm.Update = Update;
-        vm.UpdateModal = UpdateModal;
+        vm.UpdateVisitor = UpdateVisitor;
         vm.Delete = Delete;
         vm.Details = Details;
 
@@ -32,17 +32,20 @@
             });
         }
 
-        function CreateModal(visitor) {
+        function CreateVisitor(visitor, timeIn) {
             vm.Visitor = {
                 VisitorID: 0,
-                Date: '',
+                Date: visitor,
                 Name: '',
                 CompanyName: '',
                 Purpose: '',
                 PersonToVisit: '',
+                Designation: '',
+                KindOfId: '',
                 IdNumber: '',
-                TimeIn: '',
+                TimeIn: timeIn,
                 TimeOut: '',
+                Comment: '',
             };
         }
 
@@ -65,7 +68,7 @@
             });
         }
 
-        function UpdateModal(visitor) {
+        function UpdateVisitor(visitor) {
             vm.Visitor = angular.copy(visitor);
         }
 
@@ -81,5 +84,6 @@
         function Details(visitor) {
             $window.location = '/Visitor/Details/' + visitor.VisitorID
         }
+
     }
 })();

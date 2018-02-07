@@ -16,9 +16,9 @@
 
         vm.List = List;
         vm.Create = Create;
-        vm.CreateModal = CreateModal;
+        vm.CreateIntern = CreateIntern;
         vm.Update = Update;
-        vm.UpdateModal = UpdateModal;
+        vm.UpdateIntern = UpdateIntern;
         vm.Delete = Delete;
         vm.Details = Details;
 
@@ -32,16 +32,16 @@
             });
         }
 
-        function CreateModal(intern) {
+        function CreateIntern(intern, timeIn) {
             vm.Intern = {
                 InternID: 0,
-                Date: '',
+                Date: intern,
                 Name: '',
                 School: '',
                 Department: '',
                 Supervisor: '',
                 IdNumber: '',
-                TimeIn: '',
+                TimeIn: timeIn,
                 TimeOut: '',
             };
         }
@@ -65,7 +65,7 @@
             });
         }
 
-        function UpdateModal(intern) {
+        function UpdateIntern(intern) {
             vm.Intern = angular.copy(intern);
         }
 

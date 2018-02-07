@@ -22,6 +22,9 @@ namespace ElectronicLogbookContext
 
         public DbSet<EVisitor> Visitors { get; set; }
         public DbSet<EIntern> Interns { get; set; }
+        public DbSet<EVisitorHistory> VisitorHistory { get; set; }
+        public DbSet<EInternHistory> InternHistory { get; set; }
+        public DbSet<EApplicant> Applicants { get; set; }
 
     }
 }

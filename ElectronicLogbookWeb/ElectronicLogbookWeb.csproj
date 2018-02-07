@@ -13,13 +13,13 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AndersonCRMWeb</RootNamespace>
-    <AssemblyName>AndersonCRMWeb</AssemblyName>
+    <RootNamespace>ElectronicLogbookWeb</RootNamespace>
+    <AssemblyName>ElectronicLogbookWeb</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AccountsWebAuthentication">
+      <HintPath>..\..\DLL\AccountsWebAuthentication.dll</HintPath>
+    </Reference>
     <Reference Include="Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -58,6 +61,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.6.4\lib\net40\Rotativa.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
@@ -334,19 +341,27 @@
     <Content Include="Content\cosmo.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\aboutUs_logo.jpg" />
     <Content Include="Content\Images\log.png" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\logo2.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\Angular\app.module.js" />
     <Content Include="Scripts\Angular\app.module.min.js">
       <DependentUpon>app.module.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\Angular\Controller\ApplicantController.js" />
     <Content Include="Scripts\Angular\Controller\InternController.js" />
+    <Content Include="Scripts\Angular\Controller\InternHistoryController.js" />
     <Content Include="Scripts\Angular\Controller\VisitorController.js" />
-    <Content Include="Scripts\Angular\Controller\WebcamController.js" />
+    <Content Include="Scripts\Angular\Controller\VisitorHistoryController.js" />
+    <Content Include="Scripts\Angular\Service\ApplicantService.js" />
+    <Content Include="Scripts\Angular\Service\InternHistoryService.js" />
     <Content Include="Scripts\Angular\Service\InternService.js" />
+    <Content Include="Scripts\Angular\Service\VisitorHistoryService.js" />
     <Content Include="Scripts\Angular\Service\VisitorService.js" />
     <Content Include="bower_components\angular\.bower.json" />
     <Content Include="bower_components\angular\angular.min.js.gzip" />
@@ -549,6 +564,7 @@
     <Content Include="bower_components\tether\src\css\tether-theme-arrows.sass" />
     <Content Include="bower_components\tether\src\css\tether-theme-basic.sass" />
     <Content Include="bower_components\tether\src\css\tether.sass" />
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="bundleconfig.json" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -580,6 +596,7 @@
     <Content Include="Scripts\pickers\pickadate\picker.js" />
     <Content Include="Scripts\pickers\pickadate\picker.time.js" />
     <Content Include="Scripts\search.js" />
+    <Content Include="Scripts\webcam.js" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -589,9 +606,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\ApplicantController.cs" />
+    <Compile Include="Controllers\ApplicantHistoryController.cs" />
     <Compile Include="Controllers\InternController.cs" />
+    <Compile Include="Controllers\InternHistoryController.cs" />
     <Compile Include="Controllers\VisitorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\VisitorHistoryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -616,6 +637,18 @@
     <Content Include="Views\Intern\Edit.cshtml" />
     <Content Include="Views\Intern\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\VisitorHistory\Index.cshtml" />
+    <Content Include="Views\InternHistory\Index.cshtml" />
+    <Content Include="Views\Visitor\PreviewVisitor.cshtml" />
+    <Content Include="Views\Visitor\PreviewId.cshtml" />
+    <Content Include="Views\Intern\PreviewIntern.cshtml" />
+    <Content Include="Views\Applicant\Add.cshtml" />
+    <Content Include="Views\Applicant\Details.cshtml" />
+    <Content Include="Views\Applicant\Edit.cshtml" />
+    <Content Include="Views\Applicant\Index.cshtml" />
+    <Content Include="Views\Applicant\PreviewId.cshtml" />
+    <Content Include="Views\Applicant\PreviewApplicant.cshtml" />
+    <Content Include="Views\ApplicantHistory\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -3,12 +3,34 @@
     ViewBag.Title = "Index";
 }
 
+<style>
+    #myInput {
+        float: right;
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+        border-right: none;
+        box-shadow: none;
+        border-color: #cccccc;
+    }
 
-<h3>&nbsp;Visitors' Information</h3>
+    #searchLogo {
+        border-left: none;
+        pointer-events: none;
+    }
+
+    #historyButton {
+        float: left;
+      
+    }
+</style>
+
+<center><h3>&nbsp;Visitor Information</h3></center>
 <div ng-controller="VisitorController as model" ng-init="model.List()">
     <br />
+    <a id="addButton" href="/Visitor/Add" class="btn btn-primary" role="button" @*ng-click="model.Create()"*@ style="margin-left: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
+    <a id="historyButton" href="/VisitorHistory/Index" role="button" class="btn btn-danger"><i class="glyphicon glyphicon-list"></i> History</a>
+    <p class="navbar-text">Filter:</p>
     <div class="navbar-collapse collapse" id="navbar-filter">
-        <p class="navbar-text">Filter:</p>
         <ul class="nav navbar-nav">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-sort-time-asc position-left"></i> Show All<span class="caret"></span></a>
@@ -22,16 +44,16 @@
             </li>
         </ul>
 
-        <script src="~/Scripts/search.js"></script>
-        <div class="row">
-            <div class="wrap">
-                <div class="search">
-                    <a href="/Visitor/Add" class="btn btn-primary" role="button" @*ng-click="model.Create()"*@ style="margin-left: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
-                    <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here..." style="float: right;" />
+            <script src="~/Scripts/search.js"></script>
+            <div class="row">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here..." />
+                    <div class="input-group-btn">
+                        <button id="searchLogo" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div> 
 
     <table class="table table-hover table-sm table-bordered " id="tableid">
         <thead>
@@ -42,6 +64,8 @@
                 <th>Company Name</th>
                 <th>Purpose of Visit</th>
                 <th>Person To Visit</th>
+                <th>Designation</th>
+                <th>Type of ID</th>
                 <th>ID Number</th>
                 <th>Time In</th>
                 <th>Time Out</th>
@@ -50,23 +74,26 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="alert" ng-repeat="Visitor in model.Visitors" ng-click="model.Details(Visitor)" style="cursor:pointer" filter="">
+            <tr class="alert" ng-repeat="Visitor in model.Visitors | orderBy: '-VisitorID'" ng-click="model.Details(Visitor)" style="cursor:pointer" filter="">
 
                 <td><span ng-bind="Visitor.Date"></span></td>
                 <td><span ng-bind="Visitor.Name"></span></td>
                 <td><span ng-bind="Visitor.CompanyName"></span></td>
                 <td><span ng-bind="Visitor.Purpose"></span></td>
                 <td><span ng-bind="Visitor.PersonToVisit"></span></td>
+                <td><span ng-bind="Visitor.Designation"></span></td>
+                <td><span ng-bind="Visitor.KindOfId"></span></td>
                 <td><span ng-bind="Visitor.IdNumber"></span></td>
                 <td><span ng-bind="Visitor.TimeIn"></span></td>
                 <td><span ng-bind="Visitor.TimeOut"></span></td>
 
                 <td>
-                    <a href="/Visitor/Index" ng-click="model.Delete(Visitor)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash"></i> Delete</a>
+                    <a href="/Visitor/Index" ng-click="model.Delete(Visitor)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash" ></i> Delete</a>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
+
 
 

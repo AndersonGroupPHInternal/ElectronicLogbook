@@ -7,8 +7,8 @@
     <ProjectGuid>{F88F9DAD-FA80-4F31-9E47-47E22BD1BA53}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AndersonCRMEntity</RootNamespace>
-    <AssemblyName>AndersonCRMEntity</AssemblyName>
+    <RootNamespace>ElectronicLogbookEntity</RootNamespace>
+    <AssemblyName>ElectronicLogbookEntity</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,8 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EApplicant.cs" />
     <Compile Include="EIntern.cs" />
+    <Compile Include="EInternHistory.cs" />
     <Compile Include="EVisitor.cs" />
+    <Compile Include="EVisitorHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

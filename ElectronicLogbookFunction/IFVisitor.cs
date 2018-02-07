@@ -21,5 +21,9 @@ namespace ElectronicLogbookFunction
         #region DELETE
         void Delete(Visitor visitor);
         #endregion
+
+        #region CREATEFOLDER
+        void CreateFolder();
+        #endregion
     }
 }

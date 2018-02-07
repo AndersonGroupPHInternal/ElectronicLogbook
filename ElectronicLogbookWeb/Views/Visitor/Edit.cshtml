@@ -12,44 +12,44 @@
             <form method="post" action="~/Visitor/Edit">
                 <br />
                 <label for="Date">Date:</label>
-                <input type="date" class="form-control" ng-click="@InputType.Password" name="Visitor.Date" value="@Model.Date" />
+                <input type="text" class="form-control" name="Visitor.Date" value="@Model.Date" disabled />
                 <label for="Name">Name:</label>
-                <input type="text" class="form-control" name="Visitor.Name" value="@Model.Name" />
+                <input type="text" class="form-control" name="Name" value="@Model.Name" disabled />
                 <label for="CompanyName">Company Name:</label>
-                <input type="text" class="form-control" name="Visitor.CompanyName" value="@Model.CompanyName" />
+                <input type="text" class="form-control" name="Visitor.CompanyName" value="@Model.CompanyName" disabled />
                 <label for="Purpose">Purpose:</label>
-                <input type="text" class="form-control" name="Visitor.Purpose" value="@Model.Purpose" />
+                <input type="text" class="form-control" name="Visitor.Purpose" value="@Model.Purpose" disabled />
                 <label for="PersonToVisit">Person to Visit:</label>
-                <input type="text" class="form-control" name="Visitor.PersonToVisit" value="@Model.PersonToVisit" />
+                <input type="text" class="form-control" name="Visitor.PersonToVisit" value="@Model.PersonToVisit" disabled/>
+                <label for="Designation">Designation:</label>
+                <input type="text" class="form-control" name="Visitor.PersonToVisit" value="@Model.Designation" disabled />
+                <label for="KindOfId">Type of ID:</label>
+                <input type="text" class="form-control" name="Visitor.KindOfId" value="@Model.KindOfId" disabled />
                 <label for="IdNumber">ID Number:</label>
-                <input type="text" class="form-control" name="Visitor.IdNumber" value="@Model.IdNumber" />
+                <input type="text" class="form-control" name="Visitor.IdNumber" value="@Model.IdNumber" disabled/>
                 <label for="TimeIn">Time In:</label>
-                <input type="time" class="form-control" name="Visitor.TimeIn" value="@Model.TimeIn" />
+                <input type="text" class="form-control" name="Visitor.TimeIn" value="@Model.TimeIn" disabled/>
                 <label for="TimeOut">Time Out:</label>
-                <input type="time" class="form-control" name="Visitor.TimeOut" value="@Model.TimeOut" />
+                <input type="text" class="form-control" name="Visitor.TimeOut" value="@Model.TimeOut" />
+                <label for="Comment">Comment:</label>
+                <textarea class="form-control" name="Visitor.Comment" >@Model.Comment</textarea>
 
+                @*DO NOT DELETE THIS (this stores the data in database after editing. so the data would not be null)*@
                 <input type="hidden" name="Visitor.VisitorID" value="@Model.VisitorID" />
+                <input type="hidden" name="Visitor.Date" value="@Model.Date" />
+                <input type="hidden" name="Visitor.Name" value="@Model.Name" />
+                <input type="hidden" name="Visitor.CompanyName" value="@Model.CompanyName" />
+                <input type="hidden" name="Visitor.Purpose" value="@Model.Purpose" />
+                <input type="hidden" name="Visitor.PersonToVisit" value="@Model.PersonToVisit" />
+                <input type="hidden" name="Visitor.Designation" value="@Model.Designation" />
+                <input type="hidden" name="Visitor.KindOfId" value="@Model.KindOfId" />
+                <input type="hidden" name="Visitor.IdNumber" value="@Model.IdNumber" />
+                <input type="hidden" name="Visitor.TimeIn" value="@Model.TimeIn" />
                 <br />
                 <input type="Submit" value="Save" class="btn btn-primary" style="" /> &nbsp;&nbsp;
-
                 <a href="/Visitor/Index" class="btn btn-danger"><i class="glyphicon glyphicon-close "></i>Close</a>
             </form>
 
-        </div>
-        <div style="width: 75%; display: inline-block;">
-            <center>
-                <div ng-app="myapp" ng-controller="mainController">
-                    <div class="alert alert-error ng-scope" ng-show="webcamError" style="">
-                        <span>Webcam could not be started. Did you give access to it?</span>
-                    </div>
-                    <webcam channel="channel" on-streaming="onSuccess()" on-error="onError(err)" on-stream="onStream(stream)"></webcam>
-                    <canvas id="snapshot" width="325" height="325" style="border:3px solid #000000;"></canvas>
-                    <center>
-                        <button class="btn btn-primary" ng-click="makeSnapshot()"><i class="glyphicon glyphicon-camera"></i> Capture </button>
-                        <button class="btn btn-success" ng-click="Save()"><i class="glyphicon glyphicon-save"></i> Save Picture </button>
-                    </center>
-                </div>
-            </center>
         </div>
     </div>
 

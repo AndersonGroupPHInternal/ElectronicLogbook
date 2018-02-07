@@ -3,12 +3,33 @@
     ViewBag.Title = "Index";
 }
 
+<style>
+    #myInput {
+        float: right;
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+        border-right: none;
+        box-shadow: none;
+        border-color: #cccccc;
+    }
 
-<h3>&nbsp;Interns' Information</h3>
+    #searchLogo {
+        border-left: none;
+        pointer-events: none;
+    }
+
+    #historyButton {
+        float: left;
+    }
+</style>
+
+<center><h3>&nbsp;Intern Information</h3></center>
 <div ng-controller="InternController as model" ng-init="model.List()">
     <br />
+    <a id="addButton" href="/Intern/Add" class="btn btn-primary" role="button" @*ng-click="model.Create()"*@ style="margin-left: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
+    <a id="historyButton" href="/InternHistory/Index" role="button" class="btn btn-danger"><i class="glyphicon glyphicon-list"></i> History</a>
+    <p class="navbar-text">Filter:</p>
     <div class="navbar-collapse collapse" id="navbar-filter">
-        <p class="navbar-text">Filter:</p>
         <ul class="nav navbar-nav">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-sort-time-asc position-left"></i> Show All<span class="caret"></span></a>
@@ -24,10 +45,10 @@
 
         <script src="~/Scripts/search.js"></script>
         <div class="row">
-            <div class="wrap">
-                <div class="search">
-                    <a href="/Intern/Add" class="btn btn-primary" role="button" @*ng-click="model.Create()"*@ style="margin-left: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
-                    <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here..." style="float: right;" />
+            <div class="input-group">
+                <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here..." />
+                <div class="input-group-btn">
+                    <button id="searchLogo" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
             </div>
         </div>
@@ -51,7 +72,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="alert" ng-repeat="Intern in model.Interns" ng-click="model.Details(Intern)" style="cursor:pointer" filter="">
+            <tr class="alert" ng-repeat="Intern in model.Interns | orderBy: '-Name'" ng-click="model.Details(Intern)" style="cursor:pointer" filter="">
                 <td><span ng-bind="Intern.Date"></span></td>
                 <td><span ng-bind="Intern.Name"></span></td>
                 <td><span ng-bind="Intern.School"></span></td>
