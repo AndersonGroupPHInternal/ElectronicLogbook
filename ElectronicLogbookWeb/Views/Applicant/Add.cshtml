@@ -9,7 +9,6 @@
 <div id="Add" ng-controller="ApplicantController as model" ng-init="model.List()">
     <div style="width: 100%">
         <div style="width: 25%; float: left; display: inline-block;" ng-init="model.CreateApplicant('@Model.Date','@Model.TimeIn', '@Model.TimeOut')">
-
             <br />
             <label for="Date">Date:</label>
             <input type="text" class="form-control" id="Date" ng-model="model.Applicant.Date" />
@@ -17,8 +16,6 @@
             <input type="text" class="form-control" id="Name" ng-model="model.Applicant.Name" />
             <label for="ApplyingFor">Applying For:</label>
             <input type="text" class="form-control" id="ApplyingFor" ng-model="model.Applicant.ApplyingFor" />
-            @*<label for="PersonToVisit">Person To Visit:</label>
-            <input type="text" class="form-control" id="PersonToVisit" ng-model="model.Applicant.PersonToVisit" />*@
             <label for="Designation">Designation:</label>
             <select class="form-control" id="Designation" ng-model="model.Applicant.Designation">
                 <option disabled selected value="">-- select designation --</option>
@@ -48,11 +45,6 @@
             <input type="text" class="form-control" id="TimeIn" ng-model="model.Applicant.TimeIn" />
             <label for="Comment">Comment:</label>
             <textarea rows="4" cols="50" class="form-control" id="Comment" ng-model="model.Applicant.Comment" placeholder="Enter comment..."></textarea>
-            @*<script src="~/Scripts/pickers/currenttime.js"></script>*@
-            @*<input type="time" value="now" class="form-control" id="TimeIn" ng-model="model.Applicant.TimeIn" />*@
-
-            @*<label for="TimeOut">Time Out:</label>*@
-            @*<input type="hidden" class="form-control" id="TimeOut" ng-model="model.Applicant.TimeOut" />*@
             <br />
             <a href="/Applicant/Index" class="btn btn-success" role="button" ng-click="model.Create(applicant) " style="margin-right:5px;float: left"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
             <a href="/Applicant/Index" class="btn btn-warning" role="button" style="margin-right: 10px; float:left"><i class="glyphicon glyphicon-remove"></i> Cancel</a>

@@ -20,7 +20,6 @@ namespace ElectronicLogbookWeb.Controllers
             _iFIntern = new FIntern();
             _iFIntern.CreateFolder();
         }
-
         [Route("")]
         [HttpGet]
         public ActionResult Index()
@@ -28,18 +27,14 @@ namespace ElectronicLogbookWeb.Controllers
             _iFIntern.CreateFolder();
             return View();
         }
-
         [HttpGet]
-        //[CustomAuthorize(AllowedRoles = new string[] { "Receptionist" })]
         public ActionResult Edit(int id)
         {
             var intern = _iFIntern.Read(id);
             intern.TimeOut = DateTime.Now.ToShortTimeString();
             return View(intern);
         }
-
         [HttpGet]
-       // [CustomAuthorize(AllowedRoles = new string[] { "Receptionist" })]
         public ActionResult Add()
         {
             Intern intern = new Intern();
@@ -48,18 +43,9 @@ namespace ElectronicLogbookWeb.Controllers
             intern.TimeOut = DateTime.Now.ToShortTimeString();
             return View(intern);
         }
-
-        //[HttpGet]
-        //public ActionResult Create()
-        //{
-
-        //    return View(new Intern());
-        //}
-
         [HttpPost]
         public JsonResult Create(Intern intern)
         {
-
             try
             {
                 intern = _iFIntern.Create(intern);
@@ -70,14 +56,12 @@ namespace ElectronicLogbookWeb.Controllers
                 return Json(ex);
             }
         }
-
         [HttpGet]
         public ActionResult Details(int id)
         {
             var intern = _iFIntern.Read(id);
             return View(intern);
         }
-
         [HttpPost]
         public ActionResult Details(Intern intern)
         {
@@ -91,7 +75,6 @@ namespace ElectronicLogbookWeb.Controllers
                 return View();
             }
         }
-
         #region Preview PDF
         [HttpGet]
         public ActionResult PreviewIntern(int id)
@@ -112,7 +95,6 @@ namespace ElectronicLogbookWeb.Controllers
             };
         }
         #endregion
-
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -128,7 +110,6 @@ namespace ElectronicLogbookWeb.Controllers
                 }
             );
         }
-
         [HttpPost]
         public ActionResult Edit(Intern intern)
         {
@@ -142,7 +123,6 @@ namespace ElectronicLogbookWeb.Controllers
                 return View();
             }
         }
-
         [Route("List")]
         [HttpPost]
         public ActionResult List()
@@ -157,7 +137,6 @@ namespace ElectronicLogbookWeb.Controllers
                 return Json(exception);
             }
         }
-
         [HttpGet]
         public ActionResult Update(int id)
         {
@@ -171,7 +150,6 @@ namespace ElectronicLogbookWeb.Controllers
                 return View(new Intern());
             }
         }
-
         [HttpPost]
         public ActionResult Update(Intern intern)
         {
@@ -185,7 +163,6 @@ namespace ElectronicLogbookWeb.Controllers
                 return View(ex);
             }
         }
-
         [HttpPost]
         public ActionResult Delete(Intern intern)
         {

@@ -16,7 +16,6 @@ namespace ElectronicLogbookFunction
         {
             _iDVisitorHistory = new DVisitorHistory();
         }
-
         #region CREATE
         public VisitorHistory Create(VisitorHistory visitorHistory)
         {
@@ -25,21 +24,18 @@ namespace ElectronicLogbookFunction
             return (VisitorHistory(eVisitorHistory));
         }
         #endregion
-
         #region READ
         public VisitorHistory Read(int visitorHistoryId)
         {
             EVisitorHistory eVisitorHistory = _iDVisitorHistory.Read<EVisitorHistory>(a => a.VisitorHistoryID == visitorHistoryId);
             return VisitorHistory(eVisitorHistory);
         }
-
         public List<VisitorHistory> List()
         {
             List<EVisitorHistory> eVisitorHistories = _iDVisitorHistory.List<EVisitorHistory>(a => true);
             return VisitorHistories(eVisitorHistories);
         }
         #endregion
-
         #region UPDATE
         public VisitorHistory Update(VisitorHistory visitorHistory)
         {
@@ -47,14 +43,12 @@ namespace ElectronicLogbookFunction
             return (VisitorHistory(eVisitorHistory));
         }
         #endregion
-
         #region DELETE
         public void Delete(VisitorHistory visitorHistory)
         {
             _iDVisitorHistory.Delete(EVisitorHistory(visitorHistory));
         }
         #endregion
-
         #region OTHER FUNCTION
         private List<VisitorHistory> VisitorHistories(List<EVisitorHistory> eVisitorHistories)
         {
@@ -69,10 +63,8 @@ namespace ElectronicLogbookFunction
                 CreatedBy = a.CreatedBy,
                 UpdatedBy = a.UpdatedBy
             });
-
             return returnVisitorHistories.ToList();
         }
-
         private EVisitorHistory EVisitorHistory(VisitorHistory visitorHistory)
         {
             EVisitorHistory returnEVisitorHistory = new EVisitorHistory
@@ -88,7 +80,6 @@ namespace ElectronicLogbookFunction
             };
             return returnEVisitorHistory;
         }
-
         private VisitorHistory VisitorHistory(EVisitorHistory eVisitorHistory)
         {
             VisitorHistory returnVisitorHistory = new VisitorHistory

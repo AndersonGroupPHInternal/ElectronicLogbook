@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ElectronicLogbookModel</RootNamespace>
     <AssemblyName>ElectronicLogbookModel</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -31,9 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Base">
-      <HintPath>..\..\..\..\Desktop\sourceCode\DLL\Base.dll</HintPath>
-    </Reference>
+    <Reference Include="BaseModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework">
       <HintPath>..\..\..\sourceCode\DLL\EntityFramework.dll</HintPath>
     </Reference>
@@ -41,6 +39,7 @@
       <HintPath>..\..\..\sourceCode\DLL\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -51,8 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Applicant.cs" />
+    <Compile Include="EmployeeLog.cs" />
     <Compile Include="Intern.cs" />
     <Compile Include="InternHistory.cs" />
+    <Compile Include="LogType.cs" />
     <Compile Include="Visitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VisitorHistory.cs" />

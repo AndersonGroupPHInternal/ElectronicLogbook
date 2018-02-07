@@ -24,7 +24,7 @@
     }
 </style>
 
-<center><h3>&nbsp;Visitor Information</h3></center>
+<center><h3>&nbsp;Visitor/Applicant Information</h3></center>
 <div ng-controller="VisitorController as model" ng-init="model.List()">
     <br />
     <a id="addButton" href="/Visitor/Add" class="btn btn-primary" role="button" @*ng-click="model.Create()"*@ style="margin-left: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
@@ -54,7 +54,6 @@
                 </div>
             </div>
         </div> 
-
     <table class="table table-hover table-sm table-bordered " id="tableid">
         <thead>
             <tr class="active">
@@ -70,12 +69,10 @@
                 <th>Time In</th>
                 <th>Time Out</th>
                 <th style="width:100px"></th>
-
             </tr>
         </thead>
         <tbody>
             <tr class="alert" ng-repeat="Visitor in model.Visitors | orderBy: '-VisitorID'" ng-click="model.Details(Visitor)" style="cursor:pointer" filter="">
-
                 <td><span ng-bind="Visitor.Date"></span></td>
                 <td><span ng-bind="Visitor.Name"></span></td>
                 <td><span ng-bind="Visitor.CompanyName"></span></td>
@@ -86,7 +83,6 @@
                 <td><span ng-bind="Visitor.IdNumber"></span></td>
                 <td><span ng-bind="Visitor.TimeIn"></span></td>
                 <td><span ng-bind="Visitor.TimeOut"></span></td>
-
                 <td>
                     <a href="/Visitor/Index" ng-click="model.Delete(Visitor)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash" ></i> Delete</a>
                 </td>

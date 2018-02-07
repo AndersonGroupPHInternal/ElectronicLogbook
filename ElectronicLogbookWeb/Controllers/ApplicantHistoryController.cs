@@ -8,7 +8,6 @@ namespace ElectronicLogbookWeb.Controllers
 {
     public class ApplicantHistoryController : Controller
     {
-        // GET: ApplicantHistory
         public ActionResult Index()
         {
             return View();

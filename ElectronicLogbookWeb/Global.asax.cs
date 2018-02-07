@@ -1,4 +1,5 @@
-﻿using ElectronicLogbookWeb;
+﻿using BaseWeb.Helper;
+using ElectronicLogbookWeb;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace ElectronicLogbook
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            GlobalFilters.Filters.Add(new JsonHandlerAttribute());
         }
     }
 }

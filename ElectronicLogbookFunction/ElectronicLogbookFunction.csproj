@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ElectronicLogbookFunction</RootNamespace>
     <AssemblyName>ElectronicLogbookFunction</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -31,15 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Base">
-      <HintPath>..\..\..\..\Desktop\sourceCode\DLL\Base.dll</HintPath>
-    </Reference>
     <Reference Include="BaseData">
       <HintPath>..\..\..\..\Desktop\sourceCode\DLL\BaseData.dll</HintPath>
     </Reference>
     <Reference Include="BaseEntity">
       <HintPath>..\..\..\sourceCode\DLL\BaseEntity.dll</HintPath>
     </Reference>
+    <Reference Include="BaseModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,10 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FApplicant.cs" />
+    <Compile Include="FEmployeeLog.cs" />
     <Compile Include="FIntern.cs" />
     <Compile Include="FInternHistory.cs" />
     <Compile Include="FVisitorHistory.cs" />
     <Compile Include="IFApplicant.cs" />
+    <Compile Include="IFEmployeeLog.cs" />
     <Compile Include="IFIntern.cs" />
     <Compile Include="IFInternHistory.cs" />
     <Compile Include="IFVisitor.cs" />

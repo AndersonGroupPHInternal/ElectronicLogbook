@@ -16,43 +16,26 @@ namespace ElectronicLogbookFunction
         {
             _iDIntern = new DIntern();
         }
-
         #region CREATE
         public Intern Create(Intern intern)
         {
             EIntern eIntern = EIntern(intern);
             eIntern = _iDIntern.Create(eIntern);
-
-            //EInternHistory eInternHistory = new EInternHistory
-            //{
-            //    InternID = eIntern.InternID,
-            //    Date = eIntern.Date,
-            //    Name = eIntern.Name,
-            //    School = eIntern.School,
-            //    Department = eIntern.Department,
-            //    IdNumber = eIntern.IdNumber,
-            //    TimeIn = eIntern.TimeIn,
-            //    TimeOut = eIntern.TimeOut
-            //};
-            //_iDIntern.Create(eInternHistory);
             return (Intern(eIntern));
         }
         #endregion
-
         #region READ
         public Intern Read(int internId)
         {
             EIntern eIntern = _iDIntern.Read<EIntern>(a => a.InternID == internId);
             return Intern(eIntern);
         }
-
         public List<Intern> List()
         {
             List<EIntern> eInterns = _iDIntern.List<EIntern>(a => true);
             return Interns(eInterns);
         }
         #endregion
-
         #region UPDATE
         public Intern Update(Intern intern)
         {
@@ -76,14 +59,12 @@ namespace ElectronicLogbookFunction
             return (Intern(eIntern));
         }
         #endregion
-
         #region DELETE
         public void Delete(Intern intern)
         {
             _iDIntern.Delete(EIntern(intern));
         }
         #endregion
-
         #region OTHER FUNCTION
         private List<Intern> Interns(List<EIntern> eInterns)
         {
@@ -101,10 +82,8 @@ namespace ElectronicLogbookFunction
                 CreatedBy = a.CreatedBy,
                 UpdatedBy = a.UpdatedBy
             });
-
             return returnInterns.ToList();
         }
-
         private EIntern EIntern(Intern intern)
         {
             EIntern returnEIntern = new EIntern
@@ -123,7 +102,6 @@ namespace ElectronicLogbookFunction
             };
             return returnEIntern;
         }
-
         private Intern Intern(EIntern eIntern)
         {
             Intern returnIntern = new Intern
@@ -142,7 +120,6 @@ namespace ElectronicLogbookFunction
             };
             return returnIntern;
         }
-
         public void CreateFolder()
         {
             var date = DateTime.Now.ToString("MMMM dd, yyyy");

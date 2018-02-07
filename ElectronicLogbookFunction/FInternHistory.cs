@@ -15,7 +15,6 @@ namespace ElectronicLogbookFunction
         {
             _iDInternHistory = new DInternHistory();
         }
-
         #region CREATE
         public InternHistory Create(InternHistory internHistory)
         {
@@ -24,21 +23,18 @@ namespace ElectronicLogbookFunction
             return (InternHistory(eInternHistory));
         }
         #endregion
-
         #region READ
         public InternHistory Read(int internHistoryId)
         {
             EInternHistory eInternHistory = _iDInternHistory.Read<EInternHistory>(a => a.InternHistoryID == internHistoryId);
             return InternHistory(eInternHistory);
         }
-
         public List<InternHistory> List()
         {
             List<EInternHistory> eInternHistories = _iDInternHistory.List<EInternHistory>(a => true);
             return InternHistories(eInternHistories);
         }
         #endregion
-
         #region UPDATE
         public InternHistory Update(InternHistory internHistory)
         {
@@ -46,14 +42,12 @@ namespace ElectronicLogbookFunction
             return (InternHistory(eInternHistory));
         }
         #endregion
-
         #region DELETE
         public void Delete(InternHistory internHistory)
         {
             _iDInternHistory.Delete(EInternHistory(internHistory));
         }
         #endregion
-
         #region OTHER FUNCTION
         private List<InternHistory> InternHistories(List<EInternHistory> eInternHistories)
         {
@@ -70,10 +64,8 @@ namespace ElectronicLogbookFunction
                 CreatedBy = a.CreatedBy,
                 UpdatedBy = a.UpdatedBy
             });
-
             return returnInternHistories.ToList();
         }
-
         private EInternHistory EInternHistory(InternHistory internHistory)
         {
             EInternHistory returnEInternHistory = new EInternHistory
@@ -91,7 +83,6 @@ namespace ElectronicLogbookFunction
             };
             return returnEInternHistory;
         }
-
         private InternHistory InternHistory(EInternHistory eInternHistory)
         {
             InternHistory returnInternHistory = new InternHistory

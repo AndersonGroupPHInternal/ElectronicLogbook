@@ -5,10 +5,8 @@
 
 <h3>Edit</h3>
 <div ng-controller="ApplicantController as model" ng-init="model.List()">
-
     <div style="width: 100%">
         <div style="width: 25%; float: left; display: inline-block;">
-
             <form method="post" action="~/Applicant/Edit">
                 <br />
                 <label for="Date">Date:</label>
@@ -17,8 +15,6 @@
                 <input type="text" class="form-control" name="Applicant.Name" value="@Model.Name" disabled />
                 <label for="ApplyingFor">Applying For:</label>
                 <input type="text" class="form-control" name="Applicant.ApplyingFor" value="@Model.ApplyingFor" disabled />
-                @*<label for="PersonToVisit">Person to Visit:</label>
-                <input type="text" class="form-control" name="Applicant.PersonToVisit" value="@Model.PersonToVisit" disabled />*@
                 <label for="Designation">Designation:</label>
                 <input type="text" class="form-control" name="Applicant.PersonToVisit" value="@Model.Designation" disabled />
                 <label for="TypeOfId">Type of ID:</label>
@@ -32,19 +28,16 @@
                 <label for="Comment">Comment:</label>
                 <textarea class="form-control" name="Applicant.Comment">@Model.Comment</textarea>
 
-                @*DO NOT DELETE THIS (this stores the data in database after editing. so the data would not be null)*@
                 <input type="hidden" name="Applicant.ApplicantID" value="@Model.ApplicantID" />
                 <input type="hidden" name="Applicant.Date" value="@Model.Date" />
                 <input type="hidden" name="Applicant.Name" value="@Model.Name" />
                 <input type="hidden" name="Applicant.ApplyingFor" value="@Model.ApplyingFor" />
-                @*<input type="hidden" name="Applicant.PersonToVisit" value="@Model.PersonToVisit" />*@
                 <input type="hidden" name="Applicant.Designation" value="@Model.Designation" />
                 <input type="hidden" name="Applicant.TypeOfId" value="@Model.TypeOfId" />
                 <input type="hidden" name="Applicant.IdNumber" value="@Model.IdNumber" />
                 <input type="hidden" name="Applicant.TimeIn" value="@Model.TimeIn" />
                 <br />
                 <input type="Submit" value="Save" class="btn btn-primary" style="" /> &nbsp;&nbsp;
-
                 <a href="/Applicant/Index" class="btn btn-danger"><i class="glyphicon glyphicon-close "></i>Close</a>
             </form>
 
