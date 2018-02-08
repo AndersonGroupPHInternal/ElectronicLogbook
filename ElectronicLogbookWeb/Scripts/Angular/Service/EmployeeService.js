@@ -2,55 +2,30 @@
     'use strict';
 
     angular
-    .module('App')
-    .factory('EmployeeService', EmployeeService);
+        .module('App')
+        .factory('EmployeeService', EmployeeService);
 
     EmployeeService.$inject = ['$http'];
 
     function EmployeeService($http) {
         return {
-            Create: Create,
-            List: List,
-            Update: Update,
-            Delete: Delete
+            Read: Read,
+            ReadSelectedEmployee: ReadSelectedEmployee,
         }
 
-        function Create(employee) {
+        function Read() {
             return $http({
                 method: 'POST',
-                url: '../Employee/Create',
-                data: {
-                    employee: employee
-                }
-            });
-        }
-
-        function List() {
-            return $http({
-                method: 'POST',
-                url: '../Employee/List',
+                url: '../Employee/Read',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }
-
-        function Update(employee) {
+        function ReadSelectedEmployee(employeeId) {
             return $http({
                 method: 'POST',
-                url: '../Employee/Update',
-                data: {
-                    employee: employee
-                }
+                url: '/Department/ReadSelectedEmployee/' + employeeId,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }
-        function Delete(employee) {
-            return $http({
-                method: 'POST',
-                url: '../Employee/Delete',
-                data: {
-                    employee: employee
-                },
-            })
-        }
-
     }
 })();

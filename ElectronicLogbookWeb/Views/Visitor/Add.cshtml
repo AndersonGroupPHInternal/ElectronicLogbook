@@ -5,8 +5,8 @@
 
 <h3>Visitor Log sheet</h3>
 
-<body>
-<div id="Add" ng-controller="VisitorController as model" ng-init="model.List()">
+
+<div id="Add" ng-controller="VisitorController as model" ng-init="model.TryF()">
     <div style="width: 100%">
         <div style="width: 25%; float: left; display: inline-block;" ng-init="model.CreateVisitor('@Model.Date','@Model.TimeIn', '@Model.TimeOut')">
             <br />
@@ -21,8 +21,18 @@
                 <option value="Applicant"><span>Applicant</span></option>
                 <option value="Visitor"><span>Visitor</span></option>
             </select>
-            <label for="PersonToVisit">Person To Visit:</label>
-            <input type="text" class="form-control" id="PersonToVisit" ng-model="model.Visitor.PersonToVisit" />
+            <div class="form-group" ng-controller="EmployeeController as employeeModel" ng-init="employeeModel.Initialise()">
+                <label>Person to Visit</label>
+                <ui-select ng-model="model.Visitor.PersonToVisita">
+                    <ui-select-match placeholder="Select EmployeeID...">
+                        <span ng-bind="$select.selected.FullName"></span>                        
+                    </ui-select-match>
+                    <ui-select-choices repeat="employee in (employeeModel.Employees | filter: $select.search) track by $index">
+                        <span ng-bind="employee.FullName"></span>
+                    </ui-select-choices>
+                    </ui-select>
+
+            </div>          
             <label for="Designation">Designation:</label>
             <select class="form-control" id="Designation" ng-model="model.Visitor.Designation">
                 <option disabled selected value="">-- select designation --</option>
