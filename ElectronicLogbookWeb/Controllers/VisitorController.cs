@@ -8,6 +8,7 @@ using System.Net;
 using System.Data.Entity;
 using Rotativa;
 using System.Web;
+using System.IO;
 
 namespace ElectronicLogbookWeb.Controllers
 {
@@ -98,11 +99,12 @@ namespace ElectronicLogbookWeb.Controllers
 
             if (photo != null && photo.ContentLength > 0)
             {
-                var fileName = System.IO.Path.GetFileName(photo.FileName);
-                photo.SaveAs(System.IO.Path.Combine(directory, fileName));
+                var fileName = Path.GetFileName(photo.FileName);
+                photo.SaveAs(Path.Combine(directory, fileName));
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Add");
+
         }
         #region Preview PDF
         [HttpGet]
