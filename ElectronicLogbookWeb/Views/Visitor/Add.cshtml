@@ -5,7 +5,7 @@
 
 <h3>Visitor Log sheet</h3>
 
-
+<body>
 <div id="Add" ng-controller="VisitorController as model" ng-init="model.TryF()">
     <div style="width: 100%">
         <div style="width: 25%; float: left; display: inline-block;" ng-init="model.CreateVisitor('@Model.Date','@Model.TimeIn', '@Model.TimeOut')">
@@ -76,7 +76,7 @@
             <div>
                 <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    <a href="#" id="capture" onclick="download1()"><button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-camera"> </i> Capture</button></a>
+                    <a href="#" id="capture"><button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-camera"> </i> Capture</button></a>
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -85,7 +85,6 @@
                     <input type="file" name="photo" accept="image/*"/>
                     <a href="#" name="photo" download="Visitor" id="save"><button class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Save Picture </button></a>
                 </form>
-                
                 <script src="~/Scripts/webcam.js"></script>
 </div>
          </div>

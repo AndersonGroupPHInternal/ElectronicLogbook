@@ -24,10 +24,9 @@
         context.drawImage(video, 0, 0, 380, 325);
     });
 
-    function download1(){
+    function downloads(){
         var image = canvas.toDataURL();
         this.href = image;
-        console.log(image);
 
     }
     document.getElementById('save').addEventListener('click', downloads, true);

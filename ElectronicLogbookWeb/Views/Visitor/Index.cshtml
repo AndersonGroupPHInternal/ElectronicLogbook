@@ -20,7 +20,50 @@
 
     #historyButton {
         float: left;
-      
+    }
+
+    table {
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        cursor: pointer;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 16px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2
+    }
+
+    .tablesorter-header div.arrows i {
+        position: absolute;
+        right: 0;
+        display: block;
+        width: 15px;
+        height: 15px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-color: transparent;
+    }
+
+    .triangle_up1 {
+        position: relative;
+        top: -5px;
+        content: "";
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-right: 0.2em solid black;
+        border-top: 0.2em solid black;
+        transform: rotate(-45deg);
+        margin-right: 0.5em;
+        margin-left: 1.0em;
     }
 </style>
 
@@ -29,11 +72,16 @@
     <br />
     <a id="addButton" href="/Visitor/Add" class="btn btn-primary" role="button" @*ng-click="model.Create()"*@ style="margin-left: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
     <a id="historyButton" href="/VisitorHistory/Index" role="button" class="btn btn-danger"><i class="glyphicon glyphicon-list"></i> History</a>
-    <p class="navbar-text">Filter:</p>
+    @*<p class="navbar-text">Filter:</p>*@
+
+    @*<p><button onclick="sortTable()">SortName</button></p>
+        <p><button onclick="sortByDate()">SortDate</button></p>
+        <p><button onclick="sortTable2()">Sort</button></p>*@
+
     <div class="navbar-collapse collapse" id="navbar-filter">
         <ul class="nav navbar-nav">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-sort-time-asc position-left"></i> Show All<span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-sort-time-asc position-left"></i>Filter<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortDate })">Date</a></li>
                     <li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortName })">Name</a></li>
@@ -44,52 +92,411 @@
             </li>
         </ul>
 
-            <script src="~/Scripts/search.js"></script>
-            <div class="row">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here..." />
-                    <div class="input-group-btn">
-                            <button id="searchLogo" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
+        <script src="~/Scripts/search.js"></script>
+        <div class="row">
+            <div class="input-group">
+                <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here..." />
+                <div class="input-group-btn">
+                    <button id="searchLogo" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
             </div>
-        </div> 
-    <table class="table table-hover table-sm table-bordered " id="tableid">
-        <thead>
-            <tr class="active">
+        </div>
+    </div>
+    @*<table id="tableid" class="table table-hover table-sm table-bordered " >
 
-                <th>Date</th>
-                <th>Name</th>
-                <th>Company Name</th>
-                <th>Purpose of Visit</th>
-                <th>Person To Visit</th>
-                <th>Designation</th>
-                <th>Type of ID</th>
-                <th>ID Number</th>
-                <th>Time In</th>
-                <th>Time Out</th>
-                <th style="width:100px"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="alert" ng-repeat="Visitor in model.Visitors | orderBy: '-VisitorID'" ng-click="model.Details(Visitor)" style="cursor:pointer" filter="">
-                <td><span ng-bind="Visitor.Date"></span></td>
-                <td><span ng-bind="Visitor.Name"></span></td>
-                <td><span ng-bind="Visitor.CompanyName"></span></td>
-                <td><span ng-bind="Visitor.Purpose"></span></td>
-                <td><span ng-bind="Visitor.ToVisit.FullName"></span></td>
-                <td><span ng-bind="Visitor.Designation"></span></td>
-                <td><span ng-bind="Visitor.KindOfId"></span></td>
-                <td><span ng-bind="Visitor.IdNumber"></span></td>
-                <td><span ng-bind="Visitor.TimeIn"></span></td>
-                <td><span ng-bind="Visitor.TimeOut"></span></td>
-                <td>
-                    <a href="/Visitor/Index" ng-click="model.Delete(Visitor)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash" ></i> Delete</a>
-                </td>
-            </tr>
-        </tbody>
+                <tr class="active">
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Company Name</th>
+                    <th>Purpose of Visit</th>
+                    <th>Person To Visit</th>
+                    <th>Designation</th>
+                    <th>Type of ID</th>
+                    <th>ID Number</th>
+                    <th>Time In</th>
+                    <th>Time Out</th>
+                    <th style="width:100px"></th>
+                </tr>
+
+                <tr class="alert" ng-repeat="Visitor in model.Visitors | orderBy: '-VisitorID'" ng-click="model.Details(Visitor)" style="cursor:pointer" filter="" >
+
+                    <td><span ng-bind="Visitor.Name"></span></td>
+                    <td><span ng-bind="Visitor.Date"></span></td>
+                    <td><span ng-bind="Visitor.CompanyName"></span></td>
+                    <td><span ng-bind="Visitor.Purpose"></span></td>
+                    <td><span ng-bind="Visitor.PersonToVisit"></span></td>
+                    <td><span ng-bind="Visitor.Designation"></span></td>
+                    <td><span ng-bind="Visitor.KindOfId"></span></td>
+                    <td><span ng-bind="Visitor.IdNumber"></span></td>
+                    <td><span ng-bind="Visitor.TimeIn"></span></td>
+                    <td><span ng-bind="Visitor.TimeOut"></span></td>
+                    <td>
+                        <a href="/Visitor/Index" ng-click="model.Delete(Visitor)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash" ></i> Delete</a>
+                    </td>
+                </tr>
+
+        </table>*@
+
+
+
+    @*/////////////////////////////////////////////////////////////////////////////////////////////*@
+
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <table id="tableid" class="table table-hover table-sm table-bordered">
+        <tr>
+            <th onclick="sortTable2(0)">Date <span class="glyphicon glyphicon-sort"></span></th>
+            <th onclick="sortTable2(1)">Name <span class="glyphicon glyphicon-sort"></span></th>
+            <th onclick="sortTable2(2)">Company Name <span class="glyphicon glyphicon-sort"></span></th>
+
+            <th onclick="sortTable2(3)">Purpose of Visit <span class="glyphicon glyphicon-sort"></span></th>
+            <th onclick="sortTable2(4)">Person To Visit <span class="glyphicon glyphicon-sort"></span></th>
+            <th onclick="sortTable2(5)">Designation <span class="glyphicon glyphicon-sort"></span></th>
+            <th onclick="sortTable2(6)">Type of ID <span class="glyphicon glyphicon-sort"></span></th>
+            <th onclick="sortTable2(7)">ID Number <span class="glyphicon glyphicon-sort"></span></th>
+            <th>Time In</th>
+            <th>Time Out</th>
+
+            <th style="width:100px"></th>
+        </tr>
+        <tr class="alert" ng-repeat="Visitor in model.Visitors | orderBy: '-VisitorID'" ng-click="model.Details(Visitor)" style="cursor:pointer" filter="">
+            <td><span ng-bind="Visitor.Date"></span></td>
+            <td><span ng-bind="Visitor.Name"></span></td>
+
+            @*<td></td>
+                <td><span ng-bind="Visitor.Name"></span></td>*@
+            <td id="company_id"><span ng-bind="Visitor.CompanyName"></span></td>
+            <td><span ng-bind="Visitor.Purpose"></span></td>
+            <td><span ng-bind="Visitor.PersonToVisit"></span></td>
+            <td><span ng-bind="Visitor.Designation"></span></td>
+            <td><span ng-bind="Visitor.KindOfId"></span></td>
+            <td><span ng-bind="Visitor.IdNumber"></span></td>
+            <td><span ng-bind="Visitor.TimeIn"></span></td>
+            <td><span ng-bind="Visitor.TimeOut"></span></td>
+
+            <td>
+                <a href="/Visitor/Index" ng-click="model.Delete(Visitor)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash"></i> Delete</a>
+            </td>
+        </tr>
     </table>
+
+
+
+
+    <script>
+
+
+        function sortTable() {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("tableid");
+            switching = true;
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+                //start by saying: no switching is done:
+                switching = false;
+                rows = table.getElementsByTagName("TR");
+                /*Loop through all table rows (except the
+                first, which contains table headers):*/
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /*Get the two elements you want to compare,
+                    one from current row and one from the next:*/
+                    x = rows[i].getElementsByTagName("TD")[0];
+                    y = rows[i + 1].getElementsByTagName("TD")[0];
+                    //check if the two rows should switch place:
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                if (shouldSwitch) {
+                    /*If a switch has been marked, make the switch
+                    and mark that a switch has been done:*/
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+
+
+        function sortTable2(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("tableid");
+            switching = true;
+            //Set the sorting direction to ascending:
+            dir = "asc";
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+                //start by saying: no switching is done:
+                switching = false;
+                rows = table.getElementsByTagName("TR");
+                /*Loop through all table rows (except the
+                first, which contains table headers):*/
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /*Get the two elements you want to compare,
+                    one from current row and one from the next:*/
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    /*check if the two rows should switch place,
+                    based on the direction, asc or desc:*/
+                    if (dir == "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    /*If a switch has been marked, make the switch
+                    and mark that a switch has been done:*/
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    //Each time a switch is done, increase this count by 1:
+                    switchcount++;
+                } else {
+                    /*If no switching has been done AND the direction is "asc",
+                    set the direction to "desc" and run the while loop again.*/
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+
+
+        function sortTable3(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("tableid");
+            switching = true;
+            //Set the sorting direction to ascending:
+            dir = "asc";
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+                //start by saying: no switching is done:
+                switching = false;
+                rows = table.getElementsByTagName("TR");
+                /*Loop through all table rows (except the
+                first, which contains table headers):*/
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /*Get the two elements you want to compare,
+                    one from current row and one from the next:*/
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    /*check if the two rows should switch place,
+                    based on the direction, asc or desc:*/
+                    if (dir == "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    /*If a switch has been marked, make the switch
+                    and mark that a switch has been done:*/
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    //Each time a switch is done, increase this count by 1:
+                    switchcount++;
+                } else {
+                    /*If no switching has been done AND the direction is "asc",
+                    set the direction to "desc" and run the while loop again.*/
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+
+
+
+        function sortTable4(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("tableid");
+            switching = true;
+            //Set the sorting direction to ascending:
+            dir = "asc";
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+                //start by saying: no switching is done:
+                switching = false;
+                rows = table.getElementsByTagName("TR");
+                /*Loop through all table rows (except the
+                first, which contains table headers):*/
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /*Get the two elements you want to compare,
+                    one from current row and one from the next:*/
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    /*check if the two rows should switch place,
+                    based on the direction, asc or desc:*/
+                    if (dir == "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    /*If a switch has been marked, make the switch
+                    and mark that a switch has been done:*/
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    //Each time a switch is done, increase this count by 1:
+                    switchcount++;
+                } else {
+                    /*If no switching has been done AND the direction is "asc",
+                    set the direction to "desc" and run the while loop again.*/
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////
+
+
+        function sortByDate() {
+
+            var table = this;          // Table clicked on
+            var cell = evt.target;     // Cell clicked on
+            var col = cell.cellIndex;  // Column number
+
+            // Put rows into an array
+            var rowArray = [].slice.call(table.rows);
+            // Or for ECMAScript 2015
+            // var rowArray = Array.from(table.rows);
+
+            // Sort rows
+            rowArray.sort(function (a, b) {
+
+                // Get values of col to sort on
+                a = a.cells[col].textContent;
+                b = b.cells[col].textContent;
+
+                // If numeric, sort as number
+                if (isNumeric(a)) {
+                    return a - b;
+                }
+                // Other sort options here, e.g. as dates
+                // Otherwise, sort as string
+                return a.localeCompare(b);
+            });
+
+            // Put rows back in table in order
+            var tbody = table.tBodies[0];
+            rowArray.forEach(function (row) {
+                tbody.appendChild(row);
+            })
+
+        }
+
+        // Helper function
+        // Check if value is numeric, '2' returns true
+        function isNumeric(n) {
+            return !isNaN(parseFloat(n)) && isFinite(n);
+        }
+
+            // Attach listener to table
+
+
+
+    </script>
+
+
+
+    @*<script>
+            function sortTable(n) {
+                var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+                table = document.getElementById("table_id");
+                switching = true;
+                //Set the sorting direction to ascending:
+                dir = "asc";
+                /*Make a loop that will continue until
+                no switching has been done:*/
+                while (switching) {
+                    //start by saying: no switching is done:
+                    switching = false;
+                    rows = table.getElementsByTagName("tr");
+                    /*Loop through all table rows (except the
+                    first, which contains table headers):*/
+                    for (i = 1; i < (rows.length - 1); i++) {
+                        //start by saying there should be no switching:
+                        shouldSwitch = false;
+                        /*Get the two elements you want to compare,
+                        one from current row and one from the next:*/
+                        x = rows[i].getElementsByTagName("td")[n];
+                        y = rows[i + 1].getElementsByTagName("td")[n];
+                        /*check if the two rows should switch place,
+                        based on the direction, asc or desc:*/
+                        if (dir == "asc") {
+                            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                                //if so, mark as a switch and break the loop:
+                                shouldSwitch = true;l
+                                break;
+                            }
+                        } else if (dir == "desc") {
+                            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                //if so, mark as a switch and break the loop:
+                                shouldSwitch = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (shouldSwitch) {
+                        /*If a switch has been marked, make the switch
+                        and mark that a switch has been done:*/
+                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                        switching = true;
+                        //Each time a switch is done, increase this count by 1:
+                        switchcount++;
+                    } else {
+                        /*If no switching has been done AND the direction is "asc",
+                        set the direction to "desc" and run the while loop again.*/
+                        if (switchcount == 0 && dir == "asc") {
+                            dir = "desc";
+                            switching = true;
+                        }
+                    }
+                }
+            }
+        </script>*@
+
 </div>
-
-
 
