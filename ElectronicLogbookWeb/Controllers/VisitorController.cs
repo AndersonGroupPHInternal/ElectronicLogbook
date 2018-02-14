@@ -75,7 +75,7 @@ namespace ElectronicLogbookWeb.Controllers
             {
                 return View();
             }
-        }
+        }   
         [HttpGet]
         public ActionResult PreviewId(int id)
         {
