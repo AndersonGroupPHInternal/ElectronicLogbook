@@ -22,18 +22,6 @@
 <div ng-controller="InternHistoryController as model" ng-init="model.List()">
     <br />
     <div class="navbar-collapse collapse" id="navbar-filter">
-        @*<p class="navbar-text">Filter:</p>
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-sort-time-asc position-left"></i> Show All<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortDate })">Date</a></li>
-                        <li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortName })">Name</a></li>
-                        <li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortPurpose })">Purpose</a></li>
-                    </ul>
-                </li>
-            </ul>*@
-
         <script src="~/Scripts/search.js"></script>
         <div class="row">
             <div class="input-group">
@@ -45,13 +33,10 @@
             </div>
         </div>
     </div>
-    
     <br />
-
     <table class="table table-hover table-sm table-bordered " id="tableid">
         <thead>
             <tr class="active">
-
                 <th>Last Date of Visit</th>
                 <th>Name</th>
                 <th>School</th>
@@ -59,13 +44,10 @@
                 <th>ID Number</th>
                 <th>Time In</th>
                 <th>Time Out</th>
-                @*<th style="width:100px"></th>*@
-
             </tr>
         </thead>
         <tbody>
-            <tr class="alert" ng-repeat="InternHistory in model.InternHistories | orderBy: '-Name'" @*ng-click="model.Details(InternHistory)"*@ style="cursor:pointer" filter="">
-
+            <tr class="alert" ng-repeat="InternHistory in model.InternHistories | orderBy: '-Name'" style="cursor:pointer" filter="">
                 <td><span ng-bind="InternHistory.Date"></span></td>
                 <td><span ng-bind="InternHistory.Name"></span></td>
                 <td><span ng-bind="InternHistory.School"></span></td>
@@ -73,10 +55,6 @@
                 <td><span ng-bind="InternHistory.IdNumber"></span></td>
                 <td><span ng-bind="InternHistory.TimeIn"></span></td>
                 <td><span ng-bind="InternHistory.TimeOut"></span></td>
-
-                @*<td>
-                    <a href="/InternHistory/Index" ng-click="model.Delete(InternHistory)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash"></i> Delete</a>
-                </td>*@
             </tr>
         </tbody>
     </table>

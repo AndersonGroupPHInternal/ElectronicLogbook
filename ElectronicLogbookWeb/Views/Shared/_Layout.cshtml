@@ -1,16 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <title>@Page.Title</title>
+    @RenderSection("head", required: false)
+
+    @Html.Partial("_PartialCSS")
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/cosmo.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/font-awesome.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
-    <script src="~/Scripts/jquery-3.1.1.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/angular.min.js"></script>
-
     <style>
         .navbar {
             border-bottom-color: #2b358a;
@@ -33,16 +30,13 @@
     </style>
 </head>
 <body>
-
-    <div class="container body-content">
+    <div class="container body-content" ng-app="App">
+        @Html.Partial("_PartialScript")
         @RenderBody()
-        <hr /></br></br>
+        <hr />
         <footer>
             <p> &nbsp; &nbsp; &nbsp; &nbsp; Private and Confidential. Anderson Group BPO Inc. &copy; 2017</p>
         </footer>
     </div>
-
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

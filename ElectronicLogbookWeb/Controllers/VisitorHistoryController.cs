@@ -20,33 +20,20 @@ namespace ElectronicLogbookWeb.Controllers
             _iFVisitorHistory = new FVisitorHistory();
 
         }
-
         [Route("")]
         [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
-
-
         [HttpGet]
-        //[CustomAuthorize(AllowedRoles = new string[] { "Receptionist" })]
         public ActionResult Edit(int id)
         {
             var visitorHistory = _iFVisitorHistory.Read(id);
             visitorHistory.TimeOut = DateTime.Now.ToShortTimeString();
             return View(visitorHistory);
         }
-
-        //[HttpGet]
-        //[CustomAuthorize(AllowedRoles = new string[] { "Receptionist" })]
-        //public ActionResult Add()
-        //{
-        //    return View();
-        //}
-
         [HttpGet]
-        //[CustomAuthorize(AllowedRoles = new string[] { "Receptionist" })]
         public ActionResult Add()
         {
             VisitorHistory visitorHistory = new VisitorHistory();
@@ -54,7 +41,6 @@ namespace ElectronicLogbookWeb.Controllers
             visitorHistory.TimeIn = DateTime.Now.ToShortTimeString();
             return View(visitorHistory);
         }
-
         [HttpPost]
         public JsonResult Create(VisitorHistory visitorHistory)
         {
@@ -68,14 +54,12 @@ namespace ElectronicLogbookWeb.Controllers
                 return Json(ex);
             }
         }
-
         [HttpGet]
         public ActionResult Details(int id)
         {
             var visitorHistory = _iFVisitorHistory.Read(id);
             return View(visitorHistory);
         }
-
         [HttpPost]
         public ActionResult Details(VisitorHistory visitorHistory)
         {
@@ -89,14 +73,6 @@ namespace ElectronicLogbookWeb.Controllers
                 return View();
             }
         }
-
-        //[HttpGet]
-        //public ActionResult PrintPdf(int id)
-        //{
-        //    var visitor = _iFVisitor.Read(id);
-        //    return new ActionAsPdf("Details", new { id = id });
-        //}
-
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -112,7 +88,6 @@ namespace ElectronicLogbookWeb.Controllers
                 }
             );
         }
-
         [HttpPost]
         public ActionResult Edit(VisitorHistory visitorHistory)
         {
@@ -126,7 +101,6 @@ namespace ElectronicLogbookWeb.Controllers
                 return View();
             }
         }
-
         [Route("List")]
         [HttpPost]
         public ActionResult List()
@@ -141,8 +115,6 @@ namespace ElectronicLogbookWeb.Controllers
                 return Json(exception);
             }
         }
-
-
         [HttpGet]
         public ActionResult Update(int id)
         {
@@ -156,7 +128,6 @@ namespace ElectronicLogbookWeb.Controllers
                 return View(new VisitorHistory());
             }
         }
-
         [HttpPost]
         public ActionResult Update(VisitorHistory visitorHistory)
         {
@@ -170,7 +141,6 @@ namespace ElectronicLogbookWeb.Controllers
                 return View(ex);
             }
         }
-
         [HttpPost]
         public ActionResult Delete(VisitorHistory visitorHistory)
         {

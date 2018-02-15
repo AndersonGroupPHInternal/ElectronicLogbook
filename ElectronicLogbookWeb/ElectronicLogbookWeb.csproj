@@ -15,16 +15,17 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ElectronicLogbookWeb</RootNamespace>
     <AssemblyName>ElectronicLogbookWeb</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,7 +48,17 @@
     <Reference Include="AccountsWebAuthentication">
       <HintPath>..\..\DLL\AccountsWebAuthentication.dll</HintPath>
     </Reference>
+    <Reference Include="AndersonCRMFunction, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL\Release\AndersonCRM\AndersonCRMFunction.dll</HintPath>
+    </Reference>
+    <Reference Include="AndersonCRMModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL\Release\AndersonCRM\AndersonCRMModel.dll</HintPath>
+    </Reference>
     <Reference Include="Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="BaseModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="BaseWeb, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -73,9 +84,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -118,6 +129,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bower_components\angular-ui-select\dist\select.css" />
+    <Content Include="bower_components\angular-ui-select\dist\select.js" />
+    <Content Include="bower_components\angular-ui-select\dist\select.min.css" />
+    <Content Include="bower_components\angular-ui-select\dist\select.min.js" />
+    <Content Include="bower_components\angular-ui-select\index.js" />
     <Content Include="bower_components\angular\angular-csp.css" />
     <Content Include="bower_components\angular\angular.js" />
     <Content Include="bower_components\angular\angular.min.js" />
@@ -354,11 +370,15 @@
       <DependentUpon>app.module.js</DependentUpon>
     </Content>
     <Content Include="Scripts\Angular\Controller\ApplicantController.js" />
+    <Content Include="Scripts\Angular\Controller\EmployeeController.js" />
+    <Content Include="Scripts\Angular\Controller\EmployeeLogController.js" />
     <Content Include="Scripts\Angular\Controller\InternController.js" />
     <Content Include="Scripts\Angular\Controller\InternHistoryController.js" />
     <Content Include="Scripts\Angular\Controller\VisitorController.js" />
     <Content Include="Scripts\Angular\Controller\VisitorHistoryController.js" />
     <Content Include="Scripts\Angular\Service\ApplicantService.js" />
+    <Content Include="Scripts\Angular\Service\EmployeeService.js" />
+    <Content Include="Scripts\Angular\Service\EmployeeLogService.js" />
     <Content Include="Scripts\Angular\Service\InternHistoryService.js" />
     <Content Include="Scripts\Angular\Service\InternService.js" />
     <Content Include="Scripts\Angular\Service\VisitorHistoryService.js" />
@@ -565,6 +585,17 @@
     <Content Include="bower_components\tether\src\css\tether-theme-basic.sass" />
     <Content Include="bower_components\tether\src\css\tether.sass" />
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="bower_components\angular-ui-select\dist\select.min.css.map" />
+    <Content Include="bower_components\angular-ui-select\dist\select.min.js.map" />
+    <Content Include="bower_components\angular-ui-select\.bower.json" />
+    <Content Include="bower_components\angular-ui-select\bower.json" />
+    <Content Include="bower_components\angular-ui-select\CHANGELOG.md" />
+    <Content Include="bower_components\angular-ui-select\composer.json" />
+    <Content Include="bower_components\angular-ui-select\CONTRIBUTING.md" />
+    <Content Include="bower_components\angular-ui-select\deploy-docs.sh" />
+    <Content Include="bower_components\angular-ui-select\LICENSE" />
+    <Content Include="bower_components\angular-ui-select\package.json" />
+    <Content Include="bower_components\angular-ui-select\README.md" />
     <None Include="bundleconfig.json" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -608,6 +639,9 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ApplicantController.cs" />
     <Compile Include="Controllers\ApplicantHistoryController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\EmployeeLogController.cs" />
     <Compile Include="Controllers\InternController.cs" />
     <Compile Include="Controllers\InternHistoryController.cs" />
     <Compile Include="Controllers\VisitorController.cs" />
@@ -649,6 +683,10 @@
     <Content Include="Views\Applicant\PreviewId.cshtml" />
     <Content Include="Views\Applicant\PreviewApplicant.cshtml" />
     <Content Include="Views\ApplicantHistory\Index.cshtml" />
+    <Content Include="Views\EmployeeLog\Index.cshtml" />
+    <Content Include="Views\EmployeeLog\Create.cshtml" />
+    <Content Include="Views\EmployeeLog\_EmployeeLog.cshtml" />
+    <Content Include="Views\Shared\_AuditColumns.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -658,6 +696,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="bower_components\angular-ui-select\docs\assets\" />
+    <Folder Include="bower_components\angular-ui-select\docs\partials\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ElectronicLogbookFunction\ElectronicLogbookFunction.csproj">

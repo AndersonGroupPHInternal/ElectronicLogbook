@@ -8,7 +8,6 @@
 
     <div style="width: 100%">
         <div style="width: 25%; float: left; display: inline-block;">
-
             <form method="post" action="~/Visitor/Edit">
                 <br />
                 <label for="Date">Date:</label>
@@ -34,7 +33,6 @@
                 <label for="Comment">Comment:</label>
                 <textarea class="form-control" name="Visitor.Comment" >@Model.Comment</textarea>
 
-                @*DO NOT DELETE THIS (this stores the data in database after editing. so the data would not be null)*@
                 <input type="hidden" name="Visitor.VisitorID" value="@Model.VisitorID" />
                 <input type="hidden" name="Visitor.Date" value="@Model.Date" />
                 <input type="hidden" name="Visitor.Name" value="@Model.Name" />

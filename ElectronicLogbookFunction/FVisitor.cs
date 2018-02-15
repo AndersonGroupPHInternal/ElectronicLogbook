@@ -16,41 +16,26 @@ namespace ElectronicLogbookFunction
         {
             _iDVisitor = new DVisitor();
         }
-
         #region CREATE
         public Visitor Create(Visitor visitor)
         {
             EVisitor eVisitor = EVisitor(visitor);
             eVisitor = _iDVisitor.Create(eVisitor);
-
-            //EVisitorHistory eVisitorHistory = new EVisitorHistory
-            //{
-            //    VisitorID = eVisitor.VisitorID,
-            //    Date = eVisitor.Date,
-            //    Name = eVisitor.Name,
-            //    Purpose = eVisitor.Purpose,
-            //    TimeIn = eVisitor.TimeIn,
-            //    TimeOut = eVisitor.TimeOut
-            //};
-            //_iDVisitor.Create(eVisitorHistory);
             return (Visitor(eVisitor));
         }
         #endregion
-
         #region READ
         public Visitor Read(int visitorId)
         {
             EVisitor eVisitor = _iDVisitor.Read<EVisitor>(a => a.VisitorID == visitorId);
             return Visitor(eVisitor);
         }
-
         public List<Visitor> List()
         {
             List<EVisitor> eVisitors = _iDVisitor.List<EVisitor>(a => true);
             return Visitors(eVisitors);
         }
         #endregion
-
         #region UPDATE
         public Visitor Update(Visitor visitor)
         {
@@ -72,14 +57,12 @@ namespace ElectronicLogbookFunction
             return (Visitor(eVisitor));
         }
         #endregion
-
         #region DELETE
         public void Delete(Visitor visitor)
         {
             _iDVisitor.Delete(EVisitor(visitor));
         }
         #endregion
-
         #region OTHER FUNCTION
         private List<Visitor> Visitors(List<EVisitor> eVisitors)
         {
@@ -100,10 +83,8 @@ namespace ElectronicLogbookFunction
                 CreatedBy = a.CreatedBy,
                 UpdatedBy = a.UpdatedBy
             });
-
             return returnVisitors.ToList();
         }
-
         private EVisitor EVisitor(Visitor visitor)
         {
             EVisitor returnEVisitor = new EVisitor
@@ -125,7 +106,6 @@ namespace ElectronicLogbookFunction
             };
             return returnEVisitor;
         }
-
         private Visitor Visitor(EVisitor eVisitor)
         {
             Visitor returnVisitor = new Visitor
@@ -168,6 +148,5 @@ namespace ElectronicLogbookFunction
         }
         
         #endregion
-
     }
 }

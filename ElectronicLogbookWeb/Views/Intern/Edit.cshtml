@@ -5,10 +5,8 @@
 
 <h3>Edit</h3>
 <div ng-controller="InternController as model" ng-init="model.List()">
-
     <div style="width: 100%">
         <div style="width: 25%; float: left; display: inline-block;">
-
             <form method="post" action="~/Intern/Edit">
                 <br />
                 <label for="Date">Date:</label>
@@ -28,7 +26,6 @@
                 <label for="TimeOut">Time Out:</label>
                 <input type="text" class="form-control" name="Intern.TimeOut" value="@Model.TimeOut" />
                 
-                @*DO NOT DELETE THIS (this stores the data in database after editing. so the data would not be null)*@
                 <input type="hidden" name="Intern.InternID" value="@Model.InternID" />
                 <input type="hidden" name="Intern.Date" value="@Model.Date" />
                 <input type="hidden" name="Intern.Name" value="@Model.Name" />

@@ -6,10 +6,8 @@
 <h3>Intern Log sheet</h3>
 
 <div ng-controller="InternController as model" ng-init="model.List()">
-
     <div style="width: 100%">
         <div style="width: 25%; float: left; display: inline-block;" ng-init="model.CreateIntern('@Model.Date', '@Model.TimeIn')">
-
             <br />
             <label for="Date">Date:</label>
             <input type="text" name="Date" id="Date" class="form-control" ng-model="model.Intern.Date">
@@ -25,21 +23,16 @@
                 <option value="SOFTWARE DEVELOPMENT"><span>SOFTWARE DEVELOPMENT</span></option>
                 <option value="WEB DESIGN"><span>WEB DESIGN</span></option>
             </select>
-            @*<input type="text" class="form-control" id="Department" ng-model="model.Intern.Department" />*@
             <label for="Supervisor">Supervisor:</label>
             <input type="text" class="form-control" id="Supervisor" ng-model="model.Intern.Supervisor" />
             <label for="IdNumber">ID Number:</label>
             <input type="text" class="form-control" id="IdNumber" ng-model="model.Intern.IdNumber" />
-            @*<script src="~/Scripts/pickers/currenttime.js"></script>*@
             <label for="TimeIn">Time In:</label>
             <input type="text" class="form-control" id="TimeIn" ng-model="model.Intern.TimeIn" />
-            @*<label for="TimeOut">Time Out:</label>*@
-            @*<input type="time" class="form-control" id="TimeOut" ng-model="model.Intern.TimeOut" />*@
             <br />
             <a href="/Intern/Index" class="btn btn-success" role="button" ng-click="model.Create(intern) " style="margin-right:5px;float: left"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
             <a href="/Intern/Index" class="btn btn-warning" role="button" style="margin-right: 10px; float:left"><i class="glyphicon glyphicon-remove"></i> Cancel</a>
         </div>
-
         <div id="webcam">
             <div>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;

@@ -7,7 +7,8 @@
 
     ApplicantService.$inject = ['$http'];
 
-    function ApplicantService($http) {
+    function ApplicantService($http)
+    {
         return {
             Create: Create,
             List: List,

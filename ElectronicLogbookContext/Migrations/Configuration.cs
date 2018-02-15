@@ -9,7 +9,8 @@ namespace ElectronicLogbookContext.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(ElectronicLogbookContext.Context context)

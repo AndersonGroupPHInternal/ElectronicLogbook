@@ -3,16 +3,67 @@
     padding-bottom: 20px;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
+/ Set padding to keep content from hitting the edges / .body-content {
     padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
+/ Set width on the form input elements since they're 100% wide by default / input,
 select,
 textarea {
     max-width: 280px;
 }
 
+#logo-full {
+    width: 100%;
+    max-width: 542px;
+}
+
+#CurrentDate {
+    /*float: left;*/
+    font-size: 20px;
+    color: black;
+    font: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#CurrentTime {
+    /*float: left;*/
+    font-size: 35px;
+    color: black;
+    font: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.align-right {
+    text-align: right;
+}
+
+#time {
+    position: relative;
+    top: 15px;
+    /*left: 25px;*/
+}
+
+#logIn {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 210px;
+}
+
+#logOut {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 210px;
+}
+log {
+    margin-right: auto;
+    margin-left: auto;
+    /*float: right;*/
+}

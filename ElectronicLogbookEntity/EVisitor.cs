@@ -20,8 +20,7 @@ namespace ElectronicLogbookEntity
         public string CompanyName { get; set; }
         [StringLength(50)]
         public string Purpose { get; set; }
-        [StringLength(50)]
-        public string PersonToVisit { get; set; }
+        public int PersonToVisit { get; set; }
         [StringLength(50)]
         public string Designation { get; set; }
         [StringLength(50)]

@@ -16,74 +16,40 @@ namespace ElectronicLogbookFunction
         {
             _iDApplicant = new DApplicant();
         }
-
         #region CREATE
         public Applicant Create(Applicant applicant)
         {
             EApplicant eApplicant = EApplicant(applicant);
             eApplicant = _iDApplicant.Create(eApplicant);
-
-            //EApplicantHistory eApplicantHistory = new EApplicantHistory
-            //{
-            //    ApplicantID = eApplicant.ApplicantID,
-            //    Date = eApplicant.Date,
-            //    Name = eApplicant.Name,
-            //    Purpose = eApplicant.Purpose,
-            //    TimeIn = eApplicant.TimeIn,
-            //    TimeOut = eApplicant.TimeOut
-            //};
-            //_iDApplicant.Create(eApplicantHistory);
             return (Applicant(eApplicant));
         }
         #endregion
-
         #region READ
         public Applicant Read(int applicantId)
         {
             EApplicant eApplicant = _iDApplicant.Read<EApplicant>(a => a.ApplicantID == applicantId);
             return Applicant(eApplicant);
         }
-
         public List<Applicant> List()
         {
             List<EApplicant> eApplicants = _iDApplicant.List<EApplicant>(a => true);
             return Applicants(eApplicants);
         }
         #endregion
-
         #region UPDATE
         public Applicant Update(Applicant applicant)
         {
             EApplicant currentApplicant = _iDApplicant.Read<EApplicant>(a => a.ApplicantID == applicant.ApplicantID);
             var eApplicant = _iDApplicant.Update(EApplicant(applicant));
-            //if (applicant.ApplicantID == currentApplicant.ApplicantID)
-            //{
-            //    EApplicantHistory eApplicantHistory = new EApplicantHistory
-            //    {
-            //        ApplicantID = eApplicant.ApplicantID,
-            //        Date = eApplicant.Date,
-            //        Name = eApplicant.Name,
-            //        ApplyingFor = eApplicant.ApplyingFor,
-            //        Designation = eApplicant.Designation,
-            //        TypeOfId = eApplicant.TypeOfId,
-            //        IdNumber = eApplicant.IdNumber,
-            //        TimeIn = eApplicant.TimeIn,
-            //        TimeOut = eApplicant.TimeOut,
-            //        Comment = eApplicant.Comment
-            //    };
-            //    _iDApplicant.Create(eApplicantHistory);
-            //}
             return (Applicant(eApplicant));
         }
         #endregion
-
         #region DELETE
         public void Delete(Applicant applicant)
         {
             _iDApplicant.Delete(EApplicant(applicant));
         }
         #endregion
-
         #region OTHER FUNCTION
         private List<Applicant> Applicants(List<EApplicant> eApplicants)
         {
@@ -102,10 +68,8 @@ namespace ElectronicLogbookFunction
                 CreatedBy = a.CreatedBy,
                 UpdatedBy = a.UpdatedBy
             });
-
             return returnApplicants.ToList();
         }
-
         private EApplicant EApplicant(Applicant applicant)
         {
             EApplicant returnEApplicant = new EApplicant
@@ -125,7 +89,6 @@ namespace ElectronicLogbookFunction
             };
             return returnEApplicant;
         }
-
         private Applicant Applicant(EApplicant eApplicant)
         {
             Applicant returnApplicant = new Applicant
@@ -145,7 +108,6 @@ namespace ElectronicLogbookFunction
             };
             return returnApplicant;
         }
-
         public void CreateFolder()
         {
             var date = DateTime.Now.ToString("MMMM dd, yyyy");
