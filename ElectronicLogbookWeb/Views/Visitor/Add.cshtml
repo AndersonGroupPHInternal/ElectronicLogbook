@@ -24,14 +24,14 @@
             <div class="form-group" ng-controller="EmployeeController as employeeModel" ng-init="employeeModel.Initialise()">
                 <label>Person to Visit</label>
                 <ui-select ng-model="model.Visitor.PersonToVisita">
-                    <ui-select-match placeholder="Select EmployeeID...">
+                    <ui-select-match placeholder="Select Employee...">
                         <span ng-bind="$select.selected.FullName"></span>                        
                     </ui-select-match>
                     <ui-select-choices repeat="employee in (employeeModel.Employees | filter: $select.search) track by $index">
                         <span ng-bind="employee.FullName"></span>
                     </ui-select-choices>
                     </ui-select>
-
+                
             </div>          
             <label for="Designation">Designation:</label>
             <select class="form-control" id="Designation" ng-model="model.Visitor.Designation">
@@ -85,9 +85,9 @@
                 <a href="#" download="visitor_picture.png" id="save"><button class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Save Picture </button></a>
                 @*<input type="file" name="photo">*@
                 @*</form>*@
-            </div>
-
+ 
         </div>
         <script src="~/Scripts/webcam.js"></script>
     </div>
+</div>
 </div>

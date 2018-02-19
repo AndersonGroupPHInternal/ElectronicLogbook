@@ -18,7 +18,7 @@
             tr[i].style.display = "";
             found = false;
         } else {
-            if (tr[i].id != 'info') { tr[i].style.display = "none"; }
+            if (tr[i].id !== 'info') { tr[i].style.display = "none"; }
         }
     }
 }
