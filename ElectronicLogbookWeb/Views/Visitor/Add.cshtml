@@ -23,7 +23,7 @@
             </select>
             <div class="form-group" ng-controller="EmployeeController as employeeModel" ng-init="employeeModel.Initialise()">
                 <label>Person to Visit</label>
-                <ui-select ng-model="model.Visitor.PersonToVisita">
+                <ui-select ng-model="model.Visitor.PersonToVisit">
                     <ui-select-match placeholder="Select EmployeeID...">
                         <span ng-bind="$select.selected.FullName"></span>                        
                     </ui-select-match>
