@@ -13,7 +13,6 @@ namespace ElectronicLogbookModel
         public int LogTypeId { get; set; }
         [Required, Display(Name = "Employee Number"), StringLength(100)]
         public string EmployeeNumber { get; set; }
-        public string EmployeeImage { get; set; }
         public string EmployeeImageBase64 { get; set; }
         public string LogName { get; set; }
         [Required, Display(Name = "Pin"), DataType(DataType.Password), StringLength(100, MinimumLength = 4)]
