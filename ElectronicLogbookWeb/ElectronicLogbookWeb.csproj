@@ -129,6 +129,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bower_components\angular-ui-select\dist\select.css" />
+    <Content Include="bower_components\angular-ui-select\dist\select.js" />
+    <Content Include="bower_components\angular-ui-select\dist\select.min.css" />
+    <Content Include="bower_components\angular-ui-select\dist\select.min.js" />
+    <Content Include="bower_components\angular-ui-select\index.js" />
     <Content Include="bower_components\angular\angular-csp.css" />
     <Content Include="bower_components\angular\angular.js" />
     <Content Include="bower_components\angular\angular.min.js" />
@@ -365,12 +370,14 @@
       <DependentUpon>app.module.js</DependentUpon>
     </Content>
     <Content Include="Scripts\Angular\Controller\ApplicantController.js" />
+    <Content Include="Scripts\Angular\Controller\EmployeeController.js" />
     <Content Include="Scripts\Angular\Controller\EmployeeLogController.js" />
     <Content Include="Scripts\Angular\Controller\InternController.js" />
     <Content Include="Scripts\Angular\Controller\InternHistoryController.js" />
     <Content Include="Scripts\Angular\Controller\VisitorController.js" />
     <Content Include="Scripts\Angular\Controller\VisitorHistoryController.js" />
     <Content Include="Scripts\Angular\Service\ApplicantService.js" />
+    <Content Include="Scripts\Angular\Service\EmployeeService.js" />
     <Content Include="Scripts\Angular\Service\EmployeeLogService.js" />
     <Content Include="Scripts\Angular\Service\InternHistoryService.js" />
     <Content Include="Scripts\Angular\Service\InternService.js" />
@@ -578,6 +585,17 @@
     <Content Include="bower_components\tether\src\css\tether-theme-basic.sass" />
     <Content Include="bower_components\tether\src\css\tether.sass" />
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="bower_components\angular-ui-select\dist\select.min.css.map" />
+    <Content Include="bower_components\angular-ui-select\dist\select.min.js.map" />
+    <Content Include="bower_components\angular-ui-select\.bower.json" />
+    <Content Include="bower_components\angular-ui-select\bower.json" />
+    <Content Include="bower_components\angular-ui-select\CHANGELOG.md" />
+    <Content Include="bower_components\angular-ui-select\composer.json" />
+    <Content Include="bower_components\angular-ui-select\CONTRIBUTING.md" />
+    <Content Include="bower_components\angular-ui-select\deploy-docs.sh" />
+    <Content Include="bower_components\angular-ui-select\LICENSE" />
+    <Content Include="bower_components\angular-ui-select\package.json" />
+    <Content Include="bower_components\angular-ui-select\README.md" />
     <None Include="bundleconfig.json" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -622,6 +640,7 @@
     <Compile Include="Controllers\ApplicantController.cs" />
     <Compile Include="Controllers\ApplicantHistoryController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\EmployeeLogController.cs" />
     <Compile Include="Controllers\InternController.cs" />
     <Compile Include="Controllers\InternHistoryController.cs" />
@@ -668,7 +687,6 @@
     <Content Include="Views\EmployeeLog\Create.cshtml" />
     <Content Include="Views\EmployeeLog\_EmployeeLog.cshtml" />
     <Content Include="Views\Shared\_AuditColumns.cshtml" />
-    <Content Include="Views\Visitor\test.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -678,6 +696,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="bower_components\angular-ui-select\docs\assets\" />
+    <Folder Include="bower_components\angular-ui-select\docs\partials\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

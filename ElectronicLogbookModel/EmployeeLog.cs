@@ -21,7 +21,7 @@ namespace ElectronicLogbookModel
             get
             {
                 if (!string.IsNullOrEmpty(EmployeeImage))
-                    return Convert.ToBase64String(File.ReadAllBytes(EmployeeImage + ".jpg"));
+                return Convert.ToBase64String(File.ReadAllBytes(EmployeeImage));
                 return string.Empty;
             }
         }
