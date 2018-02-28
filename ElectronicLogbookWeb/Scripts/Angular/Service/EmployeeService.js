@@ -16,7 +16,7 @@
         function Read() {
             return $http({
                 method: 'POST',
-                url: '../Employee/Read',
+                url: '/Employee/Read',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }

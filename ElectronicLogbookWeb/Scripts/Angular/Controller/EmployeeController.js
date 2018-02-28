@@ -10,13 +10,16 @@
     function EmployeeController($filter, $window, EmployeeService) {
         var vm = this;
 
+        vm.Employee;
+        vm.EmployeeId;
         vm.Employees = [];
 
         vm.Initialise = Initialise;
 
 
 
-        function Initialise() {
+        function Initialise(employeeId) {
+            vm.EmployeeId = employeeId;
             Read();
         }
 
@@ -25,6 +28,7 @@
                 .then(function (response) {
                     vm.Employees = response.data;
                     UpdateFullName();
+                    vm.Employee = $filter('filter')(vm.Employees, { EmployeeId: vm.EmployeeId })[0];
                 })
                 .catch(function (data, status) {
                     new PNotify({
