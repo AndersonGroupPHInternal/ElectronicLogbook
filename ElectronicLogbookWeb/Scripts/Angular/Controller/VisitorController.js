@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('App')
-        .controller('VisitorController', VisitorController);
+    .module('App')
+    .controller('VisitorController', VisitorController);
 
     VisitorController.$inject = ['VisitorService', '$window', 'EmployeeService', '$filter'];
 
@@ -14,7 +14,7 @@
 
         vm.Visitors = [];
 
-
+  
         vm.Employees = [];
         vm.List = List;
         vm.Create = Create;
@@ -27,12 +27,12 @@
         function Create() {
             vm.Visitor.PersonToVisit = vm.Visitor.PersonToVisita.EmployeeId;
             VisitorService.Create(vm.Visitor)
-                .then(function (response) {
-                    List();
-                    angular.element('#VisitorModal').modal('hide');
-                })
-                .catch(function (data, status) {
-                });
+            .then(function (response) {
+                List();
+                angular.element('#VisitorModal').modal('hide');
+            })
+            .catch(function (data, status) {
+            });
         }
 
         function CreateVisitor(visitor, timeIn) {
@@ -54,28 +54,27 @@
 
         function List() {
             VisitorService.List()
-                .then(function (response) {
-                    vm.Visitors = response.data;
-                    ReadEmployees();
-                })
-                .catch(function (data, status) {
-                });
+            .then(function (response) {
+                vm.Visitors = response.data;
+                ReadEmployees();
+            })
+            .catch(function (data, status) {
+            });
         }
 
         function Update() {
             VisitorService.Update(vm.Visitor)
-                .then(function (response) {
-                    List();
-                    angular.element('#VisitorModal').modal('hide');
-                })
-                .catch(function (data, status) {
-                });
+            .then(function (response) {
+                List();
+                angular.element('#VisitorModal').modal('hide');
+            })
+            .catch(function (data, status) {
+            });
         }
 
         function UpdateVisitor(visitor) {
             vm.Visitor = angular.copy(visitor);
         }
-
         function Delete(visitor) {
             VisitorService.Delete(visitor)
                 .then(function (response) {
@@ -130,7 +129,7 @@
             });
             console.log(vm.Employees);
             angular.forEach(vm.Visitors, function (visitor) {
-                visitor.ToVisit = $filter('filter')(vm.Employees, { EmployeeId: visitor.PersonToVisit })[0];
+                visitor.ToVisit = $filter('filter')(vm.Employees, { EmployeeId: visitor.PersonToVisit })[0];   
             });
             console.log(vm.Visitors);
         }
