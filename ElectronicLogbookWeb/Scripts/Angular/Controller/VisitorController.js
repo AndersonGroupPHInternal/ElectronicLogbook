@@ -75,7 +75,6 @@
         function UpdateVisitor(visitor) {
             vm.Visitor = angular.copy(visitor);
         }
-
         function Delete(visitor) {
             VisitorService.Delete(visitor)
                 .then(function (response) {

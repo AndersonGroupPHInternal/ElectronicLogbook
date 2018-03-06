@@ -31,8 +31,8 @@ namespace ElectronicLogbookWeb.Controllers
             employeeLog.EmployeeId = employee.EmployeeId;
             employeeLog.SuccesLogin = IsSuccess;
             employeeLog = _iFEmployeeLog.Create(UserId, employeeLog);
-            employeeLog.EmployeeImage = employee.EmployeeImage;
-           
+            employeeLog.EmployeeImageBase64 = employee.EmployeeImageBase64;
+            
             if (!IsSuccess)
             {
                 return View(employeeLog);
