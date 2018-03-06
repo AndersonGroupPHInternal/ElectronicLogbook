@@ -13,7 +13,7 @@ namespace ElectronicLogbookWeb.Controllers
         {
             _iFEmployeeLog = new FEmployeeLog();
             _iFEmployee = new AndersonCRMFunction.FEmployee();
-            
+
         }
         #region Create
         [HttpGet]
@@ -31,8 +31,8 @@ namespace ElectronicLogbookWeb.Controllers
             employeeLog.EmployeeId = employee.EmployeeId;
             employeeLog.SuccesLogin = IsSuccess;
             employeeLog = _iFEmployeeLog.Create(UserId, employeeLog);
-            employeeLog.EmployeeImageBase64 = employee.EmployeeImageBase64;
-            
+            employeeLog.EmployeeImage = employee.EmployeeImage;
+
             if (!IsSuccess)
             {
                 return View(employeeLog);

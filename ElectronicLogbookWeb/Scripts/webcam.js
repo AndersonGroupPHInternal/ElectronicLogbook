@@ -5,7 +5,6 @@
     var canvas = document.getElementById('canvas'),
         context = canvas.getContext('2d');
 
-        
 
     navigator.getMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
@@ -21,14 +20,15 @@
 
     document.getElementById('capture').addEventListener('click', function () {
 
-        context.drawImage(video, 0, 0, 380, 325);
+        var appImage = context.drawImage(video, 0, 0, 380, 325);
+
+        document.getElementById("upload").innerHTML = appImage;
     });
 
-    function downloads(){
+
+    function download() {
         var image = canvas.toDataURL();
         this.href = image;
-
     }
-    document.getElementById('save').addEventListener('click', downloads, true);
-
+    document.getElementById('save').addEventListener('click', download, false);
 })();
