@@ -20,13 +20,13 @@
 
         function Initialise(employeeId) {
             vm.EmployeeId = employeeId;
-            Read();
+            Read();            
         }
 
         function Read() {
             EmployeeService.Read()
                 .then(function (response) {
-                    vm.Employees = response.data;
+                    vm.Employees = response.data;                    
                     UpdateFullName();
                     vm.Employee = $filter('filter')(vm.Employees, { EmployeeId: vm.EmployeeId })[0];
                 })
