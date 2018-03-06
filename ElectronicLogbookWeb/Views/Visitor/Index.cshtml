@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
@@ -72,11 +71,16 @@
     <br />
     <a id="addButton" href="/Visitor/Add" class="btn btn-primary" role="button" @*ng-click="model.Create()"*@ style="margin-left: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
     <a id="historyButton" href="/VisitorHistory/Index" role="button" class="btn btn-danger"><i class="glyphicon glyphicon-list"></i> History</a>
-    <p class="navbar-text">Filter:</p>
+
+
+    @*<p><button onclick="sortTable()">SortName</button></p>
+        <p><button onclick="sortByDate()">SortDate</button></p>
+        <p><button onclick="sortTable2()">Sort</button></p>*@
+
     <div class="navbar-collapse collapse" id="navbar-filter">
         <ul class="nav navbar-nav">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-sort-time-asc position-left"></i> Show All<span class="caret"></span></a>
+
                 <ul class="dropdown-menu">
                     <li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortDate })">Date</a></li>
                     @*<li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortName })">Name</a></li>*@
@@ -88,19 +92,16 @@
             </li>
         </ul>
 
-            <script src="~/Scripts/search.js"></script>
-            <div class="row">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here..." />
-                    <div class="input-group-btn">
-                        <button id="searchLogo" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
+        <script src="~/Scripts/search.js"></script>
+        <div class="row">
+            <div class="input-group">
+                <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here..." />
+                <div class="input-group-btn">
+                    <button id="searchLogo" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
             </div>
-        </div> 
-    <table class="table table-hover table-sm table-bordered " id="tableid">
-        <thead>
-            <tr class="active">
+        </div>
+    </div>
 
     <br />
 
@@ -435,7 +436,7 @@
             return !isNaN(parseFloat(n)) && isFinite(n);
         }
 
-            // Attach listener to table
+                    // Attach listener to table
 
 
 
@@ -501,4 +502,3 @@
         </script>*@
 
 </div>
-
