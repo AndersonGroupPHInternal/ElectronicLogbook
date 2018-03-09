@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Index";
 }
 
@@ -21,6 +22,10 @@
         float: left;
     }
 
+    /*#Timeout {
+        background: #ffff00;
+        color: #000;
+    }*/
     table {
         border-spacing: 0;
         width: 100%;
@@ -64,6 +69,45 @@
         margin-right: 0.5em;
         margin-left: 1.0em;
     }
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
 </style>
 
 <center><h3>&nbsp;Visitor/Applicant Information</h3></center>
@@ -71,7 +115,7 @@
     <br />
     <a id="addButton" href="/Visitor/Add" class="btn btn-primary" role="button" @*ng-click="model.Create()"*@ style="margin-left: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
     <a id="historyButton" href="/VisitorHistory/Index" role="button" class="btn btn-danger"><i class="glyphicon glyphicon-list"></i> History</a>
-
+    <p class="navbar-text">Filter:</p>
 
     @*<p><button onclick="sortTable()">SortName</button></p>
         <p><button onclick="sortByDate()">SortDate</button></p>
@@ -80,7 +124,7 @@
     <div class="navbar-collapse collapse" id="navbar-filter">
         <ul class="nav navbar-nav">
             <li class="dropdown">
-
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-sort-time-asc position-left"></i>Filter<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortDate })">Date</a></li>
                     @*<li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortName })">Name</a></li>*@
@@ -102,9 +146,6 @@
             </div>
         </div>
     </div>
-
-    <br />
-
     @*<table id="tableid" class="table table-hover table-sm table-bordered " >
 
                 <tr class="active">
@@ -169,24 +210,49 @@
                 <td><span ng-bind="Visitor.Name"></span></td>*@
             <td id="company_id"><span ng-bind="Visitor.CompanyName"></span></td>
             <td><span ng-bind="Visitor.Purpose"></span></td>
-            <td><span ng-bind="Visitor.ToVisit.FullName"></span></td>
+            <td><span ng-bind="Visitor.PersonToVisit"></span></td>
             <td><span ng-bind="Visitor.Designation"></span></td>
             <td><span ng-bind="Visitor.KindOfId"></span></td>
             <td><span ng-bind="Visitor.IdNumber"></span></td>
             <td><span ng-bind="Visitor.TimeIn"></span></td>
-            <td><span ng-bind="Visitor.TimeOut"></span></td>
+            <td>
+                <span ng-bind="Visitor.TimeOut"></span>
 
+
+
+                @*<p id="date_time_button"></p>*@
+               @* <input type="text" class="form-control" name="Visitor.TimeOut" value="@Model.TimeOut" />*@
+            </td>
+
+            <td>
+                @*  <a href="" type="button" class="btn btn-primary" role="button" id="Timeout" onclick="Timeout()">Time out</a>*@
+               @*  <button id="mybtnFunction" onclick="mybtnFunction()">Time out</button>*@
+                @*<a href="/Visitor/Index"><input type="Submit" value="TimeOut" class="btn btn-primary" style="" id="mybtnFunction" onclick="mybtnFunction()" /><i class="glyphicon glyphicon-bell"></i></a>*@
+
+                <a href="/Visitor/Index" ng-click="model.Details(Visitor)" id="mybtnFunction" onclick="mybtnFunction()" type="button" class="btn btn-primary"> <i class="glyphicon glyphicon-bell"></i> Timeout</a>
+
+            </td>
             <td>
                 <a href="/Visitor/Index" ng-click="model.Delete(Visitor)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash"></i> Delete</a>
             </td>
         </tr>
     </table>
-
-
-
-
     <script>
 
+        /////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        //function mybtnFunction() {
+
+        //    var d = new Date();
+        //    document.getElementById("date_time_button").innerHTML = d.toLocaleTimeString();
+
+
+         
+
+        ////}
+        //////////////////////////////////////////////////////////////////////////////
 
         function sortTable() {
             var table, rows, switching, i, x, y, shouldSwitch;
@@ -436,7 +502,7 @@
             return !isNaN(parseFloat(n)) && isFinite(n);
         }
 
-                    // Attach listener to table
+            // Attach listener to table
 
 
 
