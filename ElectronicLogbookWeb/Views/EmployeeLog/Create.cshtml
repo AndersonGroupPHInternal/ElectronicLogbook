@@ -6,7 +6,7 @@
 }
 
 <div class="col-sm-12">
-    <form action="~/EmployeeLog/Create" method="post">
+    <form action="~/EmployeeLog/CreateLog" method="post">
         @{
             <div class="form-group">
                 <div class="row">
@@ -33,11 +33,11 @@
                             <div id="logIn">
                                 @if (Model.SuccesLogin && Model.LogTypeId == 1)
                                 {
-                                    <h2 id="logIn" style="color:green;">Successfully logged in at <br /></h2><h2> @System.DateTime.Now.ToString("h:mm:ss tt") </h2>
+                                    <h2 id="logIn" style="color:green;">Successfully logged in at <br /></h2><h2> @Model.LogDate.ToString("h:mm:ss tt") </h2>
                                 }
                                 else if (Model.SuccesLogin && Model.LogTypeId == 2)
                                 {
-                                    <h2 id="logOut" style="color:green;">Successfully logged out at</h2><h2 style="color:black;">@System.DateTime.Now.ToString("h:mm:ss tt")</h2>
+                                    <h2 id="logOut" style="color:green;">Successfully logged out at</h2><h2 style="color:black;">@Model.LogDate.ToString("h:mm:ss tt")</h2>
                                 }
                                 else if (!Model.SuccesLogin && Model.LogTypeId != 0)
                                 {

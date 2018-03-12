@@ -2,6 +2,7 @@
 using ElectronicLogbookFunction;
 using System.Web.Mvc;
 using System.Web.UI;
+using System.Web.Routing;
 
 namespace ElectronicLogbookWeb.Controllers
 {
@@ -17,12 +18,12 @@ namespace ElectronicLogbookWeb.Controllers
         }
         #region Create
         [HttpGet]
-        public ActionResult Create()
-        {
-            return View(new EmployeeLog());
+        public ActionResult Create(EmployeeLog employeeLog)
+        { 
+                return View(employeeLog);
         }
         [HttpPost]
-        public ActionResult Create(EmployeeLog employeeLog)
+        public ActionResult CreateLog(EmployeeLog employeeLog)
         {
             var employee = _iFEmployee.Read(employeeLog.EmployeeNumber, employeeLog.Pin);
             var logname = _iFEmployeeLog.Readlogtype(employeeLog.LogTypeId);
@@ -32,15 +33,11 @@ namespace ElectronicLogbookWeb.Controllers
             employeeLog.SuccesLogin = IsSuccess;
             employeeLog = _iFEmployeeLog.Create(UserId, employeeLog);
             employeeLog.EmployeeImageBase64 = employee.EmployeeImageBase64;
-            
-            if (!IsSuccess)
-            {
-                return View(employeeLog);
-            }
-            else
-            {
-                return View(employeeLog);
-            }
+
+            employeeLog.EmployeeNumber = string.Empty;
+            employeeLog.Pin = string.Empty;
+            //return View(employeeLog);
+           return RedirectToAction("Create", new RouteValueDictionary(employeeLog));
         }
         #endregion
         #region Read
