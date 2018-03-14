@@ -684,7 +684,7 @@
     <Content Include="Views\Applicant\PreviewApplicant.cshtml" />
     <Content Include="Views\ApplicantHistory\Index.cshtml" />
     <Content Include="Views\EmployeeLog\Index.cshtml" />
-    <Content Include="Views\EmployeeLog\Create.cshtml" />
+    <Content Include="Views\EmployeeLog\CreateLog.cshtml" />
     <Content Include="Views\EmployeeLog\_EmployeeLog.cshtml" />
     <Content Include="Views\Shared\_AuditColumns.cshtml" />
     <None Include="Web.Debug.config">

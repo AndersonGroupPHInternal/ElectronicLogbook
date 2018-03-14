@@ -18,9 +18,18 @@ namespace ElectronicLogbookWeb.Controllers
         }
         #region Create
         [HttpGet]
-        public ActionResult Create(EmployeeLog employeeLog)
-        { 
-                return View(employeeLog);
+        public ActionResult CreateLog(int? id)
+        {
+            if (id == null)
+                return View(new EmployeeLog());
+            var employeeLog = _iFEmployeeLog.Read(id.Value);
+            if (employeeLog.SuccesLogin)
+            {
+                var employee = _iFEmployee.Read(employeeLog.EmployeeId);
+                employeeLog.EmployeeImageBase64 = employee.EmployeeImageBase64;
+            }
+
+            return View(employeeLog);
         }
         [HttpPost]
         public ActionResult CreateLog(EmployeeLog employeeLog)
@@ -33,11 +42,7 @@ namespace ElectronicLogbookWeb.Controllers
             employeeLog.SuccesLogin = IsSuccess;
             employeeLog = _iFEmployeeLog.Create(UserId, employeeLog);
             employeeLog.EmployeeImageBase64 = employee.EmployeeImageBase64;
-
-            employeeLog.EmployeeNumber = string.Empty;
-            employeeLog.Pin = string.Empty;
-            //return View(employeeLog);
-           return RedirectToAction("Create", new RouteValueDictionary(employeeLog));
+           return RedirectToAction("CreateLog", new { id = employeeLog.EmployeeLogId });
         }
         #endregion
         #region Read
