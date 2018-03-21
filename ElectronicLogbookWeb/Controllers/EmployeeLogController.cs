@@ -27,6 +27,9 @@ namespace ElectronicLogbookWeb.Controllers
             {
                 var employee = _iFEmployee.Read(employeeLog.EmployeeId);
                 employeeLog.EmployeeImageBase64 = employee.EmployeeImageBase64;
+                employeeLog.FirstName = employee.FirstName;
+                employeeLog.MiddleName = employee.MiddleName;
+                employeeLog.LastName = employee.LastName;
             }
 
             return View(employeeLog);

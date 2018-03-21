@@ -18,5 +18,8 @@ namespace ElectronicLogbookModel
         [Required, Display(Name = "Pin"), DataType(DataType.Password), StringLength(100, MinimumLength = 4)]
         public string Pin { get; set; }
         public LogType LogType { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MiddleName { get; set; }
     }
 }
