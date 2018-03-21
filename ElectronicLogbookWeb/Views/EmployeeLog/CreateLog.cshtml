@@ -30,21 +30,21 @@
                             &nbsp &nbsp &nbsp   <button name="LogTypeId" type="submit" value="1" class="btn btn-success">Time In</button>
                             <button name="LogTypeId" type="submit" value="2" class="btn btn-danger">Time Out</button>
                         </div>
-                            <div id="logIn">
-                                @if (Model.SuccesLogin && Model.LogTypeId == 1)
-                                {
-                                    <h2 id="logIn" style="color:green;">Successfully logged in at <br /></h2><h2> @Model.LogDate.ToString("h:mm:ss tt") </h2>
-                                }
-                                else if (Model.SuccesLogin && Model.LogTypeId == 2)
-                                {
+                        <div id="logIn">
+                            @if (Model.SuccesLogin && Model.LogTypeId == 1)
+                              {
+                                    <h2 id="logIn" style="color:green;">Successfully logged in at <br /></h2><h2> @Model.LogDate.ToString("h:mm:ss tt") </h2> 
+                             }
+                            else if (Model.SuccesLogin && Model.LogTypeId == 2)
+                             {
                                     <h2 id="logOut" style="color:green;">Successfully logged out at</h2><h2 style="color:black;">@Model.LogDate.ToString("h:mm:ss tt")</h2>
                                 }
-                                else if (!Model.SuccesLogin && Model.LogTypeId != 0)
+                            else if (!Model.SuccesLogin && Model.LogTypeId != 0)
                                 {
-                                    <h2 id="logFail" style="color: firebrick;">Employee Number or Pin does not exist</h2>
-                                    <h2 id="logFail" style="color: firebrick;">Please try again :(</h2>
+                                      <h2 id="logFail" style="color: firebrick;">Employee Number or Pin does not exist</h2>
+                                      <h2 id="logFail" style="color: firebrick;">Please try again :(</h2>
                                 }
-                            </div>
+                        </div>
                         
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" align="center">
@@ -57,6 +57,10 @@
                             <div class="col-md-12">
                                 <span id="CurrentDate"></span>
                             </div>
+                            <div>
+                                <h2>@Model.FirstName @Model.MiddleName @Model.LastName</h2>  
+                            </div>
+                           
                         </div>
                     </div>
                 </div>
