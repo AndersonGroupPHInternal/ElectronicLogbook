@@ -23,7 +23,7 @@
                         <div class="form-group">
                             @Html.LabelFor(m => m.Pin, new { @class = "col-md-4 control-label align-right" })
                             <div class="col-md-5">
-                                @Html.PasswordFor(m => m.Pin, new { @class = "form-control", @maxlength = "4" })
+                                @Html.PasswordFor(m => m.Pin, new { @class = "form-control", @maxlength = "5" })
                             </div>
                         </div>
                         <div class="col-md-11" id="time">
@@ -42,7 +42,7 @@
                             else if (!Model.SuccesLogin && Model.LogTypeId != 0)
                                 {
                                       <h2 id="logFail" style="color: firebrick;">Employee Number or Pin does not exist</h2>
-                                      <h2 id="logFail" style="color: firebrick;">Please try again :(</h2>
+                                      <h2 id="logFail" style="color: firebrick;">Please try again.</h2>
                                 }
                         </div>
                         
