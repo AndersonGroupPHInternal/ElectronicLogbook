@@ -46,11 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EEmployeeLog.cs" />
-    <Compile Include="EIntern.cs" />
-    <Compile Include="EInternHistory.cs" />
     <Compile Include="ElogType.cs" />
     <Compile Include="EVisitor.cs" />
-    <Compile Include="EVisitorHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

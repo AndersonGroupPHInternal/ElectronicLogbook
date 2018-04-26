@@ -54,15 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DEmployeeLog.cs" />
-    <Compile Include="DIntern.cs" />
-    <Compile Include="DInternHistory.cs" />
-    <Compile Include="DVisitorHistory.cs" />
     <Compile Include="IDEmployeeLog.cs" />
-    <Compile Include="IDIntern.cs" />
-    <Compile Include="IDInternHistory.cs" />
     <Compile Include="IDVisitor.cs" />
     <Compile Include="DVisitor.cs" />
-    <Compile Include="IDVisitorHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
