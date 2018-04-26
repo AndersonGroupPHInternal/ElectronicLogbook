@@ -48,18 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FApplicant.cs" />
     <Compile Include="FEmployeeLog.cs" />
-    <Compile Include="FIntern.cs" />
-    <Compile Include="FInternHistory.cs" />
-    <Compile Include="FVisitorHistory.cs" />
-    <Compile Include="IFApplicant.cs" />
     <Compile Include="IFEmployeeLog.cs" />
-    <Compile Include="IFIntern.cs" />
-    <Compile Include="IFInternHistory.cs" />
     <Compile Include="IFVisitor.cs" />
     <Compile Include="FVisitor.cs" />
-    <Compile Include="IFVisitorHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

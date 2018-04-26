@@ -33,15 +33,24 @@ namespace ElectronicLogbookWeb.Controllers
         public ActionResult Edit(int id)
         {
             var visitor = _iFVisitor.Read(id);
-            visitor.TimeOut = DateTime.Now.ToShortTimeString();
+            //visitor.TimeOut = DateTime.Now.ToShortTimeString();
             return View(visitor);
         }
-        [HttpGet]
+        [HttpGet]//ToDo: remove this
         public ActionResult Add()
         {
             Visitor visitor = new Visitor();
-            visitor.Date = DateTime.Now.ToString("MMMM dd, yyyy");
-            visitor.TimeIn = DateTime.Now.ToShortTimeString();
+            //visitor.Date = DateTime.Now.ToString("MMMM dd, yyyy");
+            //visitor.TimeIn = DateTime.Now.ToShortTimeString();
+            return View(visitor);
+        }
+
+        [HttpGet]//ToDo: remove this
+        public ActionResult Create()
+        {
+            Visitor visitor = new Visitor();
+            //visitor.Date = DateTime.Now.ToString("MMMM dd, yyyy");
+            //visitor.TimeIn = DateTime.Now.ToShortTimeString();
             return View(visitor);
         }
         [HttpPost]
