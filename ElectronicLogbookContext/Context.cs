@@ -23,7 +23,6 @@ namespace ElectronicLogbookContext
         public DbSet<EIntern> Interns { get; set; }
         public DbSet<EVisitorHistory> VisitorHistory { get; set; }
         public DbSet<EInternHistory> InternHistory { get; set; }
-        public DbSet<EApplicant> Applicants { get; set; }
         public DbSet<EEmployeeLog> EmployeeLogs { get; set; }
         public DbSet<ELogType> LogType { get; set; }
     }

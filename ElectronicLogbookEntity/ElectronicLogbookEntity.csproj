@@ -45,7 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EApplicant.cs" />
     <Compile Include="EEmployeeLog.cs" />
     <Compile Include="EIntern.cs" />
     <Compile Include="EInternHistory.cs" />

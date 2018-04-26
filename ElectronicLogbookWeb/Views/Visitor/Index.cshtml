@@ -115,7 +115,7 @@
     <br />
     <a id="addButton" href="/Visitor/Add" class="btn btn-primary" role="button" @*ng-click="model.Create()"*@ style="margin-left: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
     <a id="historyButton" href="/VisitorHistory/Index" role="button" class="btn btn-danger"><i class="glyphicon glyphicon-list"></i> History</a>
-    
+
 
     @*<p><button onclick="sortTable()">SortName</button></p>
         <p><button onclick="sortByDate()">SortDate</button></p>
@@ -221,12 +221,12 @@
 
 
                 @*<p id="date_time_button"></p>*@
-               @* <input type="text" class="form-control" name="Visitor.TimeOut" value="@Model.TimeOut" />*@
+                @* <input type="text" class="form-control" name="Visitor.TimeOut" value="@Model.TimeOut" />*@
             </td>
 
             <td>
                 @*  <a href="" type="button" class="btn btn-primary" role="button" id="Timeout" onclick="Timeout()">Time out</a>*@
-               @*  <button id="mybtnFunction" onclick="mybtnFunction()">Time out</button>*@
+                @*  <button id="mybtnFunction" onclick="mybtnFunction()">Time out</button>*@
                 @*<a href="/Visitor/Index"><input type="Submit" value="TimeOut" class="btn btn-primary" style="" id="mybtnFunction" onclick="mybtnFunction()" /><i class="glyphicon glyphicon-bell"></i></a>*@
 
                 <a href="/Visitor/Index" ng-click="model.Details(Visitor)" id="mybtnFunction" onclick="mybtnFunction()" type="button" class="btn btn-primary"> <i class="glyphicon glyphicon-bell"></i> Timeout</a>
@@ -237,6 +237,7 @@
             </td>
         </tr>
     </table>
+    {{model.Visitors}}
     <script>
 
         /////////////////////////////////////////////////////////////////////////////////////
@@ -249,7 +250,7 @@
         //    document.getElementById("date_time_button").innerHTML = d.toLocaleTimeString();
 
 
-         
+
 
         ////}
         //////////////////////////////////////////////////////////////////////////////
@@ -502,7 +503,7 @@
             return !isNaN(parseFloat(n)) && isFinite(n);
         }
 
-            // Attach listener to table
+                // Attach listener to table
 
 
 
