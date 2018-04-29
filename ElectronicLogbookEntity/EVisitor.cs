@@ -1,5 +1,4 @@
 ﻿using BaseEntity;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System;
@@ -9,28 +8,28 @@ namespace ElectronicLogbookEntity
     [Table("Visitor")]
     public class EVisitor : EBase
     {
+        public DateTime TimeIn { get; set; }
+        public DateTime TimeOut { get; set; }
+
+        public int PersonToVisit { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public int VisitorID { get; set; }
-        [StringLength(50)]
-        public string Date { get; set; }
-        [StringLength(50)]
-        public string Name { get; set; }
+        public int VisitorId { get; set; }
+
+        public string Comment { get; set; }
         [StringLength(50)]
         public string CompanyName { get; set; }
         [StringLength(50)]
-        public string Purpose { get; set; }
-        public int PersonToVisit { get; set; }
-        [StringLength(50)]
-        public string Designation { get; set; }
+        public string KindOfId { get; set; }
         [StringLength(50)]
         public string IdNumber { get; set; }
         [StringLength(50)]
-        public string KindOfId { get; set; }
+        public string FirstName { get; set; }
         [StringLength(50)]
-        public string TimeIn { get; set; }
+        public string LastName { get; set; }
         [StringLength(50)]
-        public string TimeOut { get; set; }
-        public string Comment { get; set; }
+        public string MiddleName { get; set; }
+        [StringLength(50)]
+        public string Purpose { get; set; }
     }
 }
