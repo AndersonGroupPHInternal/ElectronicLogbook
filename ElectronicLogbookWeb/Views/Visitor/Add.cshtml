@@ -6,16 +6,23 @@
 <h3>Visitor Log sheet</h3>
 
 
+
 <div id="Add" ng-controller="VisitorController as model" ng-init="model.TryF()">
     <div style="width: 100%">
-        <div style="width: 25%; float: left; display: inline-block;" ng-init="model.CreateVisitor('@Model.Date','@Model.TimeIn', '@Model.TimeOut')">
+        <div style="width: 25%; margin: 20px; float: left; display: inline-block;" ng-init="model.CreateVisitor('@Model.TimeIn', '@Model.TimeOut')">
+
             <br />
-            <label for="Date">Date:</label>
-            <input type="text" class="form-control" id="Date" ng-model="model.Visitor.Date" />
-            <label for="Name">Name:</label>
-            <input type="text" class="form-control" id="Name" ng-model="model.Visitor.Name" />
+            
+            <label for="LastName">Last Name:</label>
+            <input type="text" class="form-control" id="LastName" ng-model="model.Visitor.Name" />
+            <label for="FirstName">First Name:</label>
+            <input type="text" class="form-control" id="FirstName" ng-model="model.Visitor.Name" />
+            <label for="MiddleName">Middle Name:</label>
+            <input type="text" class="form-control" id="MiddleName" ng-model="model.Visitor.Name" />
+
             <label for="CompanyName">Company Name:</label>
             <input type="text" class="form-control" id="CompanyName" ng-model="model.Visitor.CompanyName" />
+
             <label for="Purpose">Purpose of Visit:</label>
             <select class="form-control" id="Purpose" ng-model="model.Visitor.Purpose">
                 <option value="Applicant"><span>Applicant</span></option>
@@ -33,27 +40,7 @@
                 </ui-select>
 
             </div>
-            <label for="Designation">Designation:</label>
-            <select class="form-control" id="Designation" ng-model="model.Visitor.Designation">
-                <option disabled selected value="">-- select designation --</option>
-                <option value="ANDERSON INTERNATIONAL DMCC"><span>ANDERSON INTERNATIONAL DMCC</span></option>
-                <option value="ALEXANDER MANN SOLUTIONS"><span>ALEXANDER MANN SOLUTIONS</span></option>
-                <option value="BALBOA DIGITAL"><span>BALBOA DIGITAL</span></option>
-                <option value="BUSINESSPRO ASIA INC."><span>BUSINESSPRO ASIA INC.</span></option>
-                <option value="CLARUS RCM INFOTECH (INDIA) PRIVATE LIMITED"><span>CLARUS RCM INFOTECH (INDIA) PRIVATE LIMITED</span></option>
-                <option value="DIGITAL ATHLETE PTY LIMITED"><span>DIGITAL ATHLETE PTY LIMITED</span></option>
-                <option value="ELEARNING EDGE INC / FUTURE PROOF"><span>ELEARNING EDGE INC / FUTURE PROOF</span></option>
-                <option value="HUMAN DYNAMIC PHILIPPINES CONSULTANCY INC."><span>HUMAN DYNAMIC PHILIPPINES CONSULTANCY INC.</span></option>
-                <option value="IoT INTERNATIONAL PTY LIMITED"><span>IoT INTERNATIONAL PTY LIMITED</span></option>
-                <option value="IT SUPPORT LIMITED"><span>IT SUPPORT LIMITED</span></option>
-                <option value="MARIA DOROTHEA T. MACANAIG"><span>MARIA DOROTHEA T. MACANAIG</span></option>
-                <option value="STARSON INTERNATIONAL LIMITED"><span>STARSON INTERNATIONAL LIMITED</span></option>
-                <option value="STONESTEP SA"><span>STONESTEP SA</span></option>
-                <option value="SUITED CONNECTOR BPO INC."><span>SUITED CONNECTOR BPO INC.</span></option>
-                <option value="TENPATH LLC"><span>TENPATH LLC</span></option>
-                <option value="TRYPOD PHILIPPINES"><span>TRYPOD PHILIPPINES</span></option>
-                <option value="VISTA LAND & LIFESCAPES INC"><span>VISTA LAND & LIFESCAPES INC</span></option>
-            </select>
+
             <label for="KindOfId">Type of ID:</label>
             <input type="text" class="form-control" id="KindOfId" placeholder="SSS, GSIS, Voter's ID...'" ng-model="model.Visitor.KindOfId" />
             <label for="IdNumber">ID Number:</label>
@@ -63,9 +50,13 @@
             <label for="Comment">Comment:</label>
             <textarea rows="4" cols="50" class="form-control" id="Comment" ng-model="model.Visitor.Comment" placeholder="Enter comment..."></textarea>
             <br />
+
+
             <a href="/Visitor/Index" class="btn btn-success" role="button" ng-click="model.Create(visitor) " style="margin-right:5px;float: left"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
+
             <a href="/Visitor/Index" class="btn btn-warning" role="button" style="margin-right: 10px; float:left"><i class="glyphicon glyphicon-remove"></i> Cancel</a>
         </div>
+
         <div id="webcam">
             <div>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -73,6 +64,7 @@
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 <canvas style="border: 5px solid; object-fit: fill;" id="canvas" height="317" width="380"></canvas>
             </div>
+
             <div>
                 <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -81,8 +73,11 @@
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp;
+
                 @*<form action="/Visitor/upload" method="post" enctype="multipart/form-data">*@
+
                 <a href="#" download="visitor_picture.png" id="save"><button class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Save Picture </button></a>
+
                 @*<input type="file" name="photo">*@
                 @*</form>*@
 
