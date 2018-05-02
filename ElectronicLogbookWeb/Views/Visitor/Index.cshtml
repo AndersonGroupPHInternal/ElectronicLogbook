@@ -191,7 +191,7 @@
     <table id="tableid" class="table table-hover table-sm table-bordered">
         <tr>
            
-            <th onclick="sortTable2(1)">Name <span class="glyphicon glyphicon-sort"></span></th>
+            <th onclick="sortTable2(1)">Full Name <span class="glyphicon glyphicon-sort"></span></th>
             <th onclick="sortTable2(2)">Company Name <span class="glyphicon glyphicon-sort"></span></th>
 
             <th onclick="sortTable2(3)">Purpose of Visit <span class="glyphicon glyphicon-sort"></span></th>
@@ -205,7 +205,7 @@
         </tr>
         <tr class="alert" ng-repeat="Visitor in model.Visitors | orderBy: '-VisitorID'" ng-click="model.Details(Visitor)" style="cursor:pointer" filter="">
            
-            <td><span ng-bind="Visitor.Name"></span></td>
+            <td><span ng-bind="Visitor.FirstName + ' ' + Visitor.MiddleName + ' ' + Visitor.LastName"></span></td>
 
             @*<td></td>
                 <td><span ng-bind="Visitor.Name"></span></td>*@
