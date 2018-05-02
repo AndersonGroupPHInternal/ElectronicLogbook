@@ -8,8 +8,8 @@ namespace ElectronicLogbookEntity
     [Table("Visitor")]
     public class EVisitor : EBase
     {
-        public DateTime? TimeIn { get; set; }
-        public Nullable<DateTime> TimeOut { get; set; }
+        public DateTime TimeIn { get; set; }
+        public DateTime? TimeOut  { get; set; }
 
         public int PersonToVisit { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -5,8 +5,8 @@ namespace ElectronicLogbookModel
 {
     public class Visitor : Base
     {
-        public DateTime? TimeIn { get; set; }
-        public Nullable<DateTime> TimeOut { get; set; }
+        public DateTime TimeIn { get; set; }
+        public DateTime? TimeOut { get; set; }
 
         public int PersonToVisit { get; set; }
         public int VisitorId { get; set; }
