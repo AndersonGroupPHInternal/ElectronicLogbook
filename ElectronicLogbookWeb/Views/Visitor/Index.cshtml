@@ -19,6 +19,7 @@
     }
 
     #historyButton {
+        margin: 5px;
         float: left;
     }
 
@@ -27,6 +28,7 @@
         color: #000;
     }*/
     table {
+      
         border-spacing: 0;
         width: 100%;
         border: 1px solid #ddd;
@@ -113,7 +115,7 @@
 <center><h3>&nbsp;Visitor/Applicant Information</h3></center>
 <div ng-controller="VisitorController as model" ng-init="model.List()">
     <br />
-    <a id="addButton" href="/Visitor/Add" class="btn btn-primary" role="button" @*ng-click="model.Create()"*@ style="margin-left: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
+    <a id="addButton" href="/Visitor/Create" class="btn btn-primary" role="button" @*ng-click="model.Create()"*@ style="margin-left: 10px; float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
     <a id="historyButton" href="/VisitorHistory/Index" role="button" class="btn btn-danger"><i class="glyphicon glyphicon-list"></i> History</a>
 
 
@@ -188,13 +190,12 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <table id="tableid" class="table table-hover table-sm table-bordered">
         <tr>
-            <th onclick="sortTable2(0)">Date <span class="glyphicon glyphicon-sort"></span></th>
+           
             <th onclick="sortTable2(1)">Name <span class="glyphicon glyphicon-sort"></span></th>
             <th onclick="sortTable2(2)">Company Name <span class="glyphicon glyphicon-sort"></span></th>
 
             <th onclick="sortTable2(3)">Purpose of Visit <span class="glyphicon glyphicon-sort"></span></th>
             <th onclick="sortTable2(4)">Person To Visit <span class="glyphicon glyphicon-sort"></span></th>
-            <th onclick="sortTable2(5)">Designation <span class="glyphicon glyphicon-sort"></span></th>
             <th onclick="sortTable2(6)">Type of ID <span class="glyphicon glyphicon-sort"></span></th>
             <th onclick="sortTable2(7)">ID Number <span class="glyphicon glyphicon-sort"></span></th>
             <th>Time In</th>
@@ -203,7 +204,7 @@
             <th style="width:100px"></th>
         </tr>
         <tr class="alert" ng-repeat="Visitor in model.Visitors | orderBy: '-VisitorID'" ng-click="model.Details(Visitor)" style="cursor:pointer" filter="">
-            <td><span ng-bind="Visitor.Date"></span></td>
+           
             <td><span ng-bind="Visitor.Name"></span></td>
 
             @*<td></td>
@@ -211,7 +212,6 @@
             <td id="company_id"><span ng-bind="Visitor.CompanyName"></span></td>
             <td><span ng-bind="Visitor.Purpose"></span></td>
             <td><span ng-bind="Visitor.PersonToVisit"></span></td>
-            <td><span ng-bind="Visitor.Designation"></span></td>
             <td><span ng-bind="Visitor.KindOfId"></span></td>
             <td><span ng-bind="Visitor.IdNumber"></span></td>
             <td><span ng-bind="Visitor.TimeIn"></span></td>
@@ -237,7 +237,6 @@
             </td>
         </tr>
     </table>
-    {{model.Visitors}}
     <script>
 
         /////////////////////////////////////////////////////////////////////////////////////

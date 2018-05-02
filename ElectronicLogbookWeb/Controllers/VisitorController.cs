@@ -54,12 +54,12 @@ namespace ElectronicLogbookWeb.Controllers
             return View(visitor);
         }
         [HttpPost]
-        public JsonResult Create(Visitor visitor)
+        public ActionResult Create(Visitor visitor)
         {
             try
             {
                 visitor = _iFVisitor.Create(visitor);
-                return Json("");
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
