@@ -41,7 +41,10 @@ namespace ElectronicLogbookWeb.Controllers
         {
             Visitor visitor = new Visitor();
             //visitor.Date = DateTime.Now.ToString("MMMM dd, yyyy");
-            //visitor.TimeIn = DateTime.Now.ToShortTimeString();
+
+          //  visitor.TimeIn = DateTime.Now;
+           // String strTimeIn = visitor.TimeIn.ToString();
+           
             return View(visitor);
         }
 
@@ -49,8 +52,8 @@ namespace ElectronicLogbookWeb.Controllers
         public ActionResult Create()
         {
             Visitor visitor = new Visitor();
-            //visitor.Date = DateTime.Now.ToString("MMMM dd, yyyy");
-            //visitor.TimeIn = DateTime.Now.ToShortTimeString();
+            //visitor.Date = DateTime.Now.ToString("MMMM dd, yyyy"); 
+           // visitor.TimeIn = visitor.TimeIn.ToString();
             return View(visitor);
         }
         [HttpPost]
