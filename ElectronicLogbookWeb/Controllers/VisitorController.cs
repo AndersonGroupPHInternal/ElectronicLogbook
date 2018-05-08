@@ -9,9 +9,6 @@ using System.Data.Entity;
 using Rotativa;
 using System.Web;
 using System.IO;
-using System.Globalization;
-using System.Threading;
-
 
 namespace ElectronicLogbookWeb.Controllers
 {
@@ -56,8 +53,7 @@ namespace ElectronicLogbookWeb.Controllers
         {
             Visitor visitor = new Visitor();
             //visitor.Date = DateTime.Now.ToString("MMMM dd, yyyy"); 
-           // visitor.TimeIn = DateTime.Now;
-           // String strTimeIn = visitor.TimeIn.ToString();
+           // visitor.TimeIn = visitor.TimeIn.ToString();
             return View(visitor);
         }
         [HttpPost]
