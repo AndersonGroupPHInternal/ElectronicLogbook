@@ -110,6 +110,7 @@
             text-decoration: none;
             cursor: pointer;
         }
+
 </style>
 
 <center><h3>&nbsp;Visitor/Applicant Information</h3></center>
@@ -214,9 +215,9 @@
             <td><span ng-bind="Visitor.PersonToVisit"></span></td>
             <td><span ng-bind="Visitor.KindOfId"></span></td>
             <td><span ng-bind="Visitor.IdNumber"></span></td>
-            <td><span ng-bind="Visitor.TimeIn"></span></td>
+            <td><span ng-model="TimeIn" ng-bind= "Visitor.TimeIn | date: 'yyyy/MM/dd HH:mm'"></span></td>
             <td>
-                <span ng-bind="Visitor.TimeOut"></span>
+                <span ng-model="TimeOut" ng-bind="Visitor.TimeOut | date: 'yyyy/MM/dd HH:mm'"></span>
 
 
 
@@ -225,7 +226,7 @@
             </td>
 
             <td>
-                @*  <a href="" type="button" class="btn btn-primary" role="button" id="Timeout" onclick="Timeout()">Time out</a>*@
+                      @*  <a href="" type="button" class="btn btn-primary" role="button" id="Timeout" onclick="Timeout()">Time out</a>*@
                 @*  <button id="mybtnFunction" onclick="mybtnFunction()">Time out</button>*@
                 @*<a href="/Visitor/Index"><input type="Submit" value="TimeOut" class="btn btn-primary" style="" id="mybtnFunction" onclick="mybtnFunction()" /><i class="glyphicon glyphicon-bell"></i></a>*@
 
