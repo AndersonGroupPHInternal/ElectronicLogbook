@@ -58,8 +58,7 @@ namespace ElectronicLogbookFunction
                 TimeIn = a.TimeIn,
                 TimeOut = a.TimeOut,
 
-                PersonToVisit = a.PersonToVisit,
-
+                EmployeeIdToVisit = a.EmployeeIdToVisit,
                 VisitorId = a.VisitorId,
                 
                 Comment = a.Comment,
@@ -83,8 +82,7 @@ namespace ElectronicLogbookFunction
                 TimeIn = visitor.TimeIn,
                 TimeOut = visitor.TimeOut,
 
-                PersonToVisit = visitor.PersonToVisit,
-
+                EmployeeIdToVisit = visitor.EmployeeIdToVisit,
                 VisitorId = visitor.VisitorId,
 
                 Comment = visitor.Comment,
@@ -108,8 +106,7 @@ namespace ElectronicLogbookFunction
                 TimeIn = eVisitor.TimeIn,
                 TimeOut = eVisitor.TimeOut,
 
-                PersonToVisit = eVisitor.PersonToVisit,
-
+                EmployeeIdToVisit = eVisitor.EmployeeIdToVisit,
                 VisitorId = eVisitor.VisitorId,
                 
                 Comment = eVisitor.Comment,

@@ -16,8 +16,6 @@
 
         vm.Initialise = Initialise;
 
-
-
         function Initialise(employeeId) {
             vm.EmployeeId = employeeId;
             Read();            

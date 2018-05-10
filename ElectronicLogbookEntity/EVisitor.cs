@@ -11,7 +11,7 @@ namespace ElectronicLogbookEntity
         public DateTime TimeIn { get; set; }
         public DateTime? TimeOut  { get; set; }
 
-        public int PersonToVisit { get; set; }
+        public string EmployeeIdToVisit { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int VisitorId { get; set; }

@@ -48,7 +48,7 @@ namespace ElectronicLogbookWeb.Controllers
             return View(visitor);
         }
 
-        [HttpGet]//ToDo: remove this
+        [HttpGet]
         public ActionResult Create()
         {
             Visitor visitor = new Visitor();
@@ -69,6 +69,7 @@ namespace ElectronicLogbookWeb.Controllers
                 return Json(ex);
             }
         }
+
         [HttpGet]
         public ActionResult Details(int id)
         {
@@ -179,6 +180,7 @@ namespace ElectronicLogbookWeb.Controllers
                 return Json(exception);
             }
         }
+
         [HttpGet]
         public ActionResult Update(int id)
         {
@@ -192,13 +194,14 @@ namespace ElectronicLogbookWeb.Controllers
                 return View(new Visitor());
             }
         }
+
         [HttpPost]
         public ActionResult Update(Visitor visitor)
         {
             try
             {
                 visitor = _iFVisitor.Update(visitor);
-                return Json("");
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
