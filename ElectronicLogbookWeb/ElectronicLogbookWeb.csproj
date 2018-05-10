@@ -663,6 +663,7 @@
     <Content Include="Views\Shared\_AuditColumns.cshtml" />
     <Content Include="Views\Visitor\Create.cshtml" />
     <Content Include="Views\Visitor\_Visitor.cshtml" />
+    <Content Include="Views\Visitor\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

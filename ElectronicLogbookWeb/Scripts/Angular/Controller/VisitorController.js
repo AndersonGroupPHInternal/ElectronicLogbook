@@ -13,16 +13,13 @@
         vm.Visitor;
 
         vm.Visitors = [];
-
-  
         vm.Employees = [];
-        vm.List = List;
-        vm.Create = Create;
-        vm.CreateVisitor = CreateVisitor;
-        vm.Update = Update;
-        vm.UpdateVisitor = UpdateVisitor;
+            
+        vm.Read = Read;
+
+        vm.GoToUpdatePage = GoToUpdatePage;
+
         vm.Delete = Delete;
-        vm.Details = Details;
 
         function Create() {
             vm.Visitor.PersonToVisit = vm.Visitor.PersonToVisita.EmployeeId;
@@ -52,7 +49,7 @@
             };
         }
 
-        function List() {
+        function Read() {
             VisitorService.List()
             .then(function (response) {
                 vm.Visitors = response.data;
@@ -84,8 +81,8 @@
                 });
         }
 
-        function Details(visitor) {
-            $window.location = '/Visitor/Details/' + visitor.VisitorID
+        function GoToUpdatePage(visitorId) {
+            $window.location = '/Visitor/Update/' + visitorId
         }
 
         //function Read() {
@@ -109,7 +106,6 @@
             EmployeeService.Read()
                 .then(function (response) {
                     vm.Employees = response.data;
-                    console.log(vm.Employees);
                     UpdatePersonToVisitNames();
                 })
                 .catch(function (data, status) {
@@ -124,14 +120,9 @@
         }
 
         function UpdatePersonToVisitNames() {
-            angular.forEach(vm.Employees, function (employee) {
-                employee.FullName = employee.LastName + ", " + employee.FirstName + " " + employee.MiddleName;
-            });
-            console.log(vm.Employees);
             angular.forEach(vm.Visitors, function (visitor) {
-                visitor.ToVisit = $filter('filter')(vm.Employees, { EmployeeId: visitor.PersonToVisit })[0];   
+                visitor.EmployeeToVisit = $filter('filter')(vm.Employees, { EmployeeId: visitor.EmployeeIdToVisit })[0];   
             });
-            console.log(vm.Visitors);
         }
 
 

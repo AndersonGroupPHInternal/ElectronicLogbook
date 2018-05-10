@@ -1,0 +1,18 @@
+﻿@using ElectronicLogbookModel;
+@model Visitor
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <form action="~/Visitor/Update" method="post">
+            @{
+                Html.RenderPartial("_Visitor", Model);
+            }
+        </form>
+    </div>
+</div>
