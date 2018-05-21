@@ -3,6 +3,7 @@ using ElectronicLogbookFunction;
 using System.Web.Mvc;
 using System.Web.UI;
 using System.Web.Routing;
+using System;
 
 namespace ElectronicLogbookWeb.Controllers
 {
@@ -40,6 +41,7 @@ namespace ElectronicLogbookWeb.Controllers
             var employee = _iFEmployee.Read(employeeLog.EmployeeNumber, employeeLog.Pin);
             var logname = _iFEmployeeLog.Readlogtype(employeeLog.LogTypeId);
             bool IsSuccess = employee.EmployeeId != 0 && employee.Pin == employeeLog.Pin;
+            employeeLog.LogDate = DateTime.Now;
             employeeLog.LogName = logname.Name;
             employeeLog.EmployeeId = employee.EmployeeId;
             employeeLog.SuccesLogin = IsSuccess;
@@ -49,34 +51,19 @@ namespace ElectronicLogbookWeb.Controllers
         }
 
         [HttpGet]
-        public ActionResult InsertLog(int? id)
+        public ActionResult Create()
         {
-            if (id == null)
-                return View(new EmployeeLog());
-            var employeeLog = _iFEmployeeLog.Read(id.Value);
-            if (employeeLog.SuccesLogin)
-            {
-                var employee = _iFEmployee.Read(employeeLog.EmployeeId);
-                employeeLog.EmployeeImageBase64 = employee.EmployeeImageBase64;
-                employeeLog.FirstName = employee.FirstName;
-                employeeLog.MiddleName = employee.MiddleName;
-                employeeLog.LastName = employee.LastName;
-            }
-
-            return View(employeeLog);
+            return View(new EmployeeLog());
         }
         [HttpPost]
-        public ActionResult InsertLog(EmployeeLog employeeLog)
+        public ActionResult Create(EmployeeLog employeeLog)
         {
-            var employee = _iFEmployee.Read(employeeLog.EmployeeNumber, employeeLog.Pin);
+
             var logname = _iFEmployeeLog.Readlogtype(employeeLog.LogTypeId);
-            bool IsSuccess = employee.EmployeeId != 0 && employee.Pin == employeeLog.Pin;
+            employeeLog.SuccesLogin = true;
             employeeLog.LogName = logname.Name;
-            employeeLog.EmployeeId = employee.EmployeeId;
-            employeeLog.SuccesLogin = IsSuccess;
-            employeeLog = _iFEmployeeLog.Insert(UserId, employeeLog);
-            employeeLog.EmployeeImageBase64 = employee.EmployeeImageBase64;
-            return RedirectToAction("InsertLog", new { id = employeeLog.EmployeeLogId });
+            employeeLog = _iFEmployeeLog.Create(UserId, employeeLog);
+            return RedirectToAction("Index");
         }
         #endregion
         #region Read
