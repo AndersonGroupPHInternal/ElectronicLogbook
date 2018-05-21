@@ -15,7 +15,7 @@
             <div class="form-group">
             </div>
 
-            <div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(m => m.EmployeeNumber, new { @class = "col-md-4 control-label align-right" })
                 <div class="col-md-5">
                     @Html.TextBoxFor(m => m.EmployeeNumber, new { @class = "form-control" })<br>
@@ -26,14 +26,30 @@
                 <div class="col-md-5">
                     @Html.PasswordFor(m => m.Pin, new { @class = "form-control", @maxlength = "5" })
                 </div>
-            </div>
+            </div>*@
+
+        <div class="form-group" ng-controller="EmployeeController as model" ng-init="model.Initialise(@Model.EmployeeId)">
+            <label for="EmployeeId">Employee to visit</label>
+            <input type="hidden" class="form-control" id="EmployeeId" name="EmployeeId" value="{{model.Employee.EmployeeId}}">
+            <ui-select ng-model="model.Employee">
+                <ui-select-match placeholder="Select employee...">
+                    <span ng-bind="$select.selected.FirstName + '  ' + $select.selected.MiddleName + ' ' + $select.selected.LastName"></span>
+                </ui-select-match>
+                <ui-select-choices repeat="employee in (model.Employees | filter: $select.search) track by $index">
+                    <span ng-bind="employee.FirstName"></span>
+                    <span ng-bind="employee.MiddleName"></span>
+                    <span ng-bind="employee.LastName"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+
 
             <div class="form-group" id="time">
                 <div class="col-md-4 control-label align-right">
                     <input type="radio" id="TimeIn" name="LogTypeId" value="1" onclick="Checkradiobutton()">
                     <label for="TimeIn">Time In</label>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-5"> 
                     <input type="datetime-local" id="In" class="form-control" name="LogDate" value=" @Model.LogDate.ToString("h:mm:ss tt")"><br>
                 </div>
             </div>
