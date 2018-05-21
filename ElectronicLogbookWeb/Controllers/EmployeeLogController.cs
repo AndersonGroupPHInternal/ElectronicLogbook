@@ -58,7 +58,10 @@ namespace ElectronicLogbookWeb.Controllers
         [HttpPost]
         public ActionResult Create(EmployeeLog employeeLog)
         {
+
+            var logname = _iFEmployeeLog.Readlogtype(employeeLog.LogTypeId);
             employeeLog.SuccesLogin = true;
+            employeeLog.LogName = logname.Name;
             employeeLog = _iFEmployeeLog.Create(UserId, employeeLog);
             return RedirectToAction("Index");
         }
