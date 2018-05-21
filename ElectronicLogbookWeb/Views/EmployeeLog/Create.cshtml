@@ -2,12 +2,12 @@
 @model EmployeeLog
 
 @{
-    ViewBag.Title = "Insert";
+    ViewBag.Title = "Create";
 }
 
 
     <div class="col-sm-12">
-        <form action="~/EmployeeLog/InsertLog" method="post">
+        <form action="~/EmployeeLog/Create" method="post">
             @{
                 Html.RenderPartial("_EmployeeLog", Model);
             }
