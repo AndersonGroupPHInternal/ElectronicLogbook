@@ -47,6 +47,37 @@ namespace ElectronicLogbookWeb.Controllers
             employeeLog.EmployeeImageBase64 = employee.EmployeeImageBase64;
            return RedirectToAction("CreateLog", new { id = employeeLog.EmployeeLogId });
         }
+
+        [HttpGet]
+        public ActionResult InsertLog(int? id)
+        {
+            if (id == null)
+                return View(new EmployeeLog());
+            var employeeLog = _iFEmployeeLog.Read(id.Value);
+            if (employeeLog.SuccesLogin)
+            {
+                var employee = _iFEmployee.Read(employeeLog.EmployeeId);
+                employeeLog.EmployeeImageBase64 = employee.EmployeeImageBase64;
+                employeeLog.FirstName = employee.FirstName;
+                employeeLog.MiddleName = employee.MiddleName;
+                employeeLog.LastName = employee.LastName;
+            }
+
+            return View(employeeLog);
+        }
+        [HttpPost]
+        public ActionResult InsertLog(EmployeeLog employeeLog)
+        {
+            var employee = _iFEmployee.Read(employeeLog.EmployeeNumber, employeeLog.Pin);
+            var logname = _iFEmployeeLog.Readlogtype(employeeLog.LogTypeId);
+            bool IsSuccess = employee.EmployeeId != 0 && employee.Pin == employeeLog.Pin;
+            employeeLog.LogName = logname.Name;
+            employeeLog.EmployeeId = employee.EmployeeId;
+            employeeLog.SuccesLogin = IsSuccess;
+            employeeLog = _iFEmployeeLog.Insert(UserId, employeeLog);
+            employeeLog.EmployeeImageBase64 = employee.EmployeeImageBase64;
+            return RedirectToAction("InsertLog", new { id = employeeLog.EmployeeLogId });
+        }
         #endregion
         #region Read
         [HttpGet]

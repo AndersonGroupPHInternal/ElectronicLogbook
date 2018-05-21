@@ -116,7 +116,7 @@
 <center><h3>&nbsp;Visitor/Applicant Information</h3></center>
 <div ng-controller="VisitorController as model" ng-init="model.Read()">
     <br />
-    <a id="addButton" href="/Visitor/Create" class="btn btn-primary" role="button" @*ng-click="model.Create()"*@ style="margin-left: 10px; float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
+    <a id="addButton" href="/Visitor/Create" class="btn btn-primary" role="button" style="margin-left: 10px; float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
 
 
 
@@ -208,8 +208,6 @@
            
             <td><span ng-bind="Visitor.FirstName + ' ' + Visitor.MiddleName + ' ' + Visitor.LastName"></span></td>
 
-            @*<td></td>
-                <td><span ng-bind="Visitor.Name"></span></td>*@
             <td id="company_id"><span ng-bind="Visitor.CompanyName"></span></td>
             <td><span ng-bind="Visitor.Purpose"></span></td>
             <td><span ng-bind="Visitor.EmployeeToVisit.FirstName"></span> <span ng-bind="Visitor.EmployeeToVisit.MiddleName"></span>

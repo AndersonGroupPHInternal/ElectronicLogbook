@@ -7,6 +7,7 @@ namespace ElectronicLogbookFunction
     {
         #region CREATE
         EmployeeLog Create(int userId, EmployeeLog employeelog);
+        EmployeeLog Insert(int userId, EmployeeLog employeelog);
         #endregion
         #region RETRIEVE
         EmployeeLog Read(int EmployeeLogId);
