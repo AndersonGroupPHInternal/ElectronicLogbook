@@ -26,6 +26,17 @@ namespace ElectronicLogbookFunction
             eEmployeeLog = _iDEmployeeLog.Create(eEmployeeLog);
             return (EmployeeLog(eEmployeeLog));
         }
+
+        public EmployeeLog Insert(int userId, EmployeeLog employeelog)
+        {
+            EEmployeeLog eEmployeeLog = EEmployeeLog(employeelog);
+            //eEmployeeLog.CreatedDate = DateTime.Now;
+            //eEmployeeLog.LogDate = DateTime.Now;
+            eEmployeeLog.CreatedBy = userId;
+            eEmployeeLog = _iDEmployeeLog.Insert(eEmployeeLog);
+            return (EmployeeLog(eEmployeeLog));
+        }
+
         #endregion
         #region READ
         public EmployeeLog Read(int employeeLogId)

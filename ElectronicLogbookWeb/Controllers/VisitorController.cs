@@ -33,27 +33,13 @@ namespace ElectronicLogbookWeb.Controllers
         public ActionResult Edit(int id)
         {
             var visitor = _iFVisitor.Read(id);
-            //visitor.TimeOut = DateTime.Now.ToShortTimeString();
             return View(visitor);
         }
-        [HttpGet]//ToDo: remove this
-        public ActionResult Add()
-        {
-            Visitor visitor = new Visitor();
-            //visitor.Date = DateTime.Now.ToString("MMMM dd, yyyy");
-
-          //  visitor.TimeIn = DateTime.Now;
-           // String strTimeIn = visitor.TimeIn.ToString();
-           
-            return View(visitor);
-        }
-
+      
         [HttpGet]
         public ActionResult Create()
         {
             Visitor visitor = new Visitor();
-            //visitor.Date = DateTime.Now.ToString("MMMM dd, yyyy"); 
-           // visitor.TimeIn = visitor.TimeIn.ToString();
             return View(visitor);
         }
         [HttpPost]
@@ -194,7 +180,6 @@ namespace ElectronicLogbookWeb.Controllers
                 return View(new Visitor());
             }
         }
-
         [HttpPost]
         public ActionResult Update(Visitor visitor)
         {
