@@ -80,14 +80,15 @@ namespace ElectronicLogbookWeb.Controllers
         #endregion
         #region Update
         [HttpGet]
-        public ActionResult Update(int employeeLogId)
+        public ActionResult Update(int id)
         {
-            return View(_iFEmployeeLog.Read(employeeLogId));
+            return View(_iFEmployeeLog.Read(id));
+
         }
         [HttpPost]
         public ActionResult Update(EmployeeLog employeeLog)
         {
-            _iFEmployeeLog.Update(UserId, employeeLog);
+           employeeLog = _iFEmployeeLog.Update(UserId, employeeLog);
             return RedirectToAction("Index");
         }
         #endregion
