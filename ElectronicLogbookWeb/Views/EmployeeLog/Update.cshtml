@@ -1,0 +1,16 @@
+﻿@using ElectronicLogbookModel
+@model EmployeeLog
+
+@{
+    ViewBag.Title = "Update";
+}
+
+
+    <div class="col-sm-12">
+        <form action="~/EmployeeLog/Update" method="post">
+            @{
+                Html.RenderPartial("_EmployeeLog", Model);
+            }
+        </form>
+    </div>
+

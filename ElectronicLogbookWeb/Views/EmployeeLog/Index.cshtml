@@ -33,7 +33,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="alert" ng-repeat="employeelog in model.EmployeeLogs">
+                    <tr class="alert" ng-repeat="employeelog in model.EmployeeLogs | orderBy: '-EmployeeLogId'" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(employeelog.EmployeeLogId)" style="cursor:pointer" filter="">
                         <td><span ng-bind="employeelog.EmployeeLogId"></span></td>
                         <td><span ng-model="date" ng-bind="employeelog.LogDate | date:'yyyy/MM/dd HH:mm' "></span></td>
                         <td><span ng-bind="employeelog.EmployeeId"></span></td>

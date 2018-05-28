@@ -665,6 +665,7 @@
     <Content Include="Views\Visitor\_Visitor.cshtml" />
     <Content Include="Views\Visitor\Update.cshtml" />
     <Content Include="Views\EmployeeLog\Create.cshtml" />
+    <Content Include="Views\EmployeeLog\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

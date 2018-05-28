@@ -15,21 +15,8 @@
             <div class="form-group">
             </div>
 
-            @*<div class="form-group">
-                @Html.LabelFor(m => m.EmployeeNumber, new { @class = "col-md-4 control-label align-right" })
-                <div class="col-md-5">
-                    @Html.TextBoxFor(m => m.EmployeeNumber, new { @class = "form-control" })<br>
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Pin, new { @class = "col-md-4 control-label align-right" })
-                <div class="col-md-5">
-                    @Html.PasswordFor(m => m.Pin, new { @class = "form-control", @maxlength = "5" })
-                </div>
-            </div>*@
-
         <div class="form-group" ng-controller="EmployeeController as model" ng-init="model.Initialise(@Model.EmployeeId)">
-            <label for="EmployeeId">Employee to visit</label>
+            <label for="EmployeeId">Employee</label>
             <input type="hidden" class="form-control" id="EmployeeId" name="EmployeeId" value="{{model.Employee.EmployeeId}}">
             <ui-select ng-model="model.Employee">
                 <ui-select-match placeholder="Select employee...">
@@ -50,7 +37,7 @@
                     <label for="TimeIn">Time In</label>
                 </div>
                 <div class="col-md-5"> 
-                    <input type="datetime-local" id="In" class="form-control" name="LogDate" value=" @Model.LogDate.ToString("h:mm:ss tt")"><br>
+                    <input type="datetime-local" id="In" class="form-control" name="LogDate" value="@Model.LogDate.ToString("h:mm:ss tt")"><br>
                 </div>
             </div>
 
@@ -60,7 +47,7 @@
                     <label for="TimeOut">Time Out</label>
                 </div>
                 <div class="col-md-5">
-                    <input type="datetime-local" id="Out" class="form-control" name="LogDate" value=" @Model.LogDate.ToString("h:mm:ss tt")"><br>
+                     <input type="datetime-local" id="Out" class="form-control" name="LogDate" value="@Model.LogDate.ToString("h:mm:ss tt")"><br>
                 </div>
             </div>
 
