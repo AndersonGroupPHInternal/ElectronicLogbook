@@ -1,8 +1,6 @@
 ﻿using ElectronicLogbookModel;
 using ElectronicLogbookFunction;
 using System.Web.Mvc;
-using System.Web.UI;
-using System.Web.Routing;
 using System;
 
 namespace ElectronicLogbookWeb.Controllers
@@ -39,10 +37,8 @@ namespace ElectronicLogbookWeb.Controllers
         public ActionResult CreateLog(EmployeeLog employeeLog)
         {
             var employee = _iFEmployee.Read(employeeLog.EmployeeNumber, employeeLog.Pin);
-            var logname = _iFEmployeeLog.Readlogtype(employeeLog.LogTypeId);
             bool IsSuccess = employee.EmployeeId != 0 && employee.Pin == employeeLog.Pin;
             employeeLog.LogDate = DateTime.Now;
-            employeeLog.LogName = logname.Name;
             employeeLog.EmployeeId = employee.EmployeeId;
             employeeLog.SuccesLogin = IsSuccess;
             employeeLog = _iFEmployeeLog.Create(UserId, employeeLog);
@@ -58,10 +54,8 @@ namespace ElectronicLogbookWeb.Controllers
         [HttpPost]
         public ActionResult Create(EmployeeLog employeeLog)
         {
-
-            var logname = _iFEmployeeLog.Readlogtype(employeeLog.LogTypeId);
+            
             employeeLog.SuccesLogin = true;
-            employeeLog.LogName = logname.Name;
             employeeLog = _iFEmployeeLog.Create(UserId, employeeLog);
             return RedirectToAction("Index");
         }

@@ -1,4 +1,5 @@
 ﻿using ElectronicLogbookModel;
+using ElectronicLogbookModel.Filter;
 using System.Collections.Generic;
 
 namespace ElectronicLogbookFunction
@@ -8,16 +9,17 @@ namespace ElectronicLogbookFunction
         #region CREATE
         EmployeeLog Create(int userId, EmployeeLog employeelog);
         #endregion
+
         #region RETRIEVE
         EmployeeLog Read(int EmployeeLogId);
         List<EmployeeLog> Read();
-        //List<EmployeeLog> Read(int employeeLogId, string sortBy);
-        List<EmployeeLog> Read(int employeeid, string sortBy);
-        LogType Readlogtype(int logtypeid);
+        List<EmployeeLog> Read(EmployeeLogFilter employeeLogFilter);
         #endregion
+
         #region UPDATE
         EmployeeLog Update(int userId, EmployeeLog employeelog);
         #endregion
+
         #region DELETE
         void Delete(int EmployeeLogId);
         #endregion
