@@ -1,0 +1,76 @@
+﻿<input type="hidden" name="VisitorId" value="@Model.VisitorId" />
+@{
+    Html.RenderPartial("_AuditColumns");
+}
+
+<div class="form-group">
+    <label for="FirstName">First Name</label>
+    <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="First Name" value="@Model.FirstName">
+</div>
+
+<div class="form-group">
+    <label for="MiddleName">Middle Name</label>
+    <input type="text" class="form-control" id="MiddleName" name="MiddleName" placeholder="Middle Name" value="@Model.MiddleName">
+</div>
+
+<div class="form-group">
+    <label for="LastName">Last Name</label>
+    <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Last Name" value="@Model.LastName">
+</div>
+
+<div class="form-group">
+    <label for="TimeIn">Time In</label>
+    <input type="datetime-local" class="form-control" id="TimeIn" name="TimeIn" placeholder="Time In" value="@Model.TimeInString">
+
+</div>
+
+<div class="form-group">
+    <label for="TimeOut">Time Out</label>
+    <input type="datetime-local" class="form-control" id="TimeOut" name="TimeOut" placeholder="Time Out" value="@Model.TimeOutString">
+</div>
+
+<div class="form-group" ng-controller="EmployeeController as model" ng-init="model.Initialise(@Model.EmployeeIdToVisit)">
+    <label for="EmployeeId">Employee to visit</label>
+    <input type="hidden" class="form-control" id="EmployeeIdToVisit" name="EmployeeIdToVisit" value="{{model.Employee.EmployeeId}}">
+    <ui-select ng-model="model.Employee">
+        <ui-select-match placeholder="Select employee...">
+            <span ng-bind="$select.selected.FirstName + '  ' + $select.selected.MiddleName + ' ' + $select.selected.LastName"></span>
+        </ui-select-match>
+        <ui-select-choices repeat="employee in (model.Employees | filter: $select.search) track by $index">
+            <span ng-bind="employee.FirstName"></span>
+            <span ng-bind="employee.MiddleName"></span>
+            <span ng-bind="employee.LastName"></span>
+        </ui-select-choices>
+    </ui-select>
+</div>
+
+
+<div class="form-group">
+    <label for="CompanyName">Company Name</label>
+    <input type="text" class="form-control" id="CompanyName" name="CompanyName" placeholder="Company Name" value="@Model.CompanyName">
+</div>
+
+<div class="form-group">
+    <label for="KindOfId">Kind Of Id</label>
+    <input type="text" class="form-control" id="KindOfId" name="KindOfId" placeholder="Kind Of Id" value="@Model.KindOfId">
+</div>
+
+<div class="form-group">
+    <label for="IdNumber">Id Number</label>
+    <input type="text" class="form-control" id="IdNumber" name="IdNumber" placeholder="Id Number" value="@Model.IdNumber">
+</div>
+
+
+<div class="form-group">
+    <label for="Purpose">Purpose</label>
+    <input type="text" class="form-control" id="Purpose" name="Purpose" placeholder="Purpose" value="@Model.Purpose">
+</div>
+
+<div class="form-group">
+    <label for="Comment">Comment</label>
+    <input type="text" class="form-control" id="Comment" name="Comment" placeholder="Comment" value="@Model.Comment">
+</div>
+
+<div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Submit" />
+</div>

@@ -2,16 +2,21 @@
     ViewBag.Title = "Index";
 }
 
+<center><h3>&nbsp;EmployeeLog</h3></center>
 <div ng-controller="EmployeeLogController as model" ng-init="model.Initialise()">
+    <br />
+    <a id="insertButton" href="/EmployeeLog/Create" class="btn btn-primary" role="button" @*ng-click="model.Create()"*@ style="margin: 5px; float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
+
+
     <div class="row">
         <div class="col-sm-2">
             <div class="input-group">
-                    <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here..." />
-                    <div class="input-group-btn" pointer-event="none">
-                        <button id="searchLogo" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
+                <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here..." style="margin: 5px" />
+                <div class="input-group-btn" pointer-event="none">
+                    <button id="searchLogo" class="btn btn-default" style="margin: 5px"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
-            <a href="../EmployeeLog/Create" class="btn btn-info">Log</a>
+            </div>
+
         </div>
     </div>
     <div class="row">
@@ -28,9 +33,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="alert" ng-repeat="employeelog in model.EmployeeLogs">
+                    <tr class="alert" ng-repeat="employeelog in model.EmployeeLogs | orderBy: '-EmployeeLogId'" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(employeelog.EmployeeLogId)" style="cursor:pointer" filter="">
                         <td><span ng-bind="employeelog.EmployeeLogId"></span></td>
-                        <td><span ng-model="date" ng-bind="employeelog.LogDate | date:'yyyy-mm-dd'"></span></td>
+                        <td><span ng-model="date" ng-bind="employeelog.LogDate | date:'yyyy/MM/dd HH:mm' "></span></td>
                         <td><span ng-bind="employeelog.EmployeeId"></span></td>
                         <td><span ng-bind="employeelog.LogName"></span></td>
                         <td><span ng-bind="employeelog.EmployeeNumber"></span></td>

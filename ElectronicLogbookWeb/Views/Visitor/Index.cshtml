@@ -19,10 +19,16 @@
     }
 
     #historyButton {
+        margin: 5px;
         float: left;
     }
 
+    /*#Timeout {
+        background: #ffff00;
+        color: #000;
+    }*/
     table {
+      
         border-spacing: 0;
         width: 100%;
         border: 1px solid #ddd;
@@ -65,14 +71,54 @@
         margin-right: 0.5em;
         margin-left: 1.0em;
     }
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
 </style>
 
 <center><h3>&nbsp;Visitor/Applicant Information</h3></center>
-<div ng-controller="VisitorController as model" ng-init="model.List()">
+<div ng-controller="VisitorController as model" ng-init="model.Read()">
     <br />
-    <a id="addButton" href="/Visitor/Add" class="btn btn-primary" role="button" @*ng-click="model.Create()"*@ style="margin-left: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
-    <a id="historyButton" href="/VisitorHistory/Index" role="button" class="btn btn-danger"><i class="glyphicon glyphicon-list"></i> History</a>
-    @*<p class="navbar-text">Filter:</p>*@
+    <a id="addButton" href="/Visitor/Create" class="btn btn-primary" role="button" style="margin-left: 10px; float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
+
+
 
     @*<p><button onclick="sortTable()">SortName</button></p>
         <p><button onclick="sortByDate()">SortDate</button></p>
@@ -84,6 +130,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-sort-time-asc position-left"></i>Filter<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortDate })">Date</a></li>
+                    @*<li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortName })">Name</a></li>*@
                     <li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortName })">Name</a></li>
                     <li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortCompany })">Company</a></li>
                     <li><a href="@Url.Action("Index", new { sortBy = ViewBag.SortPurpose })">Purpose</a></li>
@@ -91,6 +138,7 @@
                 </ul>
             </li>
         </ul>
+
 
         <script src="~/Scripts/search.js"></script>
         <div class="row">
@@ -138,19 +186,17 @@
         </table>*@
 
 
-
     @*/////////////////////////////////////////////////////////////////////////////////////////////*@
 
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <table id="tableid" class="table table-hover table-sm table-bordered">
         <tr>
-            <th onclick="sortTable2(0)">Date <span class="glyphicon glyphicon-sort"></span></th>
-            <th onclick="sortTable2(1)">Name <span class="glyphicon glyphicon-sort"></span></th>
+           
+            <th onclick="sortTable2(1)">Full Name <span class="glyphicon glyphicon-sort"></span></th>
             <th onclick="sortTable2(2)">Company Name <span class="glyphicon glyphicon-sort"></span></th>
 
             <th onclick="sortTable2(3)">Purpose of Visit <span class="glyphicon glyphicon-sort"></span></th>
             <th onclick="sortTable2(4)">Person To Visit <span class="glyphicon glyphicon-sort"></span></th>
-            <th onclick="sortTable2(5)">Designation <span class="glyphicon glyphicon-sort"></span></th>
             <th onclick="sortTable2(6)">Type of ID <span class="glyphicon glyphicon-sort"></span></th>
             <th onclick="sortTable2(7)">ID Number <span class="glyphicon glyphicon-sort"></span></th>
             <th>Time In</th>
@@ -158,32 +204,56 @@
 
             <th style="width:100px"></th>
         </tr>
-        <tr class="alert" ng-repeat="Visitor in model.Visitors | orderBy: '-VisitorID'" ng-click="model.Details(Visitor)" style="cursor:pointer" filter="">
-            <td><span ng-bind="Visitor.Date"></span></td>
-            <td><span ng-bind="Visitor.Name"></span></td>
+        <tr class="alert" ng-repeat="Visitor in model.Visitors | orderBy: '-VisitorID'" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(Visitor.VisitorId)" style="cursor:pointer" filter="">
+           
+            <td><span ng-bind="Visitor.FirstName + ' ' + Visitor.MiddleName + ' ' + Visitor.LastName"></span></td>
 
-            @*<td></td>
-                <td><span ng-bind="Visitor.Name"></span></td>*@
             <td id="company_id"><span ng-bind="Visitor.CompanyName"></span></td>
             <td><span ng-bind="Visitor.Purpose"></span></td>
-            <td><span ng-bind="Visitor.PersonToVisit"></span></td>
-            <td><span ng-bind="Visitor.Designation"></span></td>
+            <td><span ng-bind="Visitor.EmployeeToVisit.FirstName"></span> <span ng-bind="Visitor.EmployeeToVisit.MiddleName"></span>
+                <span ng-bind="Visitor.EmployeeToVisit.LastName"></span>
+            </td>
             <td><span ng-bind="Visitor.KindOfId"></span></td>
             <td><span ng-bind="Visitor.IdNumber"></span></td>
-            <td><span ng-bind="Visitor.TimeIn"></span></td>
-            <td><span ng-bind="Visitor.TimeOut"></span></td>
+            <td><span ng-bind= "Visitor.TimeIn | date: 'yyyy/MM/dd HH:mm'"></span></td>
+            <td>
+                <span ng-bind="Visitor.TimeOut | date: 'yyyy/MM/dd HH:mm'"></span>
 
+
+
+                @*<p id="date_time_button"></p>*@
+                @* <input type="text" class="form-control" name="Visitor.TimeOut" value="@Model.TimeOut" />*@
+            </td>
+
+            <td>
+                      @*  <a href="" type="button" class="btn btn-primary" role="button" id="Timeout" onclick="Timeout()">Time out</a>*@
+                @*  <button id="mybtnFunction" onclick="mybtnFunction()">Time out</button>*@
+                @*<a href="/Visitor/Index"><input type="Submit" value="TimeOut" class="btn btn-primary" style="" id="mybtnFunction" onclick="mybtnFunction()" /><i class="glyphicon glyphicon-bell"></i></a>*@
+
+                <a href="/Visitor/Index" ng-click="model.Details(Visitor)" id="mybtnFunction" onclick="mybtnFunction()" type="button" class="btn btn-primary"> <i class="glyphicon glyphicon-bell"></i> Timeout</a>
+
+            </td>
             <td>
                 <a href="/Visitor/Index" ng-click="model.Delete(Visitor)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash"></i> Delete</a>
             </td>
         </tr>
     </table>
-
-
-
-
     <script>
 
+        /////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        //function mybtnFunction() {
+
+        //    var d = new Date();
+        //    document.getElementById("date_time_button").innerHTML = d.toLocaleTimeString();
+
+
+
+
+        ////}
+        //////////////////////////////////////////////////////////////////////////////
 
         function sortTable() {
             var table, rows, switching, i, x, y, shouldSwitch;
@@ -433,7 +503,7 @@
             return !isNaN(parseFloat(n)) && isFinite(n);
         }
 
-            // Attach listener to table
+                // Attach listener to table
 
 
 
@@ -499,4 +569,3 @@
         </script>*@
 
 </div>
-

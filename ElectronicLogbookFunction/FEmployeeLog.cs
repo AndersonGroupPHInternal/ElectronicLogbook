@@ -20,8 +20,7 @@ namespace ElectronicLogbookFunction
         public EmployeeLog Create(int userId, EmployeeLog employeelog)
         {
             EEmployeeLog eEmployeeLog = EEmployeeLog(employeelog);
-            eEmployeeLog.CreatedDate = DateTime.Now;
-            eEmployeeLog.LogDate = DateTime.Now;
+           // eEmployeeLog.LogDate = DateTime.Now;
             eEmployeeLog.CreatedBy = userId;
             eEmployeeLog = _iDEmployeeLog.Create(eEmployeeLog);
             return (EmployeeLog(eEmployeeLog));

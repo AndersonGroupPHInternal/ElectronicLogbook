@@ -72,6 +72,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Rotativa.1.6.4\lib\net40\Rotativa.dll</HintPath>
       <Private>True</Private>
@@ -114,9 +118,6 @@
     </Reference>
     <Reference Include="System.Web.Mvc">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Formatting">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -369,19 +370,11 @@
     <Content Include="Scripts\Angular\app.module.min.js">
       <DependentUpon>app.module.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\Angular\Controller\ApplicantController.js" />
     <Content Include="Scripts\Angular\Controller\EmployeeController.js" />
     <Content Include="Scripts\Angular\Controller\EmployeeLogController.js" />
-    <Content Include="Scripts\Angular\Controller\InternController.js" />
-    <Content Include="Scripts\Angular\Controller\InternHistoryController.js" />
     <Content Include="Scripts\Angular\Controller\VisitorController.js" />
-    <Content Include="Scripts\Angular\Controller\VisitorHistoryController.js" />
-    <Content Include="Scripts\Angular\Service\ApplicantService.js" />
     <Content Include="Scripts\Angular\Service\EmployeeService.js" />
     <Content Include="Scripts\Angular\Service\EmployeeLogService.js" />
-    <Content Include="Scripts\Angular\Service\InternHistoryService.js" />
-    <Content Include="Scripts\Angular\Service\InternService.js" />
-    <Content Include="Scripts\Angular\Service\VisitorHistoryService.js" />
     <Content Include="Scripts\Angular\Service\VisitorService.js" />
     <Content Include="bower_components\angular\.bower.json" />
     <Content Include="bower_components\angular\angular.min.js.gzip" />
@@ -637,16 +630,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
-    <Compile Include="Controllers\ApplicantController.cs" />
-    <Compile Include="Controllers\ApplicantHistoryController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\EmployeeLogController.cs" />
-    <Compile Include="Controllers\InternController.cs" />
-    <Compile Include="Controllers\InternHistoryController.cs" />
     <Compile Include="Controllers\VisitorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\VisitorHistoryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -666,27 +654,18 @@
     <Content Include="Views\Visitor\Add.cshtml" />
     <Content Include="Views\Visitor\Edit.cshtml" />
     <Content Include="Views\Visitor\Details.cshtml" />
-    <Content Include="Views\Intern\Add.cshtml" />
-    <Content Include="Views\Intern\Details.cshtml" />
-    <Content Include="Views\Intern\Edit.cshtml" />
-    <Content Include="Views\Intern\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
-    <Content Include="Views\VisitorHistory\Index.cshtml" />
-    <Content Include="Views\InternHistory\Index.cshtml" />
     <Content Include="Views\Visitor\PreviewVisitor.cshtml" />
     <Content Include="Views\Visitor\PreviewId.cshtml" />
-    <Content Include="Views\Intern\PreviewIntern.cshtml" />
-    <Content Include="Views\Applicant\Add.cshtml" />
-    <Content Include="Views\Applicant\Details.cshtml" />
-    <Content Include="Views\Applicant\Edit.cshtml" />
-    <Content Include="Views\Applicant\Index.cshtml" />
-    <Content Include="Views\Applicant\PreviewId.cshtml" />
-    <Content Include="Views\Applicant\PreviewApplicant.cshtml" />
-    <Content Include="Views\ApplicantHistory\Index.cshtml" />
     <Content Include="Views\EmployeeLog\Index.cshtml" />
-    <Content Include="Views\EmployeeLog\Create.cshtml" />
+    <Content Include="Views\EmployeeLog\CreateLog.cshtml" />
     <Content Include="Views\EmployeeLog\_EmployeeLog.cshtml" />
     <Content Include="Views\Shared\_AuditColumns.cshtml" />
+    <Content Include="Views\Visitor\Create.cshtml" />
+    <Content Include="Views\Visitor\_Visitor.cshtml" />
+    <Content Include="Views\Visitor\Update.cshtml" />
+    <Content Include="Views\EmployeeLog\Create.cshtml" />
+    <Content Include="Views\EmployeeLog\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

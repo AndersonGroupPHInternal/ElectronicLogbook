@@ -2,6 +2,8 @@
 using ElectronicLogbookFunction;
 using System.Web.Mvc;
 using System.Web.UI;
+using System.Web.Routing;
+using System;
 
 namespace ElectronicLogbookWeb.Controllers
 {
@@ -17,6 +19,38 @@ namespace ElectronicLogbookWeb.Controllers
         }
         #region Create
         [HttpGet]
+        public ActionResult CreateLog(int? id)
+        {
+            if (id == null)
+                return View(new EmployeeLog());
+            var employeeLog = _iFEmployeeLog.Read(id.Value);
+            if (employeeLog.SuccesLogin)
+            {
+                var employee = _iFEmployee.Read(employeeLog.EmployeeId);
+                employeeLog.EmployeeImageBase64 = employee.EmployeeImageBase64;
+                employeeLog.FirstName = employee.FirstName;
+                employeeLog.MiddleName = employee.MiddleName;
+                employeeLog.LastName = employee.LastName;
+            }
+
+            return View(employeeLog);
+        }
+        [HttpPost]
+        public ActionResult CreateLog(EmployeeLog employeeLog)
+        {
+            var employee = _iFEmployee.Read(employeeLog.EmployeeNumber, employeeLog.Pin);
+            var logname = _iFEmployeeLog.Readlogtype(employeeLog.LogTypeId);
+            bool IsSuccess = employee.EmployeeId != 0 && employee.Pin == employeeLog.Pin;
+            employeeLog.LogDate = DateTime.Now;
+            employeeLog.LogName = logname.Name;
+            employeeLog.EmployeeId = employee.EmployeeId;
+            employeeLog.SuccesLogin = IsSuccess;
+            employeeLog = _iFEmployeeLog.Create(UserId, employeeLog);
+            employeeLog.EmployeeImageBase64 = employee.EmployeeImageBase64;
+           return RedirectToAction("CreateLog", new { id = employeeLog.EmployeeLogId });
+        }
+
+        [HttpGet]
         public ActionResult Create()
         {
             return View(new EmployeeLog());
@@ -24,23 +58,12 @@ namespace ElectronicLogbookWeb.Controllers
         [HttpPost]
         public ActionResult Create(EmployeeLog employeeLog)
         {
-            var employee = _iFEmployee.Read(employeeLog.EmployeeNumber, employeeLog.Pin);
+
             var logname = _iFEmployeeLog.Readlogtype(employeeLog.LogTypeId);
-            bool IsSuccess = employee.EmployeeId != 0 && employee.Pin == employeeLog.Pin;
+            employeeLog.SuccesLogin = true;
             employeeLog.LogName = logname.Name;
-            employeeLog.EmployeeId = employee.EmployeeId;
-            employeeLog.SuccesLogin = IsSuccess;
             employeeLog = _iFEmployeeLog.Create(UserId, employeeLog);
-            employeeLog.EmployeeImageBase64 = employee.EmployeeImageBase64;
-            
-            if (!IsSuccess)
-            {
-                return View(employeeLog);
-            }
-            else
-            {
-                return View(employeeLog);
-            }
+            return RedirectToAction("Index");
         }
         #endregion
         #region Read
@@ -57,14 +80,15 @@ namespace ElectronicLogbookWeb.Controllers
         #endregion
         #region Update
         [HttpGet]
-        public ActionResult Update(int employeeLogId)
+        public ActionResult Update(int id)
         {
-            return View(_iFEmployeeLog.Read(employeeLogId));
+            return View(_iFEmployeeLog.Read(id));
+
         }
         [HttpPost]
         public ActionResult Update(EmployeeLog employeeLog)
         {
-            _iFEmployeeLog.Update(UserId, employeeLog);
+           employeeLog = _iFEmployeeLog.Update(UserId, employeeLog);
             return RedirectToAction("Index");
         }
         #endregion

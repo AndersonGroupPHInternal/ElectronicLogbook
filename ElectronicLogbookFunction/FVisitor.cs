@@ -27,7 +27,7 @@ namespace ElectronicLogbookFunction
         #region READ
         public Visitor Read(int visitorId)
         {
-            EVisitor eVisitor = _iDVisitor.Read<EVisitor>(a => a.VisitorID == visitorId);
+            EVisitor eVisitor = _iDVisitor.Read<EVisitor>(a => a.VisitorId == visitorId);
             return Visitor(eVisitor);
         }
         public List<Visitor> List()
@@ -39,21 +39,7 @@ namespace ElectronicLogbookFunction
         #region UPDATE
         public Visitor Update(Visitor visitor)
         {
-            EVisitor currentVisitor = _iDVisitor.Read<EVisitor>(a => a.VisitorID == visitor.VisitorID);
             var eVisitor = _iDVisitor.Update(EVisitor(visitor));
-            if (visitor.VisitorID == currentVisitor.VisitorID)
-            {
-                EVisitorHistory eVisitorHistory = new EVisitorHistory
-                {
-                    VisitorID = eVisitor.VisitorID,
-                    Date = eVisitor.Date,
-                    Name = eVisitor.Name,
-                    Purpose = eVisitor.Purpose,
-                    TimeIn = eVisitor.TimeIn,
-                    TimeOut = eVisitor.TimeOut
-                };
-                _iDVisitor.Create(eVisitorHistory);
-            }
             return (Visitor(eVisitor));
         }
         #endregion
@@ -68,18 +54,22 @@ namespace ElectronicLogbookFunction
         {
             var returnVisitors = eVisitors.Select(a => new Visitor
             {
-                VisitorID = a.VisitorID,
-                Date = a.Date,
-                Name = a.Name,
-                CompanyName = a.CompanyName,
-                Purpose = a.Purpose,
-                PersonToVisit = a.PersonToVisit,
-                Designation = a.Designation,
-                KindOfId = a.KindOfId,
-                IdNumber = a.IdNumber,
+
                 TimeIn = a.TimeIn,
                 TimeOut = a.TimeOut,
+
+                EmployeeIdToVisit = a.EmployeeIdToVisit,
+                VisitorId = a.VisitorId,
+                
                 Comment = a.Comment,
+                CompanyName = a.CompanyName,
+                KindOfId = a.KindOfId,
+                IdNumber = a.IdNumber,
+                FirstName = a.FirstName,
+                LastName = a.LastName,
+                MiddleName = a.MiddleName,
+                Purpose = a.Purpose,
+               
                 CreatedBy = a.CreatedBy,
                 UpdatedBy = a.UpdatedBy
             });
@@ -89,18 +79,21 @@ namespace ElectronicLogbookFunction
         {
             EVisitor returnEVisitor = new EVisitor
             {
-                VisitorID = visitor.VisitorID,
-                Date = visitor.Date,
-                Name = visitor.Name,
-                CompanyName = visitor.CompanyName,
-                Purpose = visitor.Purpose,
-                PersonToVisit = visitor.PersonToVisit,
-                Designation = visitor.Designation,
-                KindOfId = visitor.KindOfId,
-                IdNumber = visitor.IdNumber,
                 TimeIn = visitor.TimeIn,
                 TimeOut = visitor.TimeOut,
+
+                EmployeeIdToVisit = visitor.EmployeeIdToVisit,
+                VisitorId = visitor.VisitorId,
+
                 Comment = visitor.Comment,
+                CompanyName = visitor.CompanyName,
+                KindOfId = visitor.KindOfId,
+                IdNumber = visitor.IdNumber,
+                FirstName = visitor.FirstName,
+                LastName = visitor.LastName,
+                MiddleName = visitor.MiddleName,
+                Purpose = visitor.Purpose,
+
                 CreatedBy = visitor.CreatedBy,
                 UpdatedBy = visitor.UpdatedBy
             };
@@ -110,18 +103,21 @@ namespace ElectronicLogbookFunction
         {
             Visitor returnVisitor = new Visitor
             {
-                VisitorID = eVisitor.VisitorID,
-                Date = eVisitor.Date,
-                Name = eVisitor.Name,
-                CompanyName = eVisitor.CompanyName,
-                Purpose = eVisitor.Purpose,
-                PersonToVisit = eVisitor.PersonToVisit,
-                Designation = eVisitor.Designation,
-                KindOfId = eVisitor.KindOfId,
-                IdNumber = eVisitor.IdNumber,
                 TimeIn = eVisitor.TimeIn,
                 TimeOut = eVisitor.TimeOut,
+
+                EmployeeIdToVisit = eVisitor.EmployeeIdToVisit,
+                VisitorId = eVisitor.VisitorId,
+                
                 Comment = eVisitor.Comment,
+                CompanyName = eVisitor.CompanyName,
+                KindOfId = eVisitor.KindOfId,
+                IdNumber = eVisitor.IdNumber,
+                FirstName = eVisitor.FirstName,
+                LastName = eVisitor.LastName,
+                MiddleName = eVisitor.MiddleName,
+                Purpose = eVisitor.Purpose,
+               
                 CreatedBy = eVisitor.CreatedBy,
                 UpdatedBy = eVisitor.UpdatedBy
             };

@@ -18,8 +18,10 @@
             <input type="text" class="form-control" name="Visitor.CompanyName" value="@Model.CompanyName" disabled />
             <label for="Purpose">Purpose:</label>
             <input type="text" class="form-control" name="Visitor.Purpose" value="@Model.Purpose" disabled />
-            <label for="PersonToVisit">Person to Visit:</label>
-            <input type="text" class="form-control" name="Visitor.PersonToVisit" value="@Model.PersonToVisit" disabled />
+            <div ng-controller="EmployeeController as employeeModel" ng-init="employeeModel.Initialise(@Model.PersonToVisit)">
+                <label for="PersonToVisit">Person to Visit:</label>
+                <input type="text" class="form-control" name="Visitor.ToVisit.FullName" value="{{employeeModel.Employee.FullName}}" disabled />
+            </div>
             <label for="Designation">Designation:</label>
             <input type="text" class="form-control" name="Visitor.Designation" value="@Model.Designation" disabled />
             <label for="KindOfId">Kind of ID:</label>
@@ -36,6 +38,8 @@
             <br />
         </form>
     </div>
+    
+            
     <div style="display: inline-block; float: left;">
         <a href="/Visitor/Edit/@Model.VisitorID" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
         <a href="@Url.Action("Preview", new { id = Model.VisitorID})" class="btn btn-info"><i class="glyphicon glyphicon-download"></i> Preview PDF</a>
