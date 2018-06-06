@@ -4,6 +4,7 @@ using ElectronicLogbookEntity;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using ElectronicLogbookModel.Filter;
 
 namespace ElectronicLogbookFunction
 {
@@ -36,6 +37,12 @@ namespace ElectronicLogbookFunction
         public List<EmployeeLog> Read()
         {
             List<EEmployeeLog> eEmployeeLogs = _iDEmployeeLog.List<EEmployeeLog>(a => true);
+            return EmployeeLogs(eEmployeeLogs);
+        }
+
+        public List<EmployeeLog> Read(EmployeeLogFilter employeeLogFilter)
+        {
+            List<EEmployeeLog> eEmployeeLogs = _iDEmployeeLog.List<EEmployeeLog>(a => a.LogDate >= employeeLogFilter.LogDateFrom && a.LogDate <= employeeLogFilter.LogDateTo);
             return EmployeeLogs(eEmployeeLogs);
         }
         #endregion

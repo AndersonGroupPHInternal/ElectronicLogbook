@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmployeeLog.cs" />
+    <Compile Include="Filter\EmployeeLogFilter.cs" />
     <Compile Include="LogType.cs" />
     <Compile Include="Visitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
