@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.Owin.Security.OAuth;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace ElectronicLogbookWeb
 {
@@ -9,9 +8,15 @@ namespace ElectronicLogbookWeb
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
 
-            // Web API routes
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            config.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter); config.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
+
+            config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
