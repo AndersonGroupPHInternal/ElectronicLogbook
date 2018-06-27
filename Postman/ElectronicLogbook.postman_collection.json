@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "1c87a9df-8eee-47c3-a55b-0f595700b1b9",
+		"name": "ElectronicLogbook",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"description": "",
+			"item": [
+				{
+					"name": "Api Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a09452f9-ca59-4dd8-bb5f-255efaa6e23b",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"Authorization\", jsonData.access_token);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "Username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "Password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EmployeeLog",
+			"description": "",
+			"item": [
+				{
+					"name": "Read",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "LogDateFrom",
+									"value": "2018-06-27",
+									"type": "text"
+								},
+								{
+									"key": "LogDateTo",
+									"value": "2018-06-27",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/EmployeeLogApi/Read",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"EmployeeLogApi",
+								"Read"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

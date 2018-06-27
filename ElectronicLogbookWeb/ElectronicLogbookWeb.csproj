@@ -669,7 +669,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIController\BaseApiController.cs" />
-    <Compile Include="APIController\TestApiController.cs" />
+    <Compile Include="APIController\EmployeeLogApiController.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
