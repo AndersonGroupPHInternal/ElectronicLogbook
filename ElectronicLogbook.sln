@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicLogbookWeb", "Ele
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicLogbookConsumer", "ElectronicLogbookConsumer\ElectronicLogbookConsumer.csproj", "{26370D94-14BD-433C-B2FD-3C221E3133FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicLogbookDesktop", "ElectronicLogbookDesktop\ElectronicLogbookDesktop.csproj", "{CBF0AAC0-E276-4F5B-98DE-A4CC56A7F503}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{26370D94-14BD-433C-B2FD-3C221E3133FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26370D94-14BD-433C-B2FD-3C221E3133FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26370D94-14BD-433C-B2FD-3C221E3133FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBF0AAC0-E276-4F5B-98DE-A4CC56A7F503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBF0AAC0-E276-4F5B-98DE-A4CC56A7F503}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBF0AAC0-E276-4F5B-98DE-A4CC56A7F503}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBF0AAC0-E276-4F5B-98DE-A4CC56A7F503}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

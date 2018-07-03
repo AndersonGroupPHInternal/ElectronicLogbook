@@ -17,9 +17,9 @@ namespace ElectronicLogbookModel
         public string EmployeeImageBase64 { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string LogType { get; set; }
         public string MiddleName { get; set; }
         public string Pin { get; set; }
-
-        public LogType LogType { get; set; }
+        
     }
 }
