@@ -48,7 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FLogType.cs" />
     <Compile Include="FEmployeeLog.cs" />
+    <Compile Include="IFLogType.cs" />
     <Compile Include="IFEmployeeLog.cs" />
     <Compile Include="IFVisitor.cs" />
     <Compile Include="FVisitor.cs" />

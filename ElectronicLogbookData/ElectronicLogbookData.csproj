@@ -53,7 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DLogType.cs" />
     <Compile Include="DEmployeeLog.cs" />
+    <Compile Include="IDLogType.cs" />
     <Compile Include="IDEmployeeLog.cs" />
     <Compile Include="IDVisitor.cs" />
     <Compile Include="DVisitor.cs" />

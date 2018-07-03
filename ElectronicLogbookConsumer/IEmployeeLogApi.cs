@@ -7,6 +7,6 @@ namespace ElectronicLogbookConsumer
 {
     public interface IEmployeeLogApi
     {
-        Task<List<EmployeeLog>> Create(EmployeeLogFilter employeeLogFilter);
+        Task<List<EmployeeLog>> Read(EmployeeLogFilter employeeLogFilter);
     }
 }

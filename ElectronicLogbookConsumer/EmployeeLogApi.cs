@@ -11,7 +11,7 @@ namespace ElectronicLogbookConsumer
         {
         }
 
-        public async Task<List<EmployeeLog>> Create(EmployeeLogFilter employeeLogFilter)
+        public async Task<List<EmployeeLog>> Read(EmployeeLogFilter employeeLogFilter)
         {
             DestinationUrl = "/api/EmployeeLogApi/Read";
             return await PostWithAuthentication<List<EmployeeLog>, EmployeeLogFilter>(employeeLogFilter);
